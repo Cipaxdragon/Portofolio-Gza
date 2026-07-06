@@ -37,11 +37,7 @@ function BlogCard({ post, index }) {
       <div className="flex items-center gap-3 text-[11px] text-brand-muted/70 mb-2">
         <span className="flex items-center gap-1">
           <Calendar size={11} />
-          {new Date(post.date).toLocaleDateString('id-ID', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
-          })}
+          {post.date || 'Unknown Date'}
         </span>
         <span className="flex items-center gap-1">
           <Clock size={11} />

@@ -129,11 +129,7 @@ export default function BlogPost() {
             <div className="flex items-center gap-4 mt-4 text-sm text-brand-muted">
               <span className="flex items-center gap-1">
                 <Calendar size={14} />
-                {new Date(post.date).toLocaleDateString('id-ID', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
+                {post.date || 'Unknown Date'}
               </span>
               <span className="flex items-center gap-1">
                 <Clock size={14} />

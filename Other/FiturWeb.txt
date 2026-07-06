@@ -1,0 +1,35 @@
+Aku ingin Websitenya Menggunakan Next JS Dan Menggunakan Tailwind CSS
+Shadin UI
+Framer Motion
+
+Style Infp (Style Misterius / Gelap)
+Style Motion Graphics Designer
+Gerak Gerak
+
+Aku ingin Fiturnya dan Tampilannya 
+
+- Bisa Membuat Blog
+- Menampilkan Hasil Video Motion Graphics,Hasil Editing Ku
+Lengkap Dengan Detail Penjelasan
+- Menampilkan Hasil Graphics Designku 
+- Menampilkan Dokumentasi Kegiatanku 
+- Menampilkan Skillku 
+- Menampilka  Hasil Kodingan Ku (Github)
+- Menampilkan hasil Karya 3dku 
+- Menampilkan Hal Yang Ingin DI Pelajari 
+- Menampilkan Hasil Photographyku 
+- Menampilkan Juga Jasa Kerja ku Seperti Jasa Koding, Editing, Dll Sesuai Keahlian 
+Dan Lain Lain Menyesuai banyak yang ingin Ku Coba
+-Menampilkan Hasil Sertifikatku 
+
+- Bisa Mengedit Profile Di Admin Panel 
+- Bisa Mengedit Blog Di Admin Panel 
+- Bisa Mengedit Video Di Admin Panel 
+- Bisa Mengedit Graphics Design Di Admin Panel 
+- Bisa Mengedit Dokumentasi Di Admin Panel 
+- Bisa Mengedit Skill Di Admin Panel 
+- Bisa Mengedit Kodingan Di Admin Panel
+
+
+dan Lain Lain Menyesuaikan 
+

@@ -5,10 +5,8 @@ export const profile = {
 
   // Copy puitis — bukan deskripsi CV
   tagline   : 'All Things Visual.',
-  bio       : 'Saya percaya setiap karya visual adalah cara bercerita tanpa kata.',
-  bioExtended: `Seorang motion graphics designer, video editor, dan web developer
-                yang tinggal di Makassar. Saya bekerja di persimpangan antara
-                code, gerak, dan rasa.`,
+  bio       : 'Salam ijinkan Saya Mempekenalkan Saya Punya Nama Saya Gali.',
+  bioExtended: `Aku Bukanlah Siapa Siapa dan Aku Juga tidak Jadi Siapa Siapa.`,
 
   avatar    : '/images/avatar.jpg',
   location  : 'Makassar, Indonesia',
@@ -16,14 +14,23 @@ export const profile = {
   education : {
     major      : 'Sistem Informasi',
     faculty    : 'Fakultas Sains dan Teknologi',
-    university : 'UIN Alauddin Makassar',
+    university : 'Universitas Islam Negeri Makassar',
     batch      : '2021',
   },
 
   skills: {
-    creative : ['Motion Graphics', 'Video Editing', 'Graphic Design', '3D Generalist', 'Photography', 'Image Manipulation'],
-    coding   : ['React JS', 'Next.js', 'Laravel', 'PHP', 'Tailwind CSS'],
-    software : ['Adobe After Effects', 'Adobe Premiere Pro', 'Adobe Photoshop', 'Adobe Illustrator', 'Adobe Audition', 'Figma', 'Canva', 'Blender'],
+    creative : ['Motion Graphics', 'Editing Video', 'Design Basics', 'Image Manipulation', '3D Generalist Basics', 'Photography'],
+    coding   : ['Laravel', 'React JS', 'PHP', 'Coding Basics', 'Build Website'],
+    software : [
+      'Adobe Photoshop', 
+      'Adobe Illustrator', 
+      'Figma', 
+      'Canva', 
+      'Blender', 
+      'Adobe Premiere Pro', 
+      'Adobe After Effects', 
+      'Adobe Audition'
+    ],
   },
 
   experience: [

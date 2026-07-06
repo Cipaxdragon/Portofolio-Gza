@@ -11,18 +11,12 @@ import Services from '@/components/sections/Services'
 import ThingsToLearn from '@/components/sections/ThingsToLearn'
 import Contact from '@/components/sections/Contact'
 import LoadingScreen from '@/components/shared/LoadingScreen'
-import GrainOverlay from '@/components/shared/GrainOverlay'
-import CustomCursor from '@/components/shared/CustomCursor'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
     <>
-      {/* Global overlays */}
-      <GrainOverlay />
-      <CustomCursor />
-
       {/* Cinematic Loading Screen */}
       <LoadingScreen onComplete={() => setIsLoading(false)} />
 

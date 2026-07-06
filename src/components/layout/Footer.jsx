@@ -6,11 +6,16 @@ import { contactTemplates } from '@/data/contact'
 import { getWhatsAppLink } from '@/lib/contact'
 import { InstagramIcon, YoutubeIcon, GithubIcon, LinkedinIcon } from '@/components/shared/SocialIcons'
 
+const getUrl = (value, prefix) => {
+  if (!value) return '#'
+  return value.startsWith('http') ? value : `${prefix}${value}`
+}
+
 const socialLinks = [
-  { icon: InstagramIcon, label: 'Instagram', href: social.instagram ? `https://instagram.com/${social.instagram}` : '#' },
-  { icon: YoutubeIcon, label: 'YouTube', href: social.youtube || '#' },
-  { icon: GithubIcon, label: 'GitHub', href: social.github ? `https://github.com/${social.github}` : '#' },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: social.linkedin || '#' },
+  { icon: InstagramIcon, label: 'Instagram', href: getUrl(social.instagram, 'https://instagram.com/') },
+  { icon: YoutubeIcon, label: 'YouTube', href: getUrl(social.youtube, '') },
+  { icon: GithubIcon, label: 'GitHub', href: getUrl(social.github, 'https://github.com/') },
+  { icon: LinkedinIcon, label: 'LinkedIn', href: getUrl(social.linkedin, 'https://linkedin.com/in/') },
 ]
 
 export default function Footer() {

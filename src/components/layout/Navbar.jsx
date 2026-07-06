@@ -3,16 +3,21 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navLinks = [
-  { label: 'Works', href: '#showcase' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Works', href: '/works' },
+  { label: 'Services', href: '/services' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -21,16 +26,28 @@ export default function Navbar() {
   }, [])
 
   const handleNavClick = (e, href) => {
-    e.preventDefault()
     setMobileOpen(false)
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+
+    // Handle hash links (like Contact)
+    if (href.startsWith('/#')) {
+      const targetId = href.replace('/#', '#')
+      
+      if (pathname === '/') {
+        // If already on home page, just scroll smoothly
+        e.preventDefault()
+        document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        // If on another page, let Next.js navigate to /#contact natively
+        // (Next.js Link handles scrolling to hash automatically on navigation)
+      }
+    }
   }
 
   return (
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-400 ${
-          scrolled
+          scrolled || pathname !== '/'
             ? 'bg-brand-bg/70 backdrop-blur-md border-b border-brand-border'
             : 'bg-transparent'
         }`}
@@ -40,28 +57,33 @@ export default function Navbar() {
       >
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
+          <Link
+            href="/"
+            onClick={() => setMobileOpen(false)}
             className="text-label !text-brand-text tracking-[0.25em] font-mono"
             data-cursor="hover"
           >
             GALI
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden sm:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-label hover:text-brand-text transition-colors duration-300"
-                data-cursor="hover"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname.startsWith(link.href) && link.href !== '/#contact'
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-label transition-colors duration-300 ${
+                    isActive ? 'text-brand-accent' : 'hover:text-brand-text'
+                  }`}
+                  data-cursor="hover"
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Mobile Hamburger */}
@@ -87,18 +109,21 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
           >
             {navLinks.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="font-display text-4xl font-bold text-brand-text hover:text-brand-accent transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                data-cursor="hover"
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="font-display text-4xl font-bold text-brand-text hover:text-brand-accent transition-colors block text-center"
+                  data-cursor="hover"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}

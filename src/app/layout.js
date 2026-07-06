@@ -53,6 +53,8 @@ export const metadata = {
   },
 };
 
+import GlobalClientProviders from "@/components/shared/GlobalClientProviders";
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -60,7 +62,9 @@ export default function RootLayout({ children }) {
       className={`${playfairDisplay.variable} ${plusJakartaSans.variable} ${spaceMono.variable} dark`}
     >
       <body className="min-h-screen bg-brand-bg text-brand-text font-sans antialiased">
-        {children}
+        <GlobalClientProviders>
+          {children}
+        </GlobalClientProviders>
       </body>
     </html>
   );

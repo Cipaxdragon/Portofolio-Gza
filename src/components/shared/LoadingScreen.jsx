@@ -8,12 +8,23 @@ export default function LoadingScreen({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
+    // Check local storage to see if user has already visited
+    const hasVisited = localStorage.getItem('hasVisited')
+    
+    if (hasVisited) {
+      // If visited, skip loading screen immediately
+      setIsVisible(false)
+      onComplete?.()
+      return
+    }
+
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval)
           setTimeout(() => {
             setIsVisible(false)
+            localStorage.setItem('hasVisited', 'true')
             onComplete?.()
           }, 400)
           return 100

@@ -1,3 +1,32 @@
+# Portfolio Website Gali
+
+## Penjelasan Web Ini
+Website ini adalah portofolio pribadi yang dibangun menggunakan **Next.js**. Tujuan dari website ini adalah untuk menampilkan proyek, keahlian, dan pengalaman secara profesional.
+
+## Arsitektur & Teknologi
+
+Aplikasi portofolio ini dibangun dengan arsitektur modern berbasis komponen menggunakan **Next.js (App Router)**. Berikut adalah rincian tumpukan teknologi dan struktur yang digunakan:
+
+### 1. Teknologi Utama (Tech Stack)
+* **Framework:** [Next.js](https://nextjs.org/) (berbasis React) - Dipilih karena kemampuannya dalam Server-Side Rendering (SSR) dan Static Site Generation (SSG) yang mengoptimalkan SEO serta performa website.
+* **Bahasa Pemrograman:** JavaScript / TypeScript.
+* **Styling:** Tailwind CSS / CSS - Menggunakan *utility-first* CSS framework untuk mempercepat proses styling dan menjaga konsistensi desain antarmuka yang responsif (mobile-friendly).
+* **State Management:** React Hooks bawaan (seperti `useState`, `useEffect`) untuk mengelola *state* lokal pada komponen tanpa perlu *library* eksternal yang berat.
+
+### 2. Struktur Direktori (Project Structure)
+Proyek ini diorganisasikan dengan rapi menggunakan folder `src/` untuk memisahkan kode sumber dari konfigurasi konfigurasi *root*:
+
+* `src/app/` : Menggunakan sistem routing terbaru dari Next.js (App Router). File `page.js` di dalam direktori ini merepresentasikan rute publik aplikasi.
+* `src/components/` : Berisi komponen-komponen UI modular yang dapat digunakan kembali *(reusable components)* seperti `Navbar`, `Footer`, `ProjectCard`, dan lain-lain.
+* `src/data/` : Tempat penyimpanan sumber data lokal (seperti file JSON/JS) yang berisi daftar proyek, pengalaman, atau keahlian, sehingga konten dapat diperbarui dengan mudah tanpa menyentuh kode UI.
+* `src/lib/` : Menyimpan fungsi utilitas *(helper functions)* atau konfigurasi integrasi pihak ketiga.
+
+### 3. Alur Pengiriman (Deployment & CI/CD)
+* **Platform:** [Vercel](https://vercel.com/) (Platform teroptimasi untuk Next.js).
+* **Integrasi:** Terhubung langsung dengan repositori Git. Setiap perubahan kode yang di-*push* ke *branch* utama (main/master) akan memicu proses *build* dan *deployment* otomatis secara instan *(Continuous Deployment)*.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

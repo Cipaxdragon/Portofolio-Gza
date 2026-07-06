@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Ahmad Ghazali',
-  nickname: 'Gali',
+  nickname: 'Asep',
   title: 'Motion Graphics & Web Designer',
   tagline: 'Creating visual experiences with code & creativity.',
   bio: `Seorang motion graphics designer, video editor, dan web developer berbasis di Makassar, Indonesia. Saya percaya bahwa desain yang baik adalah desain yang bercerita — menggabungkan kreativitas visual dengan teknologi untuk menciptakan pengalaman digital yang berkesan.`,

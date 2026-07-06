@@ -1,35 +1,61 @@
-// Struktur tiap item showcase:
-// id, title, description, thumbnail, tools[], date, tags[]
-// Optional: videoUrl (motion/video), liveUrl & githubUrl (web),
-// imageUrl (design/3d/photo/cert), eventName (dokumentasi)
+// Setiap item showcase menggunakan struktur yang sama
+// Field opsional menyesuaikan kategori
 
 export const showcase = {
+  // Tab 1: Motion Graphics & Video
   motionGraphics: [
-    // {
-    //   id: 'motion-1',
-    //   title: 'Sample Motion',
-    //   description: 'A motion graphics project.',
-    //   thumbnail: '/images/showcase/motion/thumb1.jpg',
-    //   videoUrl: 'https://youtube.com/watch?v=xxx',
-    //   tools: ['After Effects', 'Premiere Pro'],
-    //   date: '2024-01-01',
-    //   tags: ['motion', 'animation'],
-    // },
+    {
+      id          : 'motion-001',
+      title       : 'Judul Project',
+      description : 'Deskripsi singkat...',
+      longDesc    : 'Deskripsi lengkap untuk modal...',
+      thumbnail   : '/images/showcase/motion/001.jpg',
+      videoUrl    : 'https://youtube.com/...',
+      tools       : ['After Effects', 'Premiere Pro'],
+      year        : '2024',
+      featured    : true,
+    },
   ],
+
+  // Tab 2: Graphic Design
   graphicDesign: [],
-  webProjects: [],
+
+  // Tab 3: Web Projects
+  webProjects: [
+    {
+      id          : 'web-001',
+      title       : 'Judul Project',
+      description : 'Deskripsi singkat...',
+      longDesc    : 'Deskripsi lengkap untuk modal...',
+      thumbnail   : '/images/showcase/code/001.jpg',
+      liveUrl     : 'https://...',
+      githubUrl   : 'https://github.com/...',
+      tools       : ['Next.js', 'Tailwind CSS'],
+      year        : '2024',
+      featured    : false,
+    },
+  ],
+
+  // Tab 4: 3D Work
   threeD: [],
+
+  // Tab 5: Photography
   photography: [],
+
+  // Tab 6: Dokumentasi
   documentation: [],
+
+  // Tab 7: Sertifikat
   certificates: [],
 }
 
+// Helper: get all categories as array for tab filter
 export const showcaseCategories = [
-  { key: 'motionGraphics', label: 'Motion Graphics', icon: '🎬' },
-  { key: 'graphicDesign', label: 'Graphic Design', icon: '🎨' },
-  { key: 'webProjects', label: 'Web Projects', icon: '💻' },
-  { key: 'threeD', label: '3D Work', icon: '🧊' },
-  { key: 'photography', label: 'Photography', icon: '📷' },
-  { key: 'documentation', label: 'Dokumentasi', icon: '📸' },
-  { key: 'certificates', label: 'Sertifikat', icon: '📜' },
+  { key: 'motionGraphics', label: 'Motion' },
+  { key: 'graphicDesign',  label: 'Design' },
+  { key: 'webProjects',    label: 'Code' },
+  { key: 'threeD',         label: '3D' },
+  { key: 'photography',    label: 'Photo' },
+  { key: 'documentation',  label: 'Docs' },
+  { key: 'certificates',   label: 'Certs' },
 ]

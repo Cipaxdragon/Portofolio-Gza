@@ -1,40 +1,33 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
 
-export default function TabFilter({ tabs, active, onChange, className = '' }) {
+/**
+ * TabFilter — Minimal underline-style tab filter.
+ * v2: Replaced pill/button style with editorial underline.
+ */
+export default function TabFilter({ tabs, activeTab, onTabChange }) {
   return (
-    <div
-      className={cn(
-        'flex flex-wrap items-center justify-center gap-2 mb-12',
-        className
-      )}
-    >
+    <div className="flex flex-wrap gap-x-6 gap-y-2 mb-12">
       {tabs.map((tab) => (
         <button
           key={tab.key}
-          onClick={() => onChange(tab.key)}
-          className={cn(
-            'relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer',
-            active === tab.key
-              ? 'text-brand-accent'
-              : 'text-brand-muted hover:text-brand-text'
-          )}
+          onClick={() => onTabChange(tab.key)}
+          className="relative py-2 text-label transition-colors duration-300 group"
+          data-cursor="hover"
+          style={{
+            color: activeTab === tab.key ? 'var(--color-brand-text)' : undefined,
+          }}
         >
-          {/* Active indicator background */}
-          {active === tab.key && (
+          {tab.label}
+          {/* Active underline */}
+          {activeTab === tab.key && (
             <motion.div
-              layoutId="activeTab"
-              className="absolute inset-0 rounded-lg bg-brand-accent/10 border border-brand-accent/30"
-              transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
+              className="absolute bottom-0 left-0 right-0 h-px bg-brand-accent"
+              layoutId="tab-underline"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
           )}
-
-          <span className="relative z-10 flex items-center gap-1.5">
-            {tab.icon && <span>{tab.icon}</span>}
-            {tab.label}
-          </span>
         </button>
       ))}
     </div>

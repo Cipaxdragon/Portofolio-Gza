@@ -1,32 +1,29 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-export default function CardMotion({ children, className, delay = 0, ...props }) {
+/**
+ * CardMotion — Wrapper for animating cards on scroll.
+ * v2: Subtle entrance, minimal hover.
+ */
+export default function CardMotion({ children, delay = 0, className = '' }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-5%' })
+
   return (
     <motion.div
-      className={cn(
-        'group relative overflow-hidden rounded-xl border border-brand-border bg-brand-card p-6 transition-all duration-300',
-        'hover:border-brand-accent/50 hover:shadow-neon-sm',
-        className
-      )}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 0.5,
+        duration: 0.6,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={{ scale: 1.02 }}
-      {...props}
     >
-      {/* Subtle glow overlay on hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-br from-brand-accent/5 to-transparent" />
-
-      {/* Content */}
-      <div className="relative z-10">{children}</div>
+      {children}
     </motion.div>
   )
 }

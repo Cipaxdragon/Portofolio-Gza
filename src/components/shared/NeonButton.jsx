@@ -1,49 +1,41 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
 
+/**
+ * NeonButton — Minimal button with subtle accent styling.
+ * v2: More restrained cyan usage, cinematic feel.
+ */
 export default function NeonButton({
   children,
-  variant = 'outline',
-  size = 'default',
+  variant = 'solid',
   href,
-  className,
   onClick,
-  type = 'button',
-  disabled = false,
+  className = '',
   ...props
 }) {
-  const baseStyles =
-    'relative inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 rounded-lg cursor-pointer select-none'
+  const baseStyles = 'inline-flex items-center justify-center px-6 py-3 text-sm font-mono uppercase tracking-wider rounded-lg transition-all duration-300'
 
   const variants = {
-    outline:
-      'border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black hover:shadow-neon',
-    solid:
-      'bg-brand-accent text-black hover:brightness-110 hover:shadow-neon',
+    solid: 'bg-brand-accent/10 text-brand-accent border border-brand-accent/30 hover:bg-brand-accent hover:text-brand-bg',
+    outline: 'border border-brand-border text-brand-text hover:border-brand-accent/50 hover:text-brand-accent',
+    wa: 'border border-brand-wa text-brand-wa hover:bg-brand-wa hover:text-black',
+    discord: 'border border-brand-discord text-brand-discord hover:bg-brand-discord hover:text-white',
   }
 
-  const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    default: 'px-6 py-3 text-sm',
-    lg: 'px-8 py-4 text-base',
-  }
-
-  const Component = href ? motion.a : motion.button
+  const Component = href ? 'a' : 'button'
 
   return (
-    <Component
-      href={href}
-      type={href ? undefined : type}
-      onClick={onClick}
-      disabled={disabled}
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      {...props}
-    >
-      {children}
-    </Component>
+    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+      <Component
+        href={href}
+        onClick={onClick}
+        className={`${baseStyles} ${variants[variant]} ${className}`}
+        data-cursor="hover"
+        {...props}
+      >
+        {children}
+      </Component>
+    </motion.div>
   )
 }

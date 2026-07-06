@@ -1,0 +1,42 @@
+export const services = [
+  {
+    id: 'video-editing',
+    icon: '🎬',
+    title: 'Video Editing',
+    description: 'Professional video editing & color grading untuk konten YouTube, sosial media, atau kebutuhan corporate.',
+    tools: ['Adobe Premiere Pro', 'After Effects', 'Adobe Audition'],
+    ctaText: 'Pesan Sekarang',
+  },
+  {
+    id: 'motion-graphics',
+    icon: '✨',
+    title: 'Motion Graphics',
+    description: 'Pembuatan animasi motion graphics untuk konten sosial media, presentasi, branding, dan intro/outro video.',
+    tools: ['After Effects', 'Premiere Pro'],
+    ctaText: 'Pesan Sekarang',
+  },
+  {
+    id: 'graphic-design',
+    icon: '🎨',
+    title: 'Graphic Design',
+    description: 'Desain grafis untuk poster, social media content, banner, branding, dan kebutuhan visual lainnya.',
+    tools: ['Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'Canva'],
+    ctaText: 'Pesan Sekarang',
+  },
+  {
+    id: 'web-development',
+    icon: '💻',
+    title: 'Web Development',
+    description: 'Pengembangan website modern dan responsif menggunakan teknologi terkini sesuai kebutuhan project.',
+    tools: ['Next.js', 'React JS', 'Laravel', 'PHP', 'Tailwind CSS'],
+    ctaText: 'Diskusi Project',
+  },
+  {
+    id: 'photography',
+    icon: '📷',
+    title: 'Photography',
+    description: 'Dokumentasi acara, portrait, product photography, dan kebutuhan photography profesional lainnya.',
+    tools: ['Adobe Lightroom', 'Adobe Photoshop'],
+    ctaText: 'Pesan Sekarang',
+  },
+]

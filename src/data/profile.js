@@ -1,0 +1,57 @@
+export const profile = {
+  name: 'Ahmad Ghazali',
+  nickname: 'Gali',
+  title: 'Motion Graphics & Web Designer',
+  tagline: 'Creating visual experiences with code & creativity.',
+  bio: `Seorang motion graphics designer, video editor, dan web developer berbasis di Makassar, Indonesia. Saya percaya bahwa desain yang baik adalah desain yang bercerita — menggabungkan kreativitas visual dengan teknologi untuk menciptakan pengalaman digital yang berkesan.`,
+  bioEn: `A motion graphics designer, video editor, and web developer based in Makassar, Indonesia. I believe great design tells a story — blending visual creativity with technology to craft memorable digital experiences.`,
+  avatar: '/images/avatar.jpg',
+  location: 'Makassar, Indonesia',
+  education: {
+    major: 'Sistem Informasi',
+    faculty: 'Fakultas Sains dan Teknologi',
+    university: 'UIN Alauddin Makassar',
+    batch: '2021',
+  },
+  skills: {
+    creative: [
+      'Motion Graphics',
+      'Video Editing',
+      'Graphic Design',
+      '3D Generalist',
+      'Photography',
+      'Image Manipulation',
+    ],
+    coding: ['React JS', 'Next.js', 'Laravel', 'PHP', 'Tailwind CSS'],
+    software: [
+      'Adobe After Effects',
+      'Adobe Premiere Pro',
+      'Adobe Photoshop',
+      'Adobe Illustrator',
+      'Adobe Audition',
+      'Figma',
+      'Canva',
+      'Blender',
+    ],
+  },
+  experience: [
+    {
+      role: 'Ketua Divisi Kominfo',
+      organization: 'HMJ Sistem Informasi (HMJ-SI)',
+      year: '2024',
+      description: 'Koordinator Divisi Manajemen. Program Kerja: Podcast.',
+    },
+    {
+      role: 'Anggota Divisi Kominfo / PDD',
+      organization: 'HMJ Sistem Informasi (HMJ-SI)',
+      year: '2023',
+      description: 'Design Graphics, Editing Video, Build Website, Dokumentasi Acara.',
+    },
+    {
+      role: 'Panitia Dokumentasi Kreasi',
+      organization: 'Inaugurasi Jurusan',
+      year: '2023',
+      description: 'Dokumentasi kegiatan inaugurasi jurusan.',
+    },
+  ],
+}

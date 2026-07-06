@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section id="about" className="relative px-6 py-24 sm:py-32" ref={ref}>
       <div className="mx-auto max-w-7xl">
-        <SectionHeader title="Who I Am." />
+        <SectionHeader title="Siapa Gweh" />
 
         {/* 2-column layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">

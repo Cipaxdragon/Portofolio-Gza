@@ -1,14 +1,12 @@
 Ujung Kanan Atas Ganti Logo gaze Mata
 
 Skill dan SKill Sofrware Bedakan Jadi Section
-
-Skill Aplikasi Ada Logo Nya 
+    Skill Aplikas(Kayak Premire, Laravel,Blender Ada Logo Nya) 
 
 Aplikasi Yang Sudah Jadi Di github mu Adakan Tombol Demo Aplikasinya (Veiw Demo)
+    Menampilkan Daftar Repositofry
 
 
 Perbaiki Halaman Service nya 
-
-Perbaiki Tampilan Halaman Mobilenya 
 
 Buat Websitenya 

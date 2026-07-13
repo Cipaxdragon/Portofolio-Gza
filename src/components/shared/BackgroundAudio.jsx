@@ -31,7 +31,7 @@ export default function BackgroundAudio() {
     <>
       <audio
         ref={audioRef}
-        src="/audio/background-music.mp3"
+        src="/祝福_spotdown.org.mp3"
         loop
       />
       

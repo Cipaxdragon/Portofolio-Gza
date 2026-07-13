@@ -54,6 +54,33 @@ export default function ShowcaseCard({ item, size = 'medium' }) {
             {item.description}
           </p>
         )}
+        {/* Links */}
+        {(item.liveUrl || item.githubUrl) && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {item.liveUrl && (
+              <a
+                href={item.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono border border-brand-accent/50 text-brand-accent px-3 py-1.5 rounded-sm hover:bg-brand-accent hover:text-black transition-colors"
+                data-cursor="hover"
+              >
+                View Demo ↗
+              </a>
+            )}
+            {item.githubUrl && (
+              <a
+                href={item.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono border border-brand-border text-brand-text px-3 py-1.5 rounded-sm hover:bg-white hover:text-black transition-colors"
+                data-cursor="hover"
+              >
+                GitHub ↗
+              </a>
+            )}
+          </div>
+        )}
       </motion.div>
     </motion.div>
   )

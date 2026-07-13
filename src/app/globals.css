@@ -62,12 +62,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== CUSTOM CURSOR — Desktop Only ===== */
-@media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
+/* ===== CUSTOM CURSOR ===== */
+/* Di-handle dinamis oleh CustomCursor.jsx */
 
 /* ===== TYPOGRAPHY — Display / Headline ===== */
 .font-display {
@@ -75,7 +71,7 @@ body {
 }
 
 .text-display {
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(36px, 10vw, 96px);
   line-height: 0.95;
   letter-spacing: -0.04em;
   font-weight: 900;

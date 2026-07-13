@@ -41,9 +41,9 @@ export default function Hero() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-brand-bg/60" />
 
-      {/* Top-left label */}
+      {/* Bottom-left label (Moved from top to avoid Navbar collision) */}
       <motion.p
-        className="absolute top-6 left-6 text-label z-10"
+        className="absolute bottom-6 left-6 text-[9px] sm:text-label z-10 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}

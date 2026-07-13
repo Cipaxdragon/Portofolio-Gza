@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
       lang="id"
       className={`${playfairDisplay.variable} ${plusJakartaSans.variable} ${spaceMono.variable} dark`}
     >
-      <body className="min-h-screen bg-brand-bg text-brand-text font-sans antialiased">
+      <body className="min-h-screen bg-brand-bg text-brand-text font-sans antialiased overflow-x-hidden">
         <GlobalClientProviders>
           {children}
         </GlobalClientProviders>

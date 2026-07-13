@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 
 const navLinks = [
@@ -86,15 +87,29 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="sm:hidden text-brand-text"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            data-cursor="hover"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Hamburger (Mobile) or Gaze Logo (Desktop) */}
+          <div className="flex items-center gap-4">
+            {/* Eye / Gaze Logo (Visible on desktop) */}
+            <div className="hidden sm:block">
+              <Image 
+                src="/images/Logo_Gaze.png" 
+                alt="Gaze Logo" 
+                width={36} 
+                height={36} 
+                className="opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            {/* Mobile Hamburger */}
+            <button
+              className="sm:hidden text-brand-text"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              data-cursor="hover"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 

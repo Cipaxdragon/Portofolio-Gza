@@ -7,12 +7,14 @@ import { social } from '@/data/social'
 import { contactTemplates } from '@/data/contact'
 import { getWhatsAppLink } from '@/lib/contact'
 
+import { SiWhatsapp, SiDiscord } from 'react-icons/si'
+
 export default function Contact() {
   const [copied, setCopied] = useState(false)
   const waLink = getWhatsAppLink(social.whatsapp, contactTemplates.whatsapp)
 
   const handleDiscordCopy = async () => {
-    await navigator.clipboard.writeText(social.discord)
+    await navigator.clipboard.writeText('Asep_Salamanca')
     setCopied(true)
     setTimeout(() => setCopied(false), 2500)
   }
@@ -26,42 +28,49 @@ export default function Contact() {
         />
 
         {/* Contact Buttons */}
-        <div className="flex flex-col gap-4 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
           {/* WhatsApp */}
           <CardMotion>
             <a
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between border border-brand-border rounded-sm px-6 py-5 hover:border-brand-wa transition-all duration-300"
+              className="group relative flex flex-col items-center justify-center gap-5 border border-brand-border rounded-sm p-8 h-56 hover:border-brand-wa hover:bg-brand-bg-2 transition-all duration-500 overflow-hidden"
               data-cursor="hover"
             >
-              <div>
-                <p className="text-label mb-1">WhatsApp</p>
-                <p className="font-display text-lg font-bold group-hover:text-brand-wa transition-colors">
-                  Kirim pesan langsung →
+              {/* Subtle background glow on hover */}
+              <div className="absolute inset-0 bg-brand-wa/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <SiWhatsapp className="text-5xl text-brand-text opacity-70 group-hover:text-brand-wa group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500" />
+              <div className="text-center">
+                <p className="text-label mb-2 tracking-widest">WhatsApp</p>
+                <p className="font-mono text-base text-brand-text/90 group-hover:text-brand-wa transition-colors duration-300">
+                  -Ghazali
                 </p>
               </div>
-              <span className="text-2xl opacity-60 group-hover:opacity-100 transition-opacity">💬</span>
             </a>
           </CardMotion>
 
           {/* Discord */}
           <CardMotion delay={0.1}>
-            <button
-              onClick={handleDiscordCopy}
-              className="group flex items-center justify-between border border-brand-border rounded-sm px-6 py-5 hover:border-brand-discord transition-all duration-300 text-left w-full"
+            <a
+              href={social.discord}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col items-center justify-center gap-5 border border-brand-border rounded-sm p-8 h-56 hover:border-brand-discord hover:bg-brand-bg-2 transition-all duration-500 overflow-hidden"
               data-cursor="hover"
             >
-              <div>
-                <p className="text-label mb-1">Discord</p>
-                <p className="font-display text-lg font-bold group-hover:text-brand-discord transition-colors">
-                  {copied ? 'Username disalin! ✓' : 'Salin username & DM →'}
+              {/* Subtle background glow on hover */}
+              <div className="absolute inset-0 bg-brand-discord/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <SiDiscord className="text-5xl text-brand-text opacity-70 group-hover:text-brand-discord group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500" />
+              <div className="text-center">
+                <p className="text-label mb-2 tracking-widest">Discord</p>
+                <p className="font-mono text-base text-brand-text/90 group-hover:text-brand-discord transition-colors duration-300">
+                  -Asep_Salamanca
                 </p>
-                <p className="text-label mt-0.5">{social.discord}</p>
               </div>
-              <span className="text-2xl opacity-60 group-hover:opacity-100 transition-opacity">🎮</span>
-            </button>
+            </a>
           </CardMotion>
         </div>
       </div>

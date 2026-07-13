@@ -4,7 +4,15 @@ import RevealText from '@/components/shared/RevealText'
 import { social } from '@/data/social'
 import { contactTemplates } from '@/data/contact'
 import { getWhatsAppLink } from '@/lib/contact'
-import { InstagramIcon, YoutubeIcon, GithubIcon, LinkedinIcon } from '@/components/shared/SocialIcons'
+import { 
+  FaInstagram, 
+  FaYoutube, 
+  FaGithub, 
+  FaLinkedin, 
+  FaDiscord, 
+  FaTiktok 
+} from 'react-icons/fa6'
+import { SiRoblox } from 'react-icons/si'
 
 const getUrl = (value, prefix) => {
   if (!value) return '#'
@@ -12,10 +20,13 @@ const getUrl = (value, prefix) => {
 }
 
 const socialLinks = [
-  { icon: InstagramIcon, label: 'Instagram', href: getUrl(social.instagram, 'https://instagram.com/') },
-  { icon: YoutubeIcon, label: 'YouTube', href: getUrl(social.youtube, '') },
-  { icon: GithubIcon, label: 'GitHub', href: getUrl(social.github, 'https://github.com/') },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: getUrl(social.linkedin, 'https://linkedin.com/in/') },
+  { icon: FaInstagram, label: 'Instagram', href: getUrl(social.instagram, 'https://instagram.com/') },
+  { icon: FaYoutube, label: 'YouTube', href: getUrl(social.youtube, '') },
+  { icon: FaGithub, label: 'GitHub', href: getUrl(social.github, 'https://github.com/') },
+  { icon: FaLinkedin, label: 'LinkedIn', href: getUrl(social.linkedin, 'https://linkedin.com/in/') },
+  { icon: FaDiscord, label: 'Discord', href: getUrl(social.discord, '') },
+  { icon: SiRoblox, label: 'Roblox', href: getUrl(social.roblox, '') },
+  { icon: FaTiktok, label: 'TikTok', href: getUrl(social.tiktok, 'https://tiktok.com/@') },
 ]
 
 export default function Footer() {
@@ -37,8 +48,8 @@ export default function Footer() {
         {/* Footer Grid */}
         <div className="flex flex-col sm:flex-row justify-between gap-8">
           {/* Social Links */}
-          <div className="flex items-center gap-5">
-            {socialLinks.map((item) => (
+          <div className="flex flex-wrap items-center gap-5">
+            {socialLinks.filter(item => item.href !== '#').map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -48,7 +59,7 @@ export default function Footer() {
                 aria-label={item.label}
                 data-cursor="hover"
               >
-                <item.icon size={18} />
+                <item.icon size={20} />
               </a>
             ))}
           </div>

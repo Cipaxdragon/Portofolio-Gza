@@ -15,13 +15,15 @@ import {
   SiPhp
 } from 'react-icons/si'
 import {
-  Image as ImageIcon,
-  PenTool,
-  Video,
-  Layers,
-  Mic,
   Palette
 } from 'lucide-react'
+import {
+  TbBrandAdobePhotoshop,
+  TbBrandAdobeIllustrator,
+  TbBrandAdobePremiere,
+  TbBrandAdobeAfterEffect,
+  TbBrandAdobe
+} from 'react-icons/tb'
 
 export default function About() {
   const ref = useRef(null)
@@ -113,11 +115,11 @@ export default function About() {
                       key={software}
                       className="text-xs font-mono text-brand-text/90 border border-brand-border px-3 py-1 rounded-sm bg-brand-bg-2 flex items-center gap-1.5"
                     >
-                      {software === 'Adobe Photoshop' && <ImageIcon size={14} className="text-[#31A8FF]" />}
-                      {software === 'Adobe Illustrator' && <PenTool size={14} className="text-[#FF9A00]" />}
-                      {software === 'Adobe Premiere Pro' && <Video size={14} className="text-[#9999FF]" />}
-                      {software === 'Adobe After Effects' && <Layers size={14} className="text-[#9999FF]" />}
-                      {software === 'Adobe Audition' && <Mic size={14} className="text-[#9999FF]" />}
+                      {software === 'Adobe Photoshop' && <TbBrandAdobePhotoshop size={14} className="text-[#31A8FF]" />}
+                      {software === 'Adobe Illustrator' && <TbBrandAdobeIllustrator size={14} className="text-[#FF9A00]" />}
+                      {software === 'Adobe Premiere Pro' && <TbBrandAdobePremiere size={14} className="text-[#9999FF]" />}
+                      {software === 'Adobe After Effects' && <TbBrandAdobeAfterEffect size={14} className="text-[#9999FF]" />}
+                      {software === 'Adobe Audition' && <TbBrandAdobe size={14} className="text-[#9999FF]" />}
                       {software === 'Figma' && <SiFigma className="text-[#F24E1E]" />}
                       {software === 'Canva' && <Palette size={14} className="text-[#00C4CC]" />}
                       {software === 'Blender' && <SiBlender className="text-[#F5792A]" />}

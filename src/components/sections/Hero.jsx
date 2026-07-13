@@ -13,6 +13,8 @@ const container = {
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
 }
 
+import GlitchBlock from '@/components/shared/GlitchBlock'
+
 export default function Hero() {
   const words = [
     { text: 'All',     italic: false },
@@ -58,18 +60,20 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        <h1 className="font-display text-display leading-[0.95]">
-          {words.map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden mr-[0.25em] last:mr-0">
-              <motion.span
-                className={`inline-block ${word.italic ? 'italic font-normal' : 'font-black'}`}
-                variants={wordVariant}
-              >
-                {word.text}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
+        <GlitchBlock>
+          <h1 className="font-display text-display leading-[0.95]">
+            {words.map((word, i) => (
+              <span key={i} className="inline-block overflow-hidden mr-[0.25em] last:mr-0">
+                <motion.span
+                  className={`inline-block ${word.italic ? 'italic font-normal' : 'font-black'}`}
+                  variants={wordVariant}
+                >
+                  {word.text}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+        </GlitchBlock>
       </motion.div>
 
       {/* Bottom-right label */}

@@ -25,6 +25,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://gza-mu.vercel.app'),
   title: "Ahmad Ghazali — All Things Visual.",
   description:
     "Portfolio Ahmad Ghazali (Gali) — Motion Graphics Designer, Video Editor, dan Web Developer. Saya percaya setiap karya visual adalah cara bercerita tanpa kata.",

@@ -37,7 +37,7 @@ export default function Footer() {
       {/* Manifesto Statement */}
       <div className="mx-auto max-w-7xl">
         <RevealText>
-          <h2 className="font-display text-headline sm:text-display italic">
+          <h2 className="font-display text-headline sm:text-display italic glitch-hover cursor-default inline-block">
             I build things<br />that <em>move.</em>
           </h2>
         </RevealText>

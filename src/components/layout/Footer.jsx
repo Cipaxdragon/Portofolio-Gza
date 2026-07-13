@@ -29,6 +29,8 @@ const socialLinks = [
   { icon: FaTiktok, label: 'TikTok', href: getUrl(social.tiktok, 'https://tiktok.com/@') },
 ]
 
+import GlitchBlock from '@/components/shared/GlitchBlock'
+
 export default function Footer() {
   const waLink = getWhatsAppLink(social.whatsapp, contactTemplates.whatsapp)
 
@@ -37,9 +39,11 @@ export default function Footer() {
       {/* Manifesto Statement */}
       <div className="mx-auto max-w-7xl">
         <RevealText>
-          <h2 className="font-display text-headline sm:text-display italic glitch-hover cursor-default inline-block">
-            I build things<br />that <em>move.</em>
-          </h2>
+          <GlitchBlock>
+            <h2 className="font-display text-headline sm:text-display italic">
+              I build things<br />that <em>move.</em>
+            </h2>
+          </GlitchBlock>
         </RevealText>
 
         {/* Divider */}

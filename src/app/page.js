@@ -8,7 +8,6 @@ import About from '@/components/sections/About'
 import Showcase from '@/components/sections/Showcase'
 import Blog from '@/components/sections/Blog'
 import Services from '@/components/sections/Services'
-import ThingsToLearn from '@/components/sections/ThingsToLearn'
 import Contact from '@/components/sections/Contact'
 import LoadingScreen from '@/components/shared/LoadingScreen'
 
@@ -30,7 +29,6 @@ export default function Home() {
             <Showcase />
             <Blog />
             <Services />
-            <ThingsToLearn />
             <Contact />
           </main>
           <Footer />

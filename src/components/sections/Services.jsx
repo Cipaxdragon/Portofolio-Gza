@@ -3,85 +3,56 @@
 import SectionHeader from '@/components/shared/SectionHeader'
 import CardMotion from '@/components/shared/CardMotion'
 import { services } from '@/data/services'
-import { social } from '@/data/social'
-import { getWhatsAppLink } from '@/lib/contact'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Services() {
   return (
-    <section id="services" className="relative px-6 py-24 sm:py-32">
+    <section id="services" className="relative px-6 py-24 sm:py-32 bg-brand-bg-2">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           title={<>Let&apos;s Build <em>Something.</em></>}
-          subtitle="Punya ide? Saya ingin mendengarnya."
+          subtitle="Layanan utama yang saya sediakan."
         />
 
-        <div className="flex flex-col gap-4 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {services.map((service, i) => (
             <CardMotion key={service.id} delay={i * 0.1}>
-              <ServiceRow service={service} />
+              <div className="group h-full flex flex-col justify-between border border-brand-border bg-brand-bg p-8 sm:p-10 rounded-sm hover:border-brand-accent/50 transition-all duration-300">
+                
+                <div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-brand-bg-2 border border-brand-border rounded-sm shadow-[2px_2px_0_0_rgba(0,217,255,0.1)] mb-8 group-hover:scale-105 transition-transform">
+                    <span className="text-3xl sm:text-4xl">{service.icon}</span>
+                  </div>
+                  
+                  <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 group-hover:text-brand-accent transition-colors">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-brand-muted text-sm sm:text-base leading-relaxed line-clamp-3">
+                    {service.description}
+                  </p>
+                </div>
+
+              </div>
             </CardMotion>
           ))}
         </div>
+
+        {/* CTA to Full Services Page */}
+        <div className="mt-16 text-center">
+          <CardMotion delay={0.3}>
+            <Link 
+              href="/services" 
+              className="inline-flex items-center gap-3 bg-brand-text text-brand-bg hover:bg-brand-accent px-8 py-4 font-mono uppercase tracking-wider text-sm font-bold rounded-sm transition-all shadow-[4px_4px_0_0_rgba(0,217,255,0.3)] hover:shadow-[2px_2px_0_0_rgba(0,217,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px]"
+            >
+              <span>Explore All Services</span>
+              <ArrowRight size={18} />
+            </Link>
+          </CardMotion>
+        </div>
+
       </div>
     </section>
-  )
-}
-
-function ServiceRow({ service }) {
-  const waLink = getWhatsAppLink(social.whatsapp, service.waTemplate)
-
-  const handleDiscord = () => {
-    navigator.clipboard.writeText(social.discord)
-    window.open('https://discord.com', '_blank')
-  }
-
-  return (
-    <div className="group border-y border-brand-border py-8 hover:bg-brand-bg-2 transition-all duration-500 px-4 sm:px-8 -mx-4 sm:mx-0 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-      {/* Icon & Title */}
-      <div className="flex items-start gap-6 md:w-1/3">
-        <span className="text-3xl sm:text-4xl opacity-80 group-hover:opacity-100 transition-opacity">
-          {service.icon}
-        </span>
-        <div>
-          <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-brand-accent transition-colors">
-            {service.title}
-          </h3>
-          <div className="flex flex-wrap gap-1">
-            {service.tools.map(tool => (
-              <span key={tool} className="text-label !text-[10px] bg-brand-border/50 text-brand-text/70 px-2 py-0.5 rounded-sm">
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Description */}
-      <div className="md:w-1/3">
-        <p className="text-brand-muted text-sm leading-relaxed">
-          {service.description}
-        </p>
-      </div>
-
-      {/* CTA Buttons */}
-      <div className="flex flex-wrap gap-3 md:w-1/4 md:justify-end">
-        <a
-          href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 text-xs font-mono uppercase tracking-wider border border-brand-wa/30 text-brand-text bg-brand-wa/10 px-4 py-2 rounded-sm hover:bg-brand-wa hover:text-black hover:border-brand-wa transition-all duration-300 w-full sm:w-auto"
-          data-cursor="hover"
-        >
-          WhatsApp ↗
-        </a>
-        <button
-          onClick={handleDiscord}
-          className="flex items-center justify-center gap-1.5 text-xs font-mono uppercase tracking-wider border border-brand-discord/30 text-brand-text bg-brand-discord/10 px-4 py-2 rounded-sm hover:bg-brand-discord hover:text-white hover:border-brand-discord transition-all duration-300 w-full sm:w-auto"
-          data-cursor="hover"
-        >
-          Discord ↗
-        </button>
-      </div>
-    </div>
   )
 }

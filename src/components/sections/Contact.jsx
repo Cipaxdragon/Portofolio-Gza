@@ -50,7 +50,6 @@ export default function Contact() {
               </div>
             </a>
           </CardMotion>
-
           {/* Discord */}
           <CardMotion delay={0.1}>
             <a
@@ -62,7 +61,6 @@ export default function Contact() {
             >
               {/* Subtle background glow on hover */}
               <div className="absolute inset-0 bg-brand-discord/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
               <SiDiscord className="text-5xl text-brand-text opacity-70 group-hover:text-brand-discord group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500" />
               <div className="text-center">
                 <p className="text-label mb-2 tracking-widest">Discord</p>

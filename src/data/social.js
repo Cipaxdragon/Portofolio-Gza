@@ -1,5 +1,5 @@
 export const social = {
-  instagram : '',   // username saja, tanpa @
+  instagram : 'https://www.instagram.com/gznzcz/',   // username saja, tanpa @
   youtube   : '',   // URL channel
   discord   : 'https://discord.com/users/847162007080927302',   // username
   github    : 'https://github.com/Cipaxdragon',   // username

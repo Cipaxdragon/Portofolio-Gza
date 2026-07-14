@@ -1,6 +1,6 @@
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import Services from '@/components/sections/Services'
+import ServicesFull from '@/components/sections/ServicesFull'
 
 export const metadata = {
   title: 'Services — Ahmad Ghazali',
@@ -12,7 +12,7 @@ export default function ServicesPage() {
     <>
       <Navbar />
       <main className="pt-20">
-        <Services />
+        <ServicesFull />
       </main>
       <Footer />
     </>

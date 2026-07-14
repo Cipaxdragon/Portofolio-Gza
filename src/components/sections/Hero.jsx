@@ -63,7 +63,7 @@ export default function Hero() {
         <GlitchBlock>
           <h1 className="font-display text-display leading-[0.95]">
             {words.map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden mr-[0.25em] last:mr-0">
+              <span key={i} className="inline-block overflow-hidden mr-[0.25em] last:mr-0 pb-[0.2em] -mb-[0.2em]">
                 <motion.span
                   className={`inline-block ${word.italic ? 'italic font-normal' : 'font-black'}`}
                   variants={wordVariant}

@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 
 const navLinks = [
+  { label: 'About', href: '/about' },
   { label: 'Works', href: '/works' },
   { label: 'Services', href: '/services' },
   { label: 'Blog', href: '/blog' },
@@ -64,7 +65,7 @@ export default function Navbar() {
             className="text-label !text-brand-text tracking-[0.25em] font-mono"
             data-cursor="hover"
           >
-            GALI
+            Ghazali
           </Link>
 
           {/* Desktop Links */}
@@ -90,13 +91,13 @@ export default function Navbar() {
           {/* Hamburger (Mobile) or Gaze Logo (Desktop) */}
           <div className="flex items-center gap-4">
             {/* Eye / Gaze Logo (Visible on desktop) */}
-            <div className="hidden sm:block">
+            <div className="hidden sm:block h-6 sm:h-7">
               <Image 
                 src="/images/Logo_Gaze.png" 
                 alt="Gaze Logo" 
-                width={36} 
+                width={120} 
                 height={36} 
-                className="opacity-80 hover:opacity-100 transition-opacity"
+                className="opacity-80 hover:opacity-100 transition-opacity w-auto h-full object-contain"
               />
             </div>
 

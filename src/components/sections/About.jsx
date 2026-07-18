@@ -201,7 +201,6 @@ export default function About() {
                 </CardMotion>
               ))}
             </div>
-
             {/* Technical Stack (Small Pills) */}
             <div className="flex flex-wrap gap-2 justify-center">
               {allSkills.map((skill, idx) => (
@@ -217,9 +216,8 @@ export default function About() {
                 </CardMotion>
               ))}
             </div>
-            
+
           </div>
-          
           {/* Box Container Button */}
           <div className="mt-14 flex justify-center">
             <a 

@@ -219,13 +219,13 @@ export default function About() {
 
           </div>
           {/* Box Container Button */}
-          <div className="mt-14 flex justify-center">
+          <div className="mt-16 text-center">
             <a 
               href="/about" 
-              className="inline-flex items-center gap-2 border border-brand-accent bg-brand-accent/10 hover:bg-brand-accent px-6 py-3 rounded-sm text-sm font-medium text-brand-accent hover:text-brand-bg transition-all duration-300 shadow-[4px_4px_0_0_rgba(255,45,32,0.5)] hover:shadow-none hover:translate-y-1 hover:translate-x-1"
+              className="inline-flex items-center gap-3 bg-brand-text text-brand-bg hover:bg-brand-accent px-8 py-4 font-mono uppercase tracking-wider text-sm font-bold rounded-sm transition-all shadow-[4px_4px_0_0_rgba(0,217,255,0.3)] hover:shadow-[2px_2px_0_0_rgba(0,217,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
               <span>Explore Full Profile & Experience</span>
-              <ExternalLink size={16} />
+              <ExternalLink size={18} />
             </a>
           </div>
         </div>

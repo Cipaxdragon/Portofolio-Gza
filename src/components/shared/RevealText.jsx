@@ -8,7 +8,7 @@ export default function RevealText({ children, delay = 0, className = '' }) {
   const isInView = useInView(ref, { once: true, margin: '-10%' })
 
   return (
-    <div ref={ref} className="overflow-hidden">
+    <div ref={ref} className="overflow-hidden px-2 -mx-2 py-2 -my-2">
       <motion.div
         className={className}
         initial={{ y: '105%', opacity: 0 }}

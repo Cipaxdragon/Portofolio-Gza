@@ -8,8 +8,27 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CardMotion from '@/components/shared/CardMotion'
 import Link from 'next/link'
-import { ArrowLeft, MessageCircle, MessageSquare, Check, ChevronDown, ChevronUp } from 'lucide-react'
+import { ArrowLeft, MessageCircle, MessageSquare, Check, ChevronDown, ChevronUp, Film, Sparkles, Mic, Code } from 'lucide-react'
 import { useState } from 'react'
+import { SiNextdotjs, SiReact, SiLaravel, SiTailwindcss, SiPhp, SiNodedotjs, SiBlender } from 'react-icons/si'
+import { TbBrandAdobePremiere, TbBrandAdobeAfterEffect, TbBrandAdobe } from 'react-icons/tb'
+
+/* ── Helpers ── */
+function getToolIcon(tool) {
+  switch (tool) {
+    case 'Next.js': return <SiNextdotjs size={18} />
+    case 'React JS': return <SiReact size={18} />
+    case 'Laravel': return <SiLaravel size={18} />
+    case 'Tailwind CSS': return <SiTailwindcss size={18} />
+    case 'PHP': return <SiPhp size={18} />
+    case 'Node.js': return <SiNodedotjs size={18} />
+    case 'Adobe Premiere Pro': return <TbBrandAdobePremiere size={18} />
+    case 'Adobe After Effects': return <TbBrandAdobeAfterEffect size={18} />
+    case 'Adobe Audition': return <TbBrandAdobe size={18} />
+    case 'Blender': return <SiBlender size={18} />
+    default: return <Code size={18} />
+  }
+}
 
 /* ── FAQ Accordion Item ── */
 function FaqItem({ item, index }) {
@@ -161,12 +180,20 @@ export default function ServiceDetailClient({ service }) {
               </h2>
             </CardMotion>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {service.tools.map((tool, i) => (
-                <CardMotion key={tool} delay={i * 0.05}>
-                  <span className="inline-block text-base font-medium bg-brand-bg border border-brand-border text-brand-text/90 px-7 py-3.5 rounded-sm cursor-default hover:border-brand-accent/50 hover:text-brand-accent transition-colors">
-                    {tool}
-                  </span>
+                <CardMotion key={tool.name} delay={i * 0.05}>
+                  <div className="flex flex-col gap-3 bg-brand-bg border border-brand-border p-6 rounded-sm hover:border-brand-accent/40 transition-colors h-full">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 flex items-center justify-center bg-brand-bg-2 border border-brand-border rounded-sm text-brand-accent">
+                        {getToolIcon(tool.name)}
+                      </div>
+                      <h3 className="font-sans font-bold text-brand-text">{tool.name}</h3>
+                    </div>
+                    <p className="text-brand-muted text-sm leading-relaxed">
+                      {tool.description}
+                    </p>
+                  </div>
                 </CardMotion>
               ))}
             </div>

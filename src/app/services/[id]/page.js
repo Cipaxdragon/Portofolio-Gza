@@ -9,8 +9,9 @@ export function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
-  const service = services.find((s) => s.id === params.id)
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params
+  const service = services.find((s) => s.id === resolvedParams.id)
 
   if (!service) {
     return { title: 'Service Not Found' }
@@ -22,8 +23,9 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function ServiceDetailPage({ params }) {
-  const service = services.find((s) => s.id === params.id)
+export default async function ServiceDetailPage({ params }) {
+  const resolvedParams = await params
+  const service = services.find((s) => s.id === resolvedParams.id)
 
   if (!service) {
     notFound()

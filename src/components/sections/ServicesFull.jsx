@@ -67,8 +67,8 @@ function ServiceBlock({ service, isEven }) {
           <h4 className="text-[11px] uppercase tracking-[0.2em] font-mono text-brand-muted mb-4">Tech Stack & Tools</h4>
           <div className="flex flex-wrap gap-2">
             {service.tools.map(tool => (
-              <span key={tool} className="text-sm font-medium bg-white/5 border border-white/10 text-brand-text/90 px-4 py-2 rounded-sm hover:bg-white/10 hover:border-brand-accent/50 transition-colors cursor-default">
-                {tool}
+              <span key={tool.name} className="text-sm font-medium bg-white/5 border border-white/10 text-brand-text/90 px-4 py-2 rounded-sm hover:bg-white/10 hover:border-brand-accent/50 transition-colors cursor-default">
+                {tool.name}
               </span>
             ))}
           </div>

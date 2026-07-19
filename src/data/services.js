@@ -5,7 +5,14 @@ export const services = [
     title         : 'Jasa Coding Web',
     tagline       : 'Wujudkan Ide Digitalmu Menjadi Website Nyata.',
     description   : 'Membangun ekosistem website modern, interaktif, dan sangat responsif. Layanan ini mencakup pembuatan company profile profesional, portfolio kreatif, toko online (e-commerce), web dinamis dengan sistem manajemen konten kustom, hingga pengembangan aplikasi web kompleks (Full-Stack). Semua kode ditulis dengan struktur rapi (Clean Code) dan dioptimalkan secara mendalam untuk performa super cepat, keamanan, serta SEO-friendly.',
-    tools         : ['Next.js', 'React JS', 'Laravel', 'Tailwind CSS', 'PHP', 'Node.js'],
+    tools         : [
+      { name: 'Next.js', description: 'Framework React modern untuk performa maksimal dan SEO.' },
+      { name: 'React JS', description: 'Library UI andalan untuk antarmuka interaktif dan dinamis.' },
+      { name: 'Laravel', description: 'Framework PHP tangguh untuk backend dan sistem kompleks.' },
+      { name: 'Tailwind CSS', description: 'Framework CSS untuk desain custom yang super cepat.' },
+      { name: 'PHP', description: 'Bahasa pemrograman server-side yang stabil dan terpercaya.' },
+      { name: 'Node.js', description: 'Runtime JavaScript untuk backend yang cepat dan scalable.' }
+    ],
 
     // --- Detail Page Content ---
     offerings     : [
@@ -64,7 +71,12 @@ export const services = [
     title         : 'Editing Video',
     tagline       : 'Ubah Rekaman Mentah Menjadi Karya Visual yang Memukau.',
     description   : 'Menghadirkan layanan paska-produksi video profesional dan animasi motion graphics yang memukau secara visual. Layanan ini mencakup proses cutting dinamis, color grading sinematik, sound design immersif, pembuatan animasi logo (bumper), lower third, dan efek visual (VFX) dasar. Sangat cocok untuk kebutuhan konten YouTube, video pendek (TikTok/Reels), video promosi bisnis, presentasi, podcast, maupun dokumentasi event eksklusif.',
-    tools         : ['Adobe Premiere Pro', 'Adobe After Effects', 'Adobe Audition', 'Blender'],
+    tools         : [
+      { name: 'Adobe Premiere Pro', description: 'Software standar industri untuk editing video presisi tinggi.' },
+      { name: 'Adobe After Effects', description: 'Software terdepan untuk motion graphics dan efek visual.' },
+      { name: 'Adobe Audition', description: 'Tools profesional untuk mixing, mastering, dan sound design.' },
+      { name: 'Blender', description: 'Software 3D powerful untuk animasi dan rendering tingkat lanjut.' }
+    ],
 
     offerings     : [
       {

@@ -14,6 +14,10 @@ const container = {
 }
 
 import GlitchBlock from '@/components/shared/GlitchBlock'
+import dynamic from 'next/dynamic'
+
+// Memuat Scene3D secara dinamis agar tidak memperlambat initial render
+const Scene3D = dynamic(() => import('@/components/shared/Scene3D'), { ssr: false })
 
 export default function Hero() {
   const words = [
@@ -41,7 +45,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-dot-pattern opacity-30" />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-brand-bg/60" />
+      <div className="absolute inset-0 bg-brand-bg/70" />
+
+      {/* Interactive 3D Background */}
+      <div className="absolute inset-0 z-0 opacity-80 mix-blend-screen">
+        <Scene3D />
+      </div>
 
       {/* Bottom-left label (Moved from top to avoid Navbar collision) */}
       <motion.p

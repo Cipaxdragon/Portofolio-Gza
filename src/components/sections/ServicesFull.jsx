@@ -5,6 +5,7 @@ import CardMotion from '@/components/shared/CardMotion'
 import { services } from '@/data/services'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { useRef, useEffect } from 'react'
 
 export default function ServicesFull() {
   return (
@@ -28,6 +29,16 @@ export default function ServicesFull() {
 }
 
 function ServiceBlock({ service, isEven }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true
+      videoRef.current.muted = true
+      videoRef.current.play().catch(e => console.log("Autoplay prevented:", e))
+    }
+  }, [service.video])
+
   return (
     <div className={`flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
       
@@ -36,11 +47,11 @@ function ServiceBlock({ service, isEven }) {
         {service.video ? (
           <div className="w-full aspect-square max-w-md rounded-sm overflow-hidden relative flex-shrink-0 bg-black">
             <video 
+              ref={videoRef}
               src={service.video} 
               autoPlay 
               loop 
               muted 
-              defaultMuted
               playsInline 
               className="w-full h-full object-cover mix-blend-screen"
             />

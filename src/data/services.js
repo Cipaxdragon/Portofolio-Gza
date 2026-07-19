@@ -2,6 +2,7 @@ export const services = [
   {
     id            : 'coding',
     icon          : '💻',
+    video         : '/images/BIsakah_laptopnya_menyala_Mel_1.mp4',
     title         : 'Jasa Coding Web',
     tagline       : 'Wujudkan Ide Digitalmu Menjadi Website Nyata.',
     description   : 'Membangun ekosistem website modern, interaktif, dan sangat responsif. Layanan ini mencakup pembuatan company profile profesional, portfolio kreatif, toko online (e-commerce), web dinamis dengan sistem manajemen konten kustom, hingga pengembangan aplikasi web kompleks (Full-Stack). Semua kode ditulis dengan struktur rapi (Clean Code) dan dioptimalkan secara mendalam untuk performa super cepat, keamanan, serta SEO-friendly.',

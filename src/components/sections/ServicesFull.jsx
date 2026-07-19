@@ -33,24 +33,42 @@ function ServiceBlock({ service, isEven }) {
       
       {/* Visual / Title Side (Span 5) */}
       <div className="w-full lg:w-5/12 flex flex-col gap-6">
-        <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-brand-bg-2 border border-brand-border rounded-sm shadow-[4px_4px_0_0_rgba(0,217,255,0.1)]">
-          <span className="text-4xl sm:text-5xl">{service.icon}</span>
-        </div>
+        {service.video ? (
+          <div className="w-full aspect-square max-w-md rounded-sm overflow-hidden relative flex-shrink-0 bg-black">
+            <video 
+              src={service.video} 
+              autoPlay 
+              loop 
+              muted 
+              defaultMuted
+              playsInline 
+              className="w-full h-full object-cover mix-blend-screen"
+            />
+            <div className="absolute inset-0 bg-brand-accent/5 pointer-events-none mix-blend-overlay"></div>
+          </div>
+        ) : (
+          <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-brand-bg-2 border border-brand-border rounded-sm shadow-[4px_4px_0_0_rgba(0,217,255,0.1)]">
+            <span className="text-4xl sm:text-5xl">{service.icon}</span>
+          </div>
+        )}
         <h3 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-brand-text">
-          {service.title.split(' / ').map((part, index, array) => (
-            <span key={index}>
-              {part}
-              {index < array.length - 1 && <><br /><span className="text-brand-accent">/</span> </>}
-            </span>
-          ))}
-          {/* Fallback for title without slashes */}
-          {!service.title.includes(' / ') && service.title.includes(' & ') && service.title.split(' & ').map((part, index, array) => (
-            <span key={index}>
-              {part}
-              {index < array.length - 1 && <><br /><span className="text-brand-accent">&</span> </>}
-            </span>
-          ))}
-          {!service.title.includes(' / ') && !service.title.includes(' & ') && service.title}
+          {service.title.includes(' / ') ? (
+            service.title.split(' / ').map((part, index, array) => (
+              <span key={index}>
+                {part}
+                {index < array.length - 1 && <><br /><span className="text-brand-accent">/</span> </>}
+              </span>
+            ))
+          ) : service.title.includes(' & ') ? (
+            service.title.split(' & ').map((part, index, array) => (
+              <span key={index}>
+                {part}
+                {index < array.length - 1 && <><br /><span className="text-brand-accent">&</span> </>}
+              </span>
+            ))
+          ) : (
+            service.title
+          )}
         </h3>
       </div>
 

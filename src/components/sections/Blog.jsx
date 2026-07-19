@@ -34,7 +34,7 @@ export default function Blog() {
               <p className="text-label text-brand-accent mb-2">
                 {featured.category} — {featured.date}
               </p>
-              <h3 className="font-display text-2xl sm:text-4xl font-bold text-white">
+              <h3 className="font-sans text-2xl sm:text-4xl font-bold text-white">
                 {featured.title}
               </h3>
             </div>
@@ -59,7 +59,7 @@ export default function Blog() {
                   )}
                   <div className="p-5">
                     <p className="text-label mb-2">{post.date}</p>
-                    <h3 className="font-display text-lg font-bold group-hover:text-brand-accent transition-colors">
+                    <h3 className="font-sans text-lg font-bold group-hover:text-brand-accent transition-colors">
                       {post.title}
                     </h3>
                   </div>

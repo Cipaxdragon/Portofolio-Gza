@@ -46,7 +46,7 @@ export default function ShowcaseCard({ item, size = 'medium' }) {
         <p className="text-label text-brand-accent mb-2">
           {item.category || item.tools?.[0]} — {item.year}
         </p>
-        <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
+        <h3 className="font-sans text-2xl sm:text-3xl font-bold text-white">
           {item.title}
         </h3>
         {item.description && (

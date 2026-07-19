@@ -27,7 +27,7 @@ export default function ThingsToLearn() {
                     {item.status === 'in-progress' ? 'In Progress' : 'Planned'}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold mb-1">{item.title}</h3>
+                <h3 className="font-sans text-lg font-bold mb-1">{item.title}</h3>
                 <p className="text-brand-muted text-sm leading-relaxed">{item.description}</p>
               </div>
             </CardMotion>

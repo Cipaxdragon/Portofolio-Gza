@@ -193,7 +193,7 @@ export default function About() {
                     <div className={`w-10 h-10 flex items-center justify-center mb-3 rounded-sm ${quality.color} bg-opacity-20 group-hover:bg-opacity-30 group-hover:scale-110 transition-all duration-300`}>
                       {getQualityIcon(quality.icon)}
                     </div>
-                    <h3 className="font-bold font-display text-sm sm:text-base text-brand-text mb-1">{quality.title}</h3>
+                    <h3 className="font-bold font-sans text-sm sm:text-base text-brand-text mb-1">{quality.title}</h3>
                     <p className="text-brand-muted text-[10px] sm:text-xs leading-relaxed line-clamp-2">
                       {quality.description}
                     </p>

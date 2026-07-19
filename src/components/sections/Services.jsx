@@ -25,7 +25,7 @@ export default function Services() {
                     <span className="text-3xl sm:text-4xl">{service.icon}</span>
                   </div>
                   
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 group-hover:text-brand-accent transition-colors">
+                  <h3 className="font-sans text-2xl sm:text-3xl font-bold mb-4 group-hover:text-brand-accent transition-colors">
                     {service.title}
                   </h3>
                   

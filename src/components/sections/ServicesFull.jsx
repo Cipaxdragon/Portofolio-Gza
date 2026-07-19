@@ -3,9 +3,8 @@
 import SectionHeader from '@/components/shared/SectionHeader'
 import CardMotion from '@/components/shared/CardMotion'
 import { services } from '@/data/services'
-import { social } from '@/data/social'
-import { getWhatsAppLink } from '@/lib/contact'
-import { MessageCircle, MessageSquare } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function ServicesFull() {
   return (
@@ -29,13 +28,6 @@ export default function ServicesFull() {
 }
 
 function ServiceBlock({ service, isEven }) {
-  const waLink = getWhatsAppLink(social.whatsapp, service.waTemplate)
-
-  const handleDiscord = () => {
-    navigator.clipboard.writeText(social.discord)
-    window.open('https://discord.com', '_blank')
-  }
-
   return (
     <div className={`flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
       
@@ -44,7 +36,7 @@ function ServiceBlock({ service, isEven }) {
         <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-brand-bg-2 border border-brand-border rounded-sm shadow-[4px_4px_0_0_rgba(0,217,255,0.1)]">
           <span className="text-4xl sm:text-5xl">{service.icon}</span>
         </div>
-        <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-brand-text">
+        <h3 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-brand-text">
           {service.title.split(' / ').map((part, index, array) => (
             <span key={index}>
               {part}
@@ -84,22 +76,13 @@ function ServiceBlock({ service, isEven }) {
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 mt-4 pt-8 border-t border-brand-border/50">
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider border-2 border-brand-wa text-brand-wa bg-transparent px-6 py-3.5 rounded-sm hover:bg-brand-wa hover:text-black transition-all duration-300"
+          <Link
+            href={`/services/${service.id}`}
+            className="flex-1 sm:flex-none flex items-center justify-center gap-3 bg-brand-text text-brand-bg hover:bg-brand-accent px-8 py-4 font-mono uppercase tracking-wider text-sm font-bold rounded-sm transition-all shadow-[4px_4px_0_0_rgba(0,217,255,0.3)] hover:shadow-[2px_2px_0_0_rgba(0,217,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px]"
           >
-            <MessageCircle size={18} />
-            <span>WhatsApp</span>
-          </a>
-          <button
-            onClick={handleDiscord}
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider border-2 border-brand-discord text-brand-discord bg-transparent px-6 py-3.5 rounded-sm hover:bg-brand-discord hover:text-white transition-all duration-300"
-          >
-            <MessageSquare size={18} />
-            <span>Discord</span>
-          </button>
+            <span>Lihat Detail Layanan</span>
+            <ArrowRight size={18} />
+          </Link>
         </div>
         
       </div>

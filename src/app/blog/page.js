@@ -14,60 +14,59 @@ const POSTS_PER_PAGE = 6
 function BlogCard({ post, index }) {
   return (
     <CardMotion delay={index * 0.08}>
-      {/* Thumbnail */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-brand-bg mb-4">
-        {post.thumbnail ? (
-          <img
-            src={post.thumbnail}
-            alt={post.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-card to-brand-bg">
-            <span className="text-3xl">📝</span>
+      <a href={`/blog/${post.slug}`} className="block group">
+        {/* Thumbnail */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-brand-bg mb-4">
+          {post.thumbnail ? (
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-card to-brand-bg">
+              <span className="text-3xl">📝</span>
+            </div>
+          )}
+          {post.category && (
+            <span className="absolute top-3 left-3 rounded-md bg-brand-accent/90 px-2 py-0.5 text-[10px] font-semibold text-black">
+              {post.category}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3 text-[11px] text-brand-muted/70 mb-2">
+          <span className="flex items-center gap-1">
+            <Calendar size={11} />
+            {post.date || 'Unknown Date'}
+          </span>
+          <span className="flex items-center gap-1">
+            <Clock size={11} />
+            {post.readTime} min
+          </span>
+        </div>
+
+        <h3 className="text-base font-semibold text-brand-text line-clamp-2 group-hover:text-brand-accent transition-colors">
+          {post.title}
+        </h3>
+        <p className="mt-2 text-sm text-brand-muted line-clamp-3">{post.excerpt}</p>
+
+        {post.tags && (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {post.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md border border-brand-border px-2 py-0.5 text-[10px] text-brand-muted"
+              >
+                #{tag}
+              </span>
+            ))}
           </div>
         )}
-        {post.category && (
-          <span className="absolute top-3 left-3 rounded-md bg-brand-accent/90 px-2 py-0.5 text-[10px] font-semibold text-black">
-            {post.category}
-          </span>
-        )}
-      </div>
 
-      <div className="flex items-center gap-3 text-[11px] text-brand-muted/70 mb-2">
-        <span className="flex items-center gap-1">
-          <Calendar size={11} />
-          {post.date || 'Unknown Date'}
-        </span>
-        <span className="flex items-center gap-1">
-          <Clock size={11} />
-          {post.readTime} min
-        </span>
-      </div>
-
-      <h3 className="text-base font-semibold text-brand-text line-clamp-2 group-hover:text-brand-accent transition-colors">
-        {post.title}
-      </h3>
-      <p className="mt-2 text-sm text-brand-muted line-clamp-3">{post.excerpt}</p>
-
-      {post.tags && (
-        <div className="mt-3 flex flex-wrap gap-1">
-          {post.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="rounded-md border border-brand-border px-2 py-0.5 text-[10px] text-brand-muted"
-            >
-              #{tag}
-            </span>
-          ))}
+        <div className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-brand-accent group-hover:gap-2 transition-all">
+          Read more <ArrowRight size={12} />
         </div>
-      )}
-
-      <a
-        href={`/blog/${post.slug}`}
-        className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-brand-accent hover:gap-2 transition-all"
-      >
-        Read more <ArrowRight size={12} />
       </a>
     </CardMotion>
   )

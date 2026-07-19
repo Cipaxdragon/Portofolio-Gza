@@ -214,7 +214,7 @@ export default function AboutFull() {
                     <div className={`w-14 h-14 flex items-center justify-center mb-6 border border-brand-border ${quality.color} bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-500`}>
                       {getQualityIcon(quality.icon)}
                     </div>
-                    <h3 className="font-bold font-display text-2xl text-brand-text mb-3">{quality.title}</h3>
+                    <h3 className="font-bold font-sans text-2xl text-brand-text mb-3">{quality.title}</h3>
                     <p className="text-brand-muted leading-relaxed text-sm sm:text-base">
                       {quality.description}
                     </p>

@@ -9,10 +9,12 @@ Berada di dalam `src/app/`. Next.js menggunakan folder sebagai rute URL.
 
 | Rute URL | File Lokasi | Deskripsi Halaman |
 |----------|-------------|-------------------|
-| **Semua** | `layout.js` | Struktur paling dasar (membungkus semua halaman). Memuat *Font* (Playfair, Plus Jakarta, Space Mono), metadata web, dan *GlobalClientProviders* (Audio, Grain, Cursor). |
-| **`/`** (Home) | `page.js` | Halaman utama tunggal yang merender *semua* section secara berurutan (Hero, About, Showcase, Blog, Services, ThingsToLearn, Contact). |
+| **Semua** | `layout.js` | Struktur paling dasar (membungkus semua halaman). Memuat *Font* (Inter, Plus Jakarta, Space Mono), metadata web, dan *GlobalClientProviders* (Audio, Grain, Cursor). |
+| **`/`** (Home) | `page.js` | Halaman utama tunggal yang merender section secara berurutan (Hero, About, Showcase, Blog, Services, Contact). |
+| **`/about`** | `about/page.js` | Halaman khusus yang merender komponen `AboutFull.jsx` secara terperinci (pengalaman, tools, dll). |
 | **`/works`** | `works/page.js` | Halaman khusus yang murni hanya menampilkan komponen `Showcase.jsx` secara terisolasi. |
-| **`/services`**| `services/page.js` | Halaman khusus yang murni hanya menampilkan komponen `Services.jsx` secara terisolasi. |
+| **`/services`**| `services/page.js` | Halaman utama layanan yang merender komponen `ServicesFull.jsx` beserta daftar layanannya. |
+| **`/services/id`**| `services/[id]/page.js`| Halaman dinamis (*Dynamic Route*) yang merender komponen `ServiceDetail.jsx` untuk melihat penjelasan spesifik satu layanan. |
 | **`/blog`** | `blog/page.js` | Halaman indeks blog. Membaca data artikel dan menampilkannya sebagai *grid* (*thumbnail*) dengan sistem *pagination*. |
 | **`/blog/nama`**| `blog/[slug]/page.js` | Halaman dinamis (*Dynamic Route*). Mengambil parameter URL (`[slug]`), mencari artikel terkait, lalu merender teks Markdown menjadi HTML ber-desain. |
 | *(Error 404)*| `_not-found/page.js`| Halaman yang otomatis muncul jika pengunjung nyasar ke URL yang tidak ada. |
@@ -28,13 +30,16 @@ Komponen struktural yang selalu muncul di setiap halaman.
 - `Footer.jsx` : Bagian paling bawah web. Berisi *statement* penutup dan *icon* sosial media yang diimpor dari data.
 
 ### B. Sections (`components/sections/`)
-Blok-blok besar yang membentuk Halaman Utama (Home).
-- `Hero.jsx` : Bagian layar penuh pertama. Menampilkan teks animasi *word-by-word* dan *video reel background*.
-- `About.jsx` : Grid yang menampilkan foto profil (avatar), teks bio singkat, dan pengalaman organisasi.
-- `Showcase.jsx` : Sistem tab filter kategori (Motion, 3D, Design, dll) yang melooping data karya dan menampilkannya sebagai `ShowcaseCard`.
-- `Blog.jsx` : Potongan ringkasan blog di halaman utama (menampilkan 1 artikel besar *featured* dan 3 artikel kecil).
-- `Services.jsx` : Daftar kemampuan dan jasa yang ditawarkan beserta tombol *Direct WhatsApp/Discord*.
-- `ThingsToLearn.jsx` : Status aktivitas pembelajaran (status "Learning" atau "Completed").
+Blok-blok besar yang menyusun halaman utama dan rute spesifik.
+- `Hero.jsx` : Bagian layar penuh pertama. Menampilkan teks animasi *word-by-word* dan elemen 3D interaktif di latar belakang.
+- `About.jsx` : Grid ringkasan profil (avatar) dan bio singkat untuk halaman Home.
+- `AboutFull.jsx` : Halaman profil mendalam yang digunakan di rute `/about`.
+- `Showcase.jsx` : Sistem tab filter kategori (Motion, 3D, Design) yang men-generate `ShowcaseCard`.
+- `Blog.jsx` : Potongan ringkasan blog di halaman utama.
+- `Services.jsx` : Daftar kemampuan dan jasa ringkas untuk di halaman Home.
+- `ServicesFull.jsx` : Daftar layanan komprehensif berdesain penuh untuk rute `/services`.
+- `ServiceDetail.jsx` : Komponen detail spesifik satu layanan berdesain memukau untuk rute `/services/[id]`.
+- `ThingsToLearn.jsx` : Daftar ringkas status pembelajaran (saat ini *deprecated* dari Home namun kodenya tetap ada).
 - `Contact.jsx` : Footer sekunder di halaman utama untuk mengajak audiens berkolaborasi (tanpa *form*).
 
 ### C. Shared (`components/shared/`)
@@ -45,6 +50,8 @@ Komponen kecil dan fungsional yang bisa dipakai berulang kali (di-*reuse*).
   - `RevealText.jsx` : Membuat teks muncul mulus (*reveal*) saat masuk ke pandangan.
   - `ParallaxLayer.jsx` : Pembungkus untuk memberikan efek *Parallax* (kecepatan gerak berbeda saat *scroll*).
 - **Visual & UI:**
+  - `Scene3D.jsx` : Latar belakang 3D memukau (Icosahedron kawat bercahaya) menggunakan React Three Fiber yang dapat diputar-putar kursor.
+  - `GlitchBlock.jsx` : Pembungkus yang memberikan efek distorsi/glitch (*RGB split* dan potongan horizontal) keren pada gambar.
   - `CustomCursor.jsx` : Kursor dot yang mengikuti pergerakan *mouse* secara elastis.
   - `GrainOverlay.jsx` : Efek tekstur film berbintik tipis (SVG) yang menetap di seluruh layar.
   - `BackgroundAudio.jsx` : Tombol bundar kecil di kiri bawah untuk me-mutar lagu `background-music.mp3`.

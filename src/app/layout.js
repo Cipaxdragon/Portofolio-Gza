@@ -1,12 +1,11 @@
-import { Playfair_Display, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const playfairDisplay = Playfair_Display({
+const interFont = Inter({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "700", "900"],
-  style: ["normal", "italic"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -60,7 +59,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${playfairDisplay.variable} ${plusJakartaSans.variable} ${spaceMono.variable} dark`}
+      className={`${interFont.variable} ${plusJakartaSans.variable} ${spaceMono.variable} dark`}
     >
       <body className="min-h-screen bg-brand-bg text-brand-text font-sans antialiased overflow-x-hidden">
         <GlobalClientProviders>

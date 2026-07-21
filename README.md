@@ -1,65 +1,86 @@
-# Portfolio Website Gali
+# ✦ Ahmad Ghazali — Personal Portfolio
 
-## Penjelasan Web Ini
-Website ini adalah portofolio pribadi yang dibangun menggunakan **Next.js**. Tujuan dari website ini adalah untuk menampilkan proyek, keahlian, dan pengalaman secara profesional.
+Selamat datang di repositori kode sumber (*source code*) untuk *website* portofolio pribadi **Ahmad Ghazali (Gali)**. 
 
-## Arsitektur & Teknologi
+Website ini bukan sekadar kumpulan halaman statis, melainkan sebuah **pengalaman interaktif bergaya sinematik & modern**. Dibangun khusus untuk merepresentasikan identitas Gali sebagai seorang *Motion Graphics Designer, Video Editor*, dan *Web Developer* yang percaya bahwa setiap karya visual adalah cara bercerita tanpa kata.
 
-Aplikasi portofolio ini dibangun dengan arsitektur modern berbasis komponen menggunakan **Next.js (App Router)**. Berikut adalah rincian tumpukan teknologi dan struktur yang digunakan:
-
-### 1. Teknologi Utama (Tech Stack)
-* **Framework:** [Next.js](https://nextjs.org/) (berbasis React) - Dipilih karena kemampuannya dalam Server-Side Rendering (SSR) dan Static Site Generation (SSG) yang mengoptimalkan SEO serta performa website.
-* **Bahasa Pemrograman:** JavaScript / TypeScript.
-* **Styling:** Tailwind CSS / CSS - Menggunakan *utility-first* CSS framework untuk mempercepat proses styling dan menjaga konsistensi desain antarmuka yang responsif (mobile-friendly).
-* **State Management:** React Hooks bawaan (seperti `useState`, `useEffect`) untuk mengelola *state* lokal pada komponen tanpa perlu *library* eksternal yang berat.
-
-### 2. Struktur Direktori (Project Structure)
-Proyek ini diorganisasikan dengan rapi menggunakan folder `src/` untuk memisahkan kode sumber dari konfigurasi konfigurasi *root*:
-
-* `src/app/` : Menggunakan sistem routing terbaru dari Next.js (App Router). File `page.js` di dalam direktori ini merepresentasikan rute publik aplikasi.
-* `src/components/` : Berisi komponen-komponen UI modular yang dapat digunakan kembali *(reusable components)* seperti `Navbar`, `Footer`, `ProjectCard`, dan lain-lain.
-* `src/data/` : Tempat penyimpanan sumber data lokal (seperti file JSON/JS) yang berisi daftar proyek, pengalaman, atau keahlian, sehingga konten dapat diperbarui dengan mudah tanpa menyentuh kode UI.
-* `src/lib/` : Menyimpan fungsi utilitas *(helper functions)* atau konfigurasi integrasi pihak ketiga.
-
-### 3. Alur Pengiriman (Deployment & CI/CD)
-* **Platform:** [Vercel](https://vercel.com/) (Platform teroptimasi untuk Next.js).
-* **Integrasi:** Terhubung langsung dengan repositori Git. Setiap perubahan kode yang di-*push* ke *branch* utama (main/master) akan memicu proses *build* dan *deployment* otomatis secara instan *(Continuous Deployment)*.
+🌍 **Live Demo:** [https://gza-mu.vercel.app](https://gza-mu.vercel.app)
 
 ---
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 📖 Tentang Website Ini
 
-## Getting Started
+Website ini berfungsi sebagai identitas digital serba guna yang memuat:
+- **Profil & Latar Belakang**: Ringkasan perjalanan karir dan pendidikan.
+- **Showcase (Karya Digital)**: Pameran hasil karya pilihan di bidang Desain, Motion Graphics, Editor Video, dan Web Development.
+- **Layanan (Services)**: Rincian jasa profesional yang ditawarkan (Company Profile, Full-Stack Web, dll).
+- **Blog Interaktif**: Catatan dan pemikiran pribadi seputar teknologi dan seni visual.
+- **Micro-Interactions**: Diperkaya dengan kursor kustom elastis, efek suara latar, efek *glitch*, dan elemen 3D *(Three.js)*.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Teknologi yang Digunakan
+
+Portofolio ini diracik menggunakan teknologi pengembangan web modern dengan performa tinggi:
+
+- **Framework Utama:** [Next.js v16](https://nextjs.org/) (Menggunakan sistem *App Router*)
+- **Bahasa:** JavaScript / React
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (Dengan kustomisasi *design tokens* khusus tema *dark/cyberpunk*)
+- **Animasi UI:** [Framer Motion](https://www.framer.com/motion/) (Untuk transisi halaman, kemunculan teks, dan *scroll reveal*)
+- **Grafis 3D:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/) & Drei (Untuk interaksi objek 3D seperti Icosahedron di latar belakang)
+- **Deployment:** Vercel
+
+---
+
+## 📁 Struktur Folder & Arsitektur
+
+Untuk memudahkan pengembangan dan pembaruan data secara dinamis, proyek ini menggunakan struktur direktori yang modular:
+
+```text
+portfolio-gali/
+├── docs/                     # Dokumentasi sistem, pedoman, dan alur aplikasi secara mendalam.
+├── public/                   # Aset statis seperti gambar, font, musik latar, dan logo.
+├── src/
+│   ├── app/                  # Sistem Halaman URL (Home, /about, /blog, /works, /services).
+│   │   ├── globals.css       # Token CSS global (Tema, Warna, Variabel Tailwind v4).
+│   │   └── layout.js         # Pembungkus utama seluruh halaman web.
+│   │
+│   ├── components/           # Kumpulan elemen UI / Tampilan Visual.
+│   │   ├── layout/           # (Navbar, Footer).
+│   │   ├── sections/         # (Hero, AboutFull, Showcase, ServicesFull, dll).
+│   │   └── shared/           # Elemen kecil yang dipakai berulang (Cursor, Scene 3D, Audio).
+│   │
+│   ├── data/                 # 📂 PUSAT KONTEN TEKS (Edit tulisan/data web di sini).
+│   │   ├── blog.js           # (Daftar artikel blog Markdown).
+│   │   ├── profile.js        # (Bio, pengalaman, skill).
+│   │   ├── services.js       # (Layanan yang ditawarkan).
+│   │   ├── showcase.js       # (Database portofolio karya).
+│   │   └── social.js         # (Link Sosmed).
+│   │
+│   └── lib/                  # Fungsi pembantu matematis (Utilitas).
+└── ... (File konfigurasi server)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**💡 Konsep Pemisahan Data & Tampilan:**
+Website ini dirancang secara sistematis. Jika Anda hanya ingin mengubah isi teks, menambahkan artikel blog baru, atau menambah foto karya, Anda **tidak perlu mengedit kode komponen React**. Semua data teks terpusat di dalam folder `src/data/`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Cara Menjalankan di Komputer Lokal
 
-## Learn More
+Jika Anda ingin mencoba menjalankan atau memodifikasi *website* ini di komputer Anda sendiri:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Pastikan NodeJS sudah terinstal** di perangkat Anda.
+2. Buka terminal (Command Prompt / Powershell / Bash) di folder proyek ini.
+3. Jalankan perintah instalasi pustaka (*dependencies*):
+   ```bash
+   npm install
+   ```
+4. Jalankan *server* tahap pengembangan (*development*):
+   ```bash
+   npm run dev
+   ```
+5. Buka [http://localhost:3000](http://localhost:3000) pada *browser* Anda untuk melihat hasilnya. Halaman akan otomatis melakukan *refresh* saat Anda menyimpan perubahan pada kode.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Didesain dan dikembangkan dengan penuh presisi.*

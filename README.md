@@ -46,37 +46,79 @@ Kode sumber diorganisasikan agar sangat modular dan *scalable*. Jika Anda *devel
 
 ```text
 portfolio-gali/
-├── docs/                     # (Opsional) Tempat dokumentasi sistem, todo-list, dan roadmap.
+├── docs/                     # 📚 Folder berisi dokumentasi eksternal (Struktur Web, Todo List, dll)
 ├── public/                   
 │   ├── images/               # Pusat penyimpanan aset visual (gambar proyek, cover blog, foto profil).
-│   └── background-music.mp3  # File lagu pemutar global.
+│   ├── icon.png              # Ikon tab browser (Favicon).
+│   └── background-music.mp3  # File audio untuk pemutar musik global.
 │
 ├── src/
-│   ├── app/                  # 🌐 ROOT FOLDER (Next.js App Router).
-│   │   ├── about/            # Folder Halaman Tentang.
-│   │   ├── blog/             # Folder Halaman Blog + [slug] Dinamis.
-│   │   ├── services/         # Folder Halaman Layanan + [id] Dinamis.
-│   │   ├── works/            # Folder Halaman Pameran Karya.
-│   │   ├── globals.css       # Pusat penyetelan Tema (Warna Merek, Variabel Font) & Keyframes Animasi.
-│   │   └── layout.js         # Inti HTML, penyisipan Font Google (Inter, Plus Jakarta Sans), dan Provider Global.
+│   ├── app/                  # 🌐 ROOT FOLDER (Next.js App Router)
+│   │   ├── about/            
+│   │   │   └── page.js       # Halaman /about (Merender profil lengkap).
+│   │   ├── blog/             
+│   │   │   ├── [slug]/       
+│   │   │   │   └── page.js   # Halaman artikel dinamis (Membaca slug URL -> Render Markdown).
+│   │   │   └── page.js       # Halaman /blog (Menampilkan grid thumbnail blog).
+│   │   ├── services/         
+│   │   │   ├── [id]/         
+│   │   │   │   └── page.js   # Halaman layanan spesifik (Membaca ID URL).
+│   │   │   └── page.js       # Halaman /services (Daftar semua layanan).
+│   │   ├── works/            
+│   │   │   └── page.js       # Halaman /works (Hanya merender tab Showcase).
+│   │   ├── _not-found/       
+│   │   │   └── page.js       # Halaman error 404 kustom.
+│   │   ├── globals.css       # Pusat penyetelan Tema (Tailwind v4) & Keyframes Animasi.
+│   │   ├── layout.js         # Inti HTML, penyisipan Font Google, dan Provider Global.
+│   │   └── page.js           # Halaman Utama (Beranda / Home) - Menyatukan seluruh section.
 │   │
-│   ├── components/           # 🧩 PUSAT UI (Komponen React).
-│   │   ├── layout/           # Navbar utama (glassmorphism) & Footer halaman.
-│   │   ├── sections/         # Kepingan besar pembentuk halaman (Hero, AboutFull, Contact, dll).
-│   │   └── shared/           # Kepingan kecil yang dipakai berulang (CardMotion, Scene3D, GlitchBlock, CustomCursor).
+│   ├── components/           # 🧩 PUSAT UI (Komponen React)
+│   │   ├── layout/           
+│   │   │   ├── Footer.jsx    # Kaki halaman web.
+│   │   │   └── Navbar.jsx    # Navigasi atas (Glassmorphism & deteksi scroll).
+│   │   │
+│   │   ├── sections/         # Blok Besar Pembangun Halaman
+│   │   │   ├── About.jsx       # Ringkasan profil di Home.
+│   │   │   ├── AboutFull.jsx   # Profil & CV lengkap (untuk rute /about).
+│   │   │   ├── Blog.jsx        # Ringkasan blog di Home.
+│   │   │   ├── Contact.jsx     # Ajakan kolaborasi (Footer atas).
+│   │   │   ├── Hero.jsx        # Teks sambutan & Scene 3D.
+│   │   │   ├── ServiceDetail.jsx # Render UI untuk rute /services/[id].
+│   │   │   ├── Services.jsx    # Ringkasan jasa di Home.
+│   │   │   ├── ServicesFull.jsx# Daftar jasa lengkap (untuk rute /services).
+│   │   │   └── Showcase.jsx    # Filter karya (Motion, Web, dll).
+│   │   │
+│   │   └── shared/           # Blok Kecil Reusable (Aset Bersama)
+│   │       ├── BackgroundAudio.jsx     # Logika pemutar lagu.
+│   │       ├── CardMotion.jsx          # Efek Fade-Up & Scroll Reveal.
+│   │       ├── CustomCursor.jsx        # Logika titik kursor kustom.
+│   │       ├── GlitchBlock.jsx         # Efek TV rusak pada gambar.
+│   │       ├── GlobalClientProviders.jsx # State global pembungkus App.
+│   │       ├── GrainOverlay.jsx        # Tekstur statis film analog.
+│   │       ├── LoadingScreen.jsx       # Layar loading 0-100% awal.
+│   │       ├── NeonButton.jsx          # Tombol menyala.
+│   │       ├── ParallaxLayer.jsx       # Efek parallax saat scroll.
+│   │       ├── RevealText.jsx          # Animasi teks muncul per kata.
+│   │       ├── Scene3D.jsx             # Elemen Icosahedron Three.js.
+│   │       ├── SectionHeader.jsx       # Judul bagian (Heading).
+│   │       ├── ShowcaseCard.jsx        # Kotak pembungkus thumbnail proyek.
+│   │       └── SocialIcons.jsx         # Aset logo vektor SVG (IG, Discord).
 │   │
-│   ├── data/                 # 📂 PUSAT KONTROL KONTEN (Tanpa menyentuh file .jsx).
-│   │   ├── blog.js           # (Database teks Markdown artikel).
-│   │   ├── profile.js        # (Data Bio, Keahlian, Softwares).
-│   │   ├── services.js       # (Database layanan dan deskripsi panjangnya).
-│   │   ├── showcase.js       # (Database portofolio gambar dan kategori karya).
-│   │   └── social.js         # (Link Sosmed dan nomor WA/Discord).
+│   ├── data/                 # 📂 PUSAT KONTROL KONTEN (Edit Data Web di Sini)
+│   │   ├── blog.js           # Judul, Gambar, dan isi Markdown artikel.
+│   │   ├── profile.js        # Data biodata, jurusan, list keahlian, dan software.
+│   │   ├── services.js       # List jasa beserta penjelasan step-by-step pekerjaannya.
+│   │   ├── showcase.js       # List data karya (Judul, URL video/gambar, tag).
+│   │   └── social.js         # URL lengkap sosial media & WA/Discord.
 │   │
-│   └── lib/                  # ⚙️ LOGIKA & UTILITAS.
-│       ├── contact.js        # Fungsi pengolah pesan otomatis WhatsApp (%20 generator).
-│       └── utils.js          # Penggabung class CSS cerdas (Tailwind Merge + clsx).
+│   └── lib/                  # ⚙️ LOGIKA & UTILITAS
+│       ├── contact.js        # Fungsi Auto-Generate teks format %20 WhatsApp.
+│       └── utils.js          # Penggabung class CSS (Tailwind Merge + clsx).
 │
-└── package.json              # Daftar pustaka NPM yang digunakan.
+├── .gitignore                # File yang tidak akan dikirim ke Github.
+├── package.json              # Daftar pustaka NPM yang digunakan.
+├── next.config.mjs           # Aturan build Next.js.
+└── postcss.config.mjs        # Mesin pemroses Tailwind CSS v4.
 ```
 
 ---

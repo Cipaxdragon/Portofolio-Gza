@@ -355,12 +355,21 @@ export default function SocialGallery() {
                 
                 {selectedPost.type === 'video' ? (
                   selectedPost.videoUrl ? (
-                    <video 
-                      src={selectedPost.videoUrl} 
-                      controls 
-                      autoPlay 
-                      className="w-full h-full object-contain"
-                    />
+                    selectedPost.videoUrl.includes('youtube.com') || selectedPost.videoUrl.includes('youtu.be') ? (
+                      <iframe 
+                        src={`${selectedPost.videoUrl}${selectedPost.videoUrl.includes('?') ? '&' : '?'}autoplay=1`} 
+                        className="w-full h-full min-h-[300px] md:min-h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                      ></iframe>
+                    ) : (
+                      <video 
+                        src={selectedPost.videoUrl} 
+                        controls 
+                        autoPlay 
+                        className="w-full h-full object-contain"
+                      />
+                    )
                   ) : (
                     <Image src={selectedPost.url} alt="Video thumbnail" fill className="object-contain" />
                   )
@@ -411,7 +420,7 @@ export default function SocialGallery() {
               </div>
 
               {/* Right: Content Area */}
-              <div className="w-full md:w-2/5 flex flex-col h-full max-h-[50vh] md:max-h-none border-l border-white/10">
+              <div className="w-full md:w-2/5 flex flex-col min-h-0 max-h-[50vh] md:max-h-full border-t md:border-t-0 md:border-l border-white/10 bg-[#111]">
                 
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">

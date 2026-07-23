@@ -327,7 +327,6 @@ export default function SocialGallery() {
               ))}
             </div>
           </div>
-
         </div>
 
       </div>

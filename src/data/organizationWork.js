@@ -277,10 +277,51 @@ export const hmjGallery = [
   },
   {
     id: 9,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-    likes: "4.2K",
-    comments: "890",
+    type: "carousel",
+    url: "/images/showcase/instagram/TerimaKasih_2/1.webp",
+    slides: [
+      "/images/showcase/instagram/TerimaKasih_2/1.webp",
+      "/images/showcase/instagram/TerimaKasih_2/2.webp",
+      "/images/showcase/instagram/TerimaKasih_2/3.webp",
+      "/images/showcase/instagram/TerimaKasih_2/4.webp",
+      "/images/showcase/instagram/TerimaKasih_2/5.webp",
+      "/images/showcase/instagram/TerimaKasih_2/6.webp",
+      "/images/showcase/instagram/TerimaKasih_2/7.webp",
+      "/images/showcase/instagram/TerimaKasih_2/8.webp",
+      "/images/showcase/instagram/TerimaKasih_2/9.webp",
+      "/images/showcase/instagram/TerimaKasih_2/10.webp"
+    ],
+    likes: "189",
+    comments: "3",
+    link: "https://www.instagram.com/p/C4ejiX9vxyb/?img_index=1",
+    caption: [
+      "Terima kasih Atas semua dedikasi, kerja kerasnya 🙏. Bersama-sama, kita telah menciptakan kenangan indah dan sejarah .",
+      "",
+      "Mohon maaf apabila ada sesuatu yang kurang berkenan yang pernah kami perbuat dan terimakasih banyak kepada SItizen dan juga rekan-rekan yang telah menemani kami setahun belakangan ini 🤗🤍",
+      "",
+      "Akhir kata,",
+      "HMJ Sistem Informasi 2023 pamit undur diri"
+    ].join("\n")
+  },
+  {
+    id: 10,
+    type: "video",
+    url: "/images/showcase/instagram/Digides/503169217_1003965068386858_1404458972505230287_n.jpg",
+    videoUrl: "/images/showcase/instagram/Digides/AQNH1i7_zz8ojNtxr8yR8CsR1nG3igdIE1gKFUa6jT8cBxHCQqpKxdAxswk1uWIPnre5khy4Nlk9e--AYlbJVlPinUHyRc5Eq4tK8UA.mp4",
+    likes: "94",
+    comments: "5",
+    link: "https://www.instagram.com/p/CxIoG0rpEY-/",
+    caption: [
+      "Hai Sitizen Inilah Keseruan Kami di Company Visit kemarin bersama Digides. Ada banyak informasi penting dan ilmu-ilmu yang bisa kita ulik bersama-sama dalam kegiatan ini loh.",
+      "",
+      "____________________",
+      "Sitizen stay connected! Follow us and like our page for all the updates!",
+      "",
+      "Instagram: hmjsi.uinam",
+      "Twitter: hmjsi_uinam",
+      "TikTok: hmjsiuinam",
+      "YouTube: HMJ Sistem Informasi UINAM"
+    ].join("\n")
   }
 ];
 

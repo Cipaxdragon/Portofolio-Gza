@@ -163,7 +163,7 @@ export default function SocialGallery() {
 
                 {/* Feed Highlights (Mini Grid in Phone) */}
                 <div className="grid grid-cols-3 gap-0.5 mt-auto bg-black">
-                  {hmjGallery.slice(0, 9).map((post) => (
+                  {hmjGallery.slice(0, 12).map((post) => (
                     <a key={post.id} href={post.link || `https://instagram.com/${hmjProfile.username}`} target="_blank" rel="noopener noreferrer" className="aspect-square relative group block">
                       <Image src={post.url} alt="Post" fill className="object-cover" />
                       {post.type === 'video' && (

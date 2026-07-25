@@ -217,10 +217,37 @@ export const hmjGallery = [
   },
   {
     id: 7,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop",
-    likes: "1.5K",
-    comments: "67",
+    type: "carousel",
+    url: "/images/showcase/instagram/Postingan_TerimaKasih/1.webp",
+    slides: [
+      "/images/showcase/instagram/Postingan_TerimaKasih/1.webp",
+      "/images/showcase/instagram/Postingan_TerimaKasih/2.webp",
+      "/images/showcase/instagram/Postingan_TerimaKasih/3.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/4.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/5.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/6.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/7.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/8.webp",
+      "/images/showcase/instagram/Postingan_TerimaKasih/9.webp",
+      "/images/showcase/instagram/Postingan_TerimaKasih/10.webp",
+      "/images/showcase/instagram/Postingan_TerimaKasih/11.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/12.mp4",
+      "/images/showcase/instagram/Postingan_TerimaKasih/13.webp"
+    ],
+    likes: "229",
+    comments: "4",
+    link: "https://www.instagram.com/p/DFUFL71S6zg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    caption: [
+      "📢 | HMJ-SI 2024 PAMIT",
+      "",
+      "✨ Terima kasih untuk setiap momen, perjuangan, dan kebersamaan yang telah kita lalui bersama. ✨",
+      "",
+      "🙏 Kepada senior, terima kasih atas bimbingan, arahan, dan teladan yang selalu menginspirasi kami.",
+      "🤝 Kepada rekan seperjuangan, terima kasih telah saling menguatkan dalam setiap langkah perjalanan ini.",
+      "🔥 Kepada adik-adik penerus, perjalanan kalian baru dimulai! Teruslah melangkah, membawa HMJ-SI ke arah yang lebih baik.",
+      "",
+      "💙 Kami pamit, tapi HMJ-SI akan terus maju. Semangat untuk periode selanjutnya! 🚀 🔥"
+    ].join("\n")
   },
   {
     id: 8,
@@ -229,6 +256,7 @@ export const hmjGallery = [
     likes: "782",
     comments: "15",
   },
+  
   {
     id: 9,
     type: "image",

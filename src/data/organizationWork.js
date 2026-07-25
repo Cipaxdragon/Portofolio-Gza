@@ -251,12 +251,30 @@ export const hmjGallery = [
   },
   {
     id: 8,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
-    likes: "782",
-    comments: "15",
+    type: "video",
+    url: "/images/showcase/instagram/Company Visit/503325894_3997918920422831_966241138711128906_n.jpg",
+    videoUrl: "/images/showcase/instagram/Company Visit/AQODOTP-N0xZwyA96RO-WuV_8qv6z5Ct66RMljkM8xkPz6WClNrhc4FEed2t6ktcC9V3v8UB-rKGYvbWTvsCc_JL5_9whUI_QUfqmSA.mp4",
+    likes: "108",
+    comments: "1",
+    link: "https://www.instagram.com/hmjsi.uinam/",
+    caption: [
+      "Kunjungan Ke Pusat Pengawasan ✋🏻",
+      "",
+      "Siapa yang kemarin ikut Company Visit ke War Room? Angkat tangan! 🙋🏻‍♀️🙋🏻‍♂️",
+      "",
+      "Terima kasih atas partisipasi kalian! Kami senang bisa berbagi momen seru dan inspiratif di War Room. 🤩",
+      "",
+      "Terima kasih juga kepada War Room atas sambutan hangat dan sharing session yang informatif. Pengalaman ini akan jadi kenangan tak terlupakan. Sampai jumpa di kesempatan berikutnya!",
+      "",
+      "____________________",
+      "Sitizen stay connected! Follow us and like our page for all the updates!",
+      "",
+      "Instagram: hmjsi.uinam",
+      "Twitter: hmjsi_uinam",
+      "TikTok: hmjsiuinam",
+      "YouTube: HMJ Sistem Informasi UINAM"
+    ].join("\n")
   },
-  
   {
     id: 9,
     type: "image",

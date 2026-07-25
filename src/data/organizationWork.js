@@ -322,6 +322,52 @@ export const hmjGallery = [
       "TikTok: hmjsiuinam",
       "YouTube: HMJ Sistem Informasi UINAM"
     ].join("\n")
+  },
+  {
+    id: 11,
+    type: "video",
+    url: "/images/showcase/instagram/Rijal_Jamal_Podcast/Image-91296.jpg",
+    videoUrl: "/images/showcase/instagram/Rijal_Jamal_Podcast/Ekhem netizen Indonesia, apalagi Makassar nih, udah dinotice loh.. Lain kali lebih jaga tutur ka.mp4",
+    likes: "90",
+    comments: "2",
+    link: "https://www.instagram.com/p/CtG42FAJBMx/",
+    caption: [
+      "Ekhem netizen Indonesia, apalagi Makassar nih, udah dinotice loh.. Lain kali lebih jaga tutur katanya ya! Mengkritik boleh tapi jangan lupa pakai attitude 🤩",
+      "",
+      "Yuk kita nonton sekaligus belajar tentang bagaimana cara menjadi content creator bersama kak Rijal Djamal di SIPodcast eps 21 on kanal YouTube HMJ Sistem Informasi UINAM",
+      "",
+      "____________________",
+      "Sitizen stay connected! Follow us and like our page for all the updates!",
+      "",
+      "Instagram: hmjsi.uinam",
+      "Twitter: hmjsi_uinam",
+      "TikTok: hmjsiuinam",
+      "YouTube: HMJ Sistem Informasi UINAM"
+    ].join("\n")
+  },
+  {
+    id: 12,
+    type: "video",
+    url: "/images/showcase/instagram/Podcast_Cakra/Image-25107.jpg",
+    videoUrl: "/images/showcase/instagram/Podcast_Cakra/Video-52453.mp4",
+    likes: "69",
+    comments: "2",
+    link: "https://www.instagram.com/p/CzQ34p2JCv9/",
+    caption: [
+      "Hai SItizen",
+      "Kembali lagi di SIPODCAST Edisi Nongki Nyantai Bareng Kakanda Akmal, Kakanda Cakra , dan Kakanda Iyam yang kedua kalinnya Sekarang Giliran Kakanda Cakra lagi yang jadi narasumber Kalian juga Penasaran juga dengan jawaban dari pertanyaanyang kalian ajukan di Story Instagram Kemarin",
+      "",
+      "Segera dengarkan di kanal youtube kami",
+      "HMJ Sistem Informasi UINAM",
+      "",
+      "____________________",
+      "Sitizen stay connected! Follow us and like our page for all the updates!",
+      "",
+      "Instagram: hmjsi.uinam",
+      "Twitter: hmjsi_uinam",
+      "TikTok: hmjsiuinam",
+      "YouTube: HMJ Sistem Informasi UINAM"
+    ].join("\n")
   }
 ];
 

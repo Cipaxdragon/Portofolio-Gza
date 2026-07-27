@@ -117,7 +117,7 @@ export default function AboutFull() {
 
   return (
     <section id="about-full" className="relative px-6 py-24 sm:py-32" ref={ref}>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         {/* Editorial Layout for Photo & Bio */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-24">
           

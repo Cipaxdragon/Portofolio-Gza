@@ -37,12 +37,12 @@ export default function SocialGallery() {
 
   return (
     <section className="py-20 lg:py-32 relative z-10 border-t border-brand-border">
-      <div className="container mx-auto px-4 sm:px-6">
+      {/* Menggunakan max-w-4xl untuk membatasi kelebaran */}
+      <div className="mx-auto max-w-4xl px-4 sm:px-6">
         
         <SectionHeader title="Organization Work." align="left" />
         
-        {/* Experience Details (LinkedIn Style) */}
-        <div className="mb-16 mt-8 max-w-4xl border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 lg:ml-8">
+        <div className="mb-16 mt-8 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
           {hmjProfile.experiences.map((exp, idx) => (
             <div key={idx} className={`relative ${idx !== 0 ? 'mt-14' : ''}`}>
               
@@ -57,18 +57,18 @@ export default function SocialGallery() {
                 <div className="absolute -left-[40px] lg:-left-[48px] top-1.5 w-[18px] h-[18px] rounded-full bg-[#0a0a0a] border-[4px] border-brand-primary z-10 shadow-[0_0_12px_rgba(var(--brand-primary-rgb),0.8)]"></div>
               )}
               
-              <h3 className="text-2xl font-bold text-white mb-1">{exp.role}</h3>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-1">{exp.role}</h3>
               <div className="mb-4">
-                <p className="text-brand-primary font-medium text-sm lg:text-base">
+                <p className="text-brand-primary font-medium text-xs sm:text-sm md:text-base">
                   {hmjProfile.name} • {exp.periode}
                 </p>
-                <p className="text-gray-400 text-sm mt-1 flex items-center gap-2">
+                <p className="text-gray-400 text-xs sm:text-sm mt-1 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
                   {exp.duration}
                 </p>
               </div>
               
-              <p className="text-brand-muted text-lg leading-relaxed mb-6 whitespace-pre-line">
+              <p className="text-brand-muted text-sm sm:text-base lg:text-lg leading-relaxed mb-6 whitespace-pre-line">
                 {exp.description}
               </p>
               
@@ -76,7 +76,7 @@ export default function SocialGallery() {
                 {exp.skills.map((skill, index) => (
                   <span 
                     key={index}
-                    className="px-4 py-1.5 bg-[#1a1a1a] border border-white/10 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:border-brand-primary/50 transition-colors cursor-default"
+                    className="px-3 py-1 lg:px-4 lg:py-1.5 bg-[#1a1a1a] border border-white/10 rounded-full text-xs lg:text-sm font-medium text-gray-300 hover:text-white hover:border-brand-primary/50 transition-colors cursor-default"
                   >
                     {skill}
                   </span>
@@ -106,93 +106,64 @@ export default function SocialGallery() {
         </div>
 
         {/* --- BLOCK 1: INSTAGRAM --- */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start mb-20">
+        <div className="flex flex-col mb-24">
           
-          {/* LEFT: Phone Mockup (Sticky) */}
-          <div className="w-full lg:w-[320px] flex-shrink-0 flex justify-center lg:justify-start lg:sticky lg:top-12">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative w-[280px] sm:w-[320px] bg-black rounded-[3rem] p-2 sm:p-3 shadow-[0_0_50px_rgba(255,255,255,0.2)] border border-[#111]"
-            >
-              {/* Phone Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 sm:h-7 bg-black rounded-b-2xl z-20"></div>
+          {/* Instagram Web Header */}
+          <div className="w-full max-w-4xl mx-auto mb-12">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-16">
               
-              {/* Screen Content */}
-              <div className="bg-[#000000] rounded-[2.5rem] overflow-hidden relative border border-[#111] h-[550px] sm:h-[600px] flex flex-col">
-                {/* Top Bar */}
-                <div className="px-5 pt-8 pb-3 flex justify-between items-center bg-black sticky top-0 z-10 border-b border-white/10">
-                  <div className="flex items-center gap-2 font-semibold">
-                    {hmjProfile.username}
-                    <ChevronDown className="w-4 h-4 text-gray-400" />
+              {/* Profile Picture */}
+              <div className="relative w-24 h-24 sm:w-36 sm:h-36 flex-shrink-0 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-fuchsia-600 p-[3px]">
+                <div className="w-full h-full bg-black rounded-full p-[3px]">
+                  <div className="w-full h-full rounded-full overflow-hidden relative">
+                    <Image src={hmjProfile.avatarUrl} alt="Avatar" fill className="object-cover" />
                   </div>
-                  <MoreHorizontal className="w-5 h-5 text-gray-400" />
-                </div>
-
-                {/* Profile Info */}
-                <div className="px-4 py-4 flex items-center justify-between">
-                  <div className="relative w-20 h-20 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-fuchsia-600 p-[2px]">
-                    <div className="w-full h-full bg-black rounded-full p-[2px]">
-                      <div className="w-full h-full rounded-full overflow-hidden relative">
-                        <Image src={hmjProfile.avatarUrl} alt="Avatar" fill className="object-cover" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 text-center">
-                    <div>
-                      <div className="font-bold">{hmjProfile.posts}</div>
-                      <div className="text-xs text-gray-400">posts</div>
-                    </div>
-                    <div>
-                      <div className="font-bold">{hmjProfile.followers}</div>
-                      <div className="text-xs text-gray-400">followers</div>
-                    </div>
-                    <div>
-                      <div className="font-bold">{hmjProfile.following}</div>
-                      <div className="text-xs text-gray-400">following</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bio */}
-                <div className="px-4 pb-4">
-                  <h2 className="font-bold text-sm mb-1">{hmjProfile.name}</h2>
-                  <p className="text-sm whitespace-pre-line text-gray-300">{hmjProfile.bio}</p>
-                </div>
-
-                {/* Feed Highlights (Mini Grid in Phone) */}
-                <div className="grid grid-cols-3 gap-0.5 mt-auto bg-black">
-                  {hmjGallery.slice(0, 12).map((post) => (
-                    <a key={post.id} href={post.link || `https://instagram.com/${hmjProfile.username}`} target="_blank" rel="noopener noreferrer" className="aspect-square relative group block">
-                      <Image src={post.url} alt="Post" fill className="object-cover" />
-                      {post.type === 'video' && (
-                        <div className="absolute top-1 right-1">
-                          <Play className="w-3 h-3 text-white" fill="white" />
-                        </div>
-                      )}
-                      {post.type === 'carousel' && (
-                        <div className="absolute top-1 right-1">
-                          <Copy className="w-3 h-3 text-white" />
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <Heart className="w-4 h-4 text-white" fill="white" />
-                      </div>
-                    </a>
-                  ))}
                 </div>
               </div>
-            </motion.div>
+
+              {/* Profile Details */}
+              <div className="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-5">
+                  <h2 className="text-xl sm:text-2xl text-white font-semibold">{hmjProfile.username}</h2>
+                  <a 
+                    href={`https://instagram.com/${hmjProfile.username}`}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-5 py-1.5 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm font-semibold rounded-lg transition-colors flex items-center gap-2"
+                  >
+                    View Profile
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+                
+                <div className="flex gap-6 sm:gap-10 mb-5 text-sm sm:text-base">
+                  <div className="text-gray-300"><span className="font-bold text-white">{hmjProfile.posts}</span> posts</div>
+                  <div className="text-gray-300"><span className="font-bold text-white">{hmjProfile.followers}</span> followers</div>
+                  <div className="text-gray-300"><span className="font-bold text-white">{hmjProfile.following}</span> following</div>
+                </div>
+
+                <div className="text-sm">
+                  <h3 className="font-bold text-white mb-1">{hmjProfile.name}</h3>
+                  <p className="text-gray-300 whitespace-pre-line">{hmjProfile.bio}</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* RIGHT: Instagram Grid */}
-          <div className="w-full flex-1">
-            <div className="mb-6 border-b border-white/10 pb-4">
-              <h3 className="text-xl font-bold text-white">Instagram Feed</h3>
-              <p className="text-gray-400 text-sm">Visual Design & Content Creation</p>
+          {/* RIGHT: Instagram Grid (Now Full Width) */}
+          <div className="w-full border-t border-white/10 pt-10 lg:pt-16">
+            <div className="mb-8 flex justify-center">
+              <div className="inline-flex items-center gap-2 border-t-2 border-white pt-3 px-2 -mt-[42px] lg:-mt-[66px]">
+                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+                <span className="text-sm font-bold tracking-widest uppercase text-white">Posts</span>
+              </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+            
+            <div className="grid grid-cols-3 gap-1 sm:gap-1.5 md:gap-2 lg:gap-3">
               {hmjGallery.map((post, index) => (
                 <motion.div 
                   key={post.id}
@@ -201,9 +172,9 @@ export default function SocialGallery() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="aspect-square relative rounded-xl overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-all shadow-lg"
+                  className="aspect-[4/5] relative rounded-md overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-all shadow-lg"
                 >
-                  <Image src={post.url} alt="Gallery item" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image src={post.url} alt="Gallery item" fill sizes="33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
@@ -219,15 +190,15 @@ export default function SocialGallery() {
 
                   {/* Video Icon Badge */}
                   {post.type === 'video' && (
-                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm p-2 rounded-full">
-                      <Play className="w-4 h-4 text-white" fill="white" />
+                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm p-1.5 sm:p-2 rounded-full">
+                      <Play className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="white" />
                     </div>
                   )}
 
                   {/* Carousel Icon Badge */}
                   {post.type === 'carousel' && (
-                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm p-2 rounded-full">
-                      <Copy className="w-4 h-4 text-white" />
+                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm p-1.5 sm:p-2 rounded-full">
+                      <Copy className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                     </div>
                   )}
                 </motion.div>
@@ -235,23 +206,19 @@ export default function SocialGallery() {
             </div>
 
             {/* View More on Instagram Button */}
-            <div className="mt-8 flex justify-center lg:justify-start">
+            <div className="mt-12 flex justify-center">
               <a 
                 href={`https://instagram.com/${hmjProfile.username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-semibold text-white transition-all hover:scale-105 group"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-primary text-black hover:bg-brand-primary/90 rounded-full font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(var(--brand-primary-rgb),0.3)]"
               >
                 Kunjungi Instagram HMJSI 
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                <ExternalLink className="w-4 h-4" />
               </a>
             </div>
-
           </div>
-
         </div>
-
-
         {/* --- BLOCK 2: YOUTUBE --- */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           
@@ -424,7 +391,7 @@ export default function SocialGallery() {
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden relative">
+                    <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
                       <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
                     </div>
                     <span className="font-bold text-sm text-white">{hmjProfile.username}</span>

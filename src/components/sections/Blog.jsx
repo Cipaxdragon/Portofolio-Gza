@@ -12,7 +12,7 @@ export default function Blog() {
 
   return (
     <section id="blog" className="relative px-6 py-24 sm:py-32 bg-brand-bg-2">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeader
           title="Thoughts."
           subtitle="Tulisan dan pemikiran seputar kreativitas dan teknologi."

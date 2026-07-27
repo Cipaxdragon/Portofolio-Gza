@@ -119,7 +119,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative px-6 py-24 sm:py-32" ref={ref}>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         {/* 2-column layout for Photo & Bio */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Photo */}

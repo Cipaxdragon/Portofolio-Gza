@@ -9,7 +9,7 @@ import Link from 'next/link'
 export default function Services() {
   return (
     <section id="services" className="relative px-6 py-24 sm:py-32 bg-brand-bg-2">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeader
           title={<>Let&apos;s Build <em>Something.</em></>}
           subtitle="Layanan utama yang saya sediakan."

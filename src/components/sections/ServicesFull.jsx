@@ -10,7 +10,7 @@ import { useRef, useEffect } from 'react'
 export default function ServicesFull() {
   return (
     <section id="services-full" className="relative px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeader
           title={<>Explore My <em>Services.</em></>}
           subtitle="Lebih detail mengenai apa yang bisa saya bangun untuk Anda."

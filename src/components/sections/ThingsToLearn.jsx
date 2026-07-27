@@ -7,7 +7,7 @@ import { thingsToLearn } from '@/data/thingsToLearn'
 export default function ThingsToLearn() {
   return (
     <section id="things-to-learn" className="relative px-6 py-0">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <SectionHeader
           title={<>What&apos;s <em>Next.</em></>}
           subtitle="Hal-hal yang sedang aku kejar."

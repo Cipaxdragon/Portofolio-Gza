@@ -57,7 +57,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
+        <div className="mx-auto max-w-5xl flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <Link
             href="/"

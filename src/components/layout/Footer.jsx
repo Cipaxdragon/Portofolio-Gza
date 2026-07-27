@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <footer className="relative px-6 pt-24 pb-8 sm:pt-32 sm:pb-10 bg-brand-bg">
       {/* Manifesto Statement */}
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <RevealText>
           <GlitchBlock>
             <h2 className="font-display text-headline sm:text-display italic">

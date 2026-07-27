@@ -383,12 +383,12 @@ export const hmjYoutube = [
   {
     id: 1,
     title: "Podcast HMJSI Episode 1",
-    videoId: "LXb3EKWsInQ", // Ganti dengan ID video YouTube HMJSI yang asli
+    videoId: "https://www.youtube.com/watch?v=fwiCSi1J5bE", // Ganti dengan ID video YouTube HMJSI yang asli
   },
   {
     id: 2,
     title: "Podcast HMJSI Episode 2",
-    videoId: "tgbNymZ7vqY", // Ganti dengan ID video YouTube HMJSI yang asli
+    videoId: "https://www.youtube.com/watch?v=fwiCSi1J5bE", // Ganti dengan ID video YouTube HMJSI yang asli
   },
   {
     id: 3,

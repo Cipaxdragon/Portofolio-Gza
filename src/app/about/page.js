@@ -28,7 +28,8 @@ export default function AboutPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-brand-accent/5 blur-[120px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10">
+      <div className="mx-auto max-w-5xl px-6 relative z-10">
+        
         
         {/* Header Section */}
         <div className="max-w-3xl mb-32">

@@ -87,10 +87,10 @@ export const hmjProfile = {
         title: "Anggota Divisi Kominfo Periode 2023",
         isProof: true,
         type: "carousel",
-        url: "/images/showcase/instagram/Jabatan/Periode 2023/Struktural_1.jpg",
+        url: "/images/showcase/instagram/Jabatan/Periode 2023/Struktural.jpg",
         slides: [
-          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural_1.jpg",
-          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural.jpg"
+          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural.jpg",
+          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural_1.jpg"
         ],
         caption: "Bukti keanggotaan Struktural pada Divisi Komunikasi dan Informasi HMJSI UINAM Periode 2023."
       }

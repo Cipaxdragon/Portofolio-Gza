@@ -33,6 +33,33 @@ export const hmjProfile = {
         { name: "Premiere Pro" },
         { name: "CapCut" }
       ]
+    },
+    {
+      role: "Panitia Divisi Publikasi dan Dokumentasi (Pubdok)",
+      orgName: "Inagurasi Fakultas Sains dan Teknologi (Saintek)",
+      periode: "Inagurasi 2022",
+      duration: "Agustus 2022",
+      description: "Bertanggung jawab atas dokumentasi dan publikasi acara puncak Inagurasi Fakultas Sains dan Teknologi tingkat universitas.\n- Mendokumentasikan seluruh rangkaian acara Inagurasi Fakultas.\n- Memproduksi video rekapitulasi kegiatan (After Movie) dan materi publikasi media sosial.",
+      skills: ["Event Documentation", "Videography", "Photography", "Video Editing"],
+      tools: [
+        { name: "Premiere Pro" },
+        { name: "CapCut" },
+        { name: "Photoshop" }
+      ]
+    },
+    {
+      role: "Panitia Divisi Publikasi dan Dokumentasi (Pubdok)",
+      orgName: "Inagurasi Jurusan Sistem Informasi (Kreasi 021)",
+      periode: "Inagurasi 2022",
+      duration: "Mei 2022",
+      description: "Berperan aktif dalam menyukseskan perayaan Inagurasi tingkat jurusan (Kreasi 021).\n- Membuat desain grafis untuk kebutuhan identitas acara seperti Launching Logo dan Bazar.\n- Terlibat dalam pengambilan gambar dan penyuntingan video Behind The Scene serta video promosi acara.",
+      skills: ["Graphic Design", "Content Creation", "Videography", "Video Editing"],
+      tools: [
+        { name: "Premiere Pro" },
+        { name: "Illustrator" },
+        { name: "Photoshop" },
+        { name: "CapCut" }
+      ]
     }
   ]
 };

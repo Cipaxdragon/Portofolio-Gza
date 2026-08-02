@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
+import { committeeReels } from '@/data/committeeData'
 import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video, MousePointer2, Monitor, Layers, Film, Crosshair } from 'lucide-react'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import { 
@@ -41,6 +42,7 @@ export default function SocialGallery() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBtsSlide, setCurrentBtsSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('posts');
+  const [activeCommitteeTab, setActiveCommitteeTab] = useState('Kreasi');
   const [showBTS, setShowBTS] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
@@ -115,7 +117,7 @@ export default function SocialGallery() {
               <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-1">{exp.role}</h3>
               <div className="mb-4">
                 <p className="text-brand-primary font-medium text-xs sm:text-sm md:text-base">
-                  {hmjProfile.name} • {exp.periode}
+                  {exp.orgName || hmjProfile.name} • {exp.periode}
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm mt-1 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
@@ -455,6 +457,97 @@ export default function SocialGallery() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* --- BLOCK 3: EVENT COMMITTEES --- */}
+        <div className="mt-32 pt-16 border-t border-white/10">
+          <SectionHeader 
+            title="Inauguration Committees" 
+            subtitle="Documentation & Event Publications before HMJ" 
+          />
+          
+          <div className="flex justify-center mb-10">
+            <div className="flex bg-white/5 p-1.5 rounded-full border border-white/10 backdrop-blur-sm relative overflow-hidden">
+              <div 
+                className="absolute inset-y-1.5 rounded-full bg-white transition-all duration-300 ease-out shadow-lg"
+                style={{
+                  left: activeCommitteeTab === 'Kreasi' ? '6px' : '50%',
+                  width: 'calc(50% - 6px)'
+                }}
+              ></div>
+              <button
+                className={`relative px-8 py-2.5 rounded-full font-bold text-sm transition-colors z-10 w-[180px] ${
+                  activeCommitteeTab === 'Kreasi' ? 'text-black' : 'text-white/60 hover:text-white'
+                }`}
+                onClick={() => setActiveCommitteeTab('Kreasi')}
+              >
+                Inagurasi Kreasi
+              </button>
+              <button
+                className={`relative px-8 py-2.5 rounded-full font-bold text-sm transition-colors z-10 w-[180px] ${
+                  activeCommitteeTab === 'Saintek' ? 'text-black' : 'text-white/60 hover:text-white'
+                }`}
+                onClick={() => setActiveCommitteeTab('Saintek')}
+              >
+                Inagurasi Saintek
+              </button>
+            </div>
+          </div>
+
+          {/* Main Full Video (After Movie) */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-5 pl-2 border-l-4 border-brand-primary">
+              <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">
+                Official After Movie
+              </h3>
+            </div>
+            
+            <div 
+              className="w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video cursor-pointer group"
+              onClick={() => openPost({
+                id: `yt-main-${activeCommitteeTab}`,
+                type: 'video',
+                videoUrl: `https://www.youtube.com/embed/${activeCommitteeTab === 'Kreasi' ? 'fwiCSi1J5bE' : 'tnSu4-KT4zc'}`,
+                caption: activeCommitteeTab === 'Kreasi' ? 'Inagurasi Kreasi 021 - Official After Movie' : 'Inagurasi Fakultas Saintek 2022 - Official After Movie',
+                link: `https://www.youtube.com/watch?v=${activeCommitteeTab === 'Kreasi' ? 'fwiCSi1J5bE' : 'tnSu4-KT4zc'}`
+              })}
+            >
+              <LiteYouTubeEmbed 
+                videoId={activeCommitteeTab === 'Kreasi' ? 'fwiCSi1J5bE' : 'tnSu4-KT4zc'} 
+                title="Official After Movie" 
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+            {committeeReels.filter(reel => reel.category === activeCommitteeTab).map((reel, index) => (
+              <motion.div 
+                key={reel.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="aspect-[9/16] w-full bg-[#1a1a1a] rounded-xl overflow-hidden cursor-pointer group relative border border-white/10 shadow-lg"
+                onClick={() => openPost(reel)}
+              >
+                <Image src={reel.url} alt="Thumbnail" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                
+                {/* Play Icon Overlay */}
+                <div className="absolute top-3 right-3 text-white drop-shadow-md">
+                  <Play className="w-5 h-5 fill-white" />
+                </div>
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3">
+                  <div className="flex gap-4">
+                    <div className="flex items-center gap-1.5 text-white font-bold">
+                      <Heart className="w-5 h-5 fill-white" /> {reel.likes}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 

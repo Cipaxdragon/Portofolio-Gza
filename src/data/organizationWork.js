@@ -209,6 +209,23 @@ export const hmjGallery = [
   {
     id: 5,
     type: "video",
+    btsType: "canvas",
+    canvasNodes: [
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Jejak_desa/bts.jpg",
+        title: "Full 3D Environment (Blender 4.1)",
+        desc: "Screenshot ini menampilkan ruang kerja 3D Viewport di Blender 4.1 untuk proyek 'Meja Jejak Desa.blend'. Animasi kenangan ini tidak diedit menggunakan software 2D konvensional, melainkan dibangun sepenuhnya di dalam lingkungan 3D yang komprehensif. Terlihat pemodelan mendetail mulai dari tekstur meja kayu, kursi, pot tanaman, hingga material reflektif pada lantai ubin. Teknik visual yang paling menonjol di sini adalah penggunaan proyektor cahaya buatan (garis pantul oranye) yang menembakkan/memproyeksikan gambar-gambar memori langsung ke dalam bingkai foto di dinding, lengkap dengan kalkulasi bayangan dan pencahayaan global (Global Illumination) yang realistis.",
+        icon: "box"
+      },
+      {
+        type: "youtube",
+        src: "https://www.youtube.com/embed/lWUy9baZJhQ",
+        title: "Final Output (Memory Animated)",
+        desc: "Hasil akhir rendering (Final Render) dari lingkungan 3D tersebut. Kombinasi dari modeling tata ruang, pemberian tekstur material yang nyata (PBR texturing), dan simulasi pencahayaan dramatis di Blender berhasil menghasilkan sebuah animasi ruang kenangan yang terlihat sangat fotorealistik dan menyentuh sisi emosional audiens.",
+        icon: "video"
+      }
+    ],
     url: "/images/showcase/instagram/Jejak_desa/Thumnail.jpg",
     videoUrl: "https://www.youtube.com/embed/lWUy9baZJhQ",
     likes: "83",
@@ -360,6 +377,23 @@ export const hmjGallery = [
   {
     id: 10,
     type: "video",
+    btsType: "canvas",
+    canvasNodes: [
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Digides/bts_1.jpg",
+        title: "Advanced Timeline Management",
+        desc: "Screenshot ini memperlihatkan ruang kerja (workspace) CapCut Desktop dengan tingkat kerumitan (complexity) yang tinggi. Terlihat puluhan track yang saling tumpang tindih secara presisi. Visual track (berwarna-warni) dipisahkan secara hierarkis antara A-Roll (footage utama), B-Roll (footage pendukung), text overlays, hingga efek transisi. Audio track di bagian bawah menunjukkan manajemen Sound Design yang rapat—melibatkan voiceover, background music (BGM), dan Sound Effects (SFX) berlapis untuk menciptakan ritme penceritaan (pacing) yang dinamis pada video dokumentasi Company Visit ini.",
+        icon: "layers"
+      },
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Digides/AQNH1i7_zz8ojNtxr8yR8CsR1nG3igdIE1gKFUa6jT8cBxHCQqpKxdAxswk1uWIPnre5khy4Nlk9e--AYlbJVlPinUHyRc5Eq4tK8UA.mp4",
+        title: "Final Output (Digides Company Visit)",
+        desc: "Hasil akhir (Master Render) dari penyusunan timeline yang rumit di atas. Ritme visual yang padat dan efek transisi yang cepat berhasil dieksekusi dengan mulus, mempertahankan atensi penonton dari awal hingga akhir sambil merangkum seluruh momen krusial kegiatan.",
+        icon: "video"
+      }
+    ],
     url: "/images/showcase/instagram/Digides/503169217_1003965068386858_1404458972505230287_n.jpg",
     videoUrl: "/images/showcase/instagram/Digides/AQNH1i7_zz8ojNtxr8yR8CsR1nG3igdIE1gKFUa6jT8cBxHCQqpKxdAxswk1uWIPnre5khy4Nlk9e--AYlbJVlPinUHyRc5Eq4tK8UA.mp4",
     likes: "94",

@@ -475,23 +475,32 @@ export default function SocialGallery() {
                         <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }}>
                           <div className="grid grid-cols-2 gap-12 p-12 md:p-24 w-[1200px] md:w-[1800px]">
                             
-                            {selectedPost.canvasNodes.map((node, i) => (
-                              <div key={i} className={`flex flex-col gap-5 ${node.type === 'video' ? 'col-span-2' : ''}`}>
-                                {/* Media Box */}
-                                <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black ${node.type === 'video' ? 'aspect-video w-full max-w-5xl mx-auto' : 'aspect-video'}`}>
-                                  {node.type === 'video' ? (
-                                    <video 
-                                      src={node.src} 
-                                      autoPlay loop muted playsInline preload="none"
-                                      className="w-full h-full object-cover"
-                                    />
-                                  ) : (
+                            {selectedPost.canvasNodes.map((node, i) => {
+                              const isVideoType = node.type === 'video' || node.type === 'youtube';
+                              return (
+                                <div key={i} className={`flex flex-col gap-5 ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'col-span-2' : ''}`}>
+                                  {/* Media Box */}
+                                  <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'aspect-video w-full max-w-5xl mx-auto' : 'aspect-video'}`}>
+                                    {node.type === 'video' ? (
+                                      <video 
+                                        src={node.src} 
+                                        autoPlay loop muted playsInline preload="none"
+                                        className="w-full h-full object-cover"
+                                      />
+                                    ) : node.type === 'youtube' ? (
+                                      <iframe 
+                                        src={`${node.src}?autoplay=1&mute=1&loop=1`} 
+                                        className="w-full h-full"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowFullScreen
+                                      ></iframe>
+                                    ) : (
                                     <Image src={node.src} alt={node.title} fill className="object-cover" />
                                   )}
                                 </div>
                                 
                                 {/* Info Card (Glassmorphism) */}
-                                <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl relative overflow-hidden group hover:bg-white/10 transition-colors ${node.type === 'video' ? 'w-full max-w-5xl mx-auto' : ''}`}>
+                                <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl relative overflow-hidden group hover:bg-white/10 transition-colors ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'w-full max-w-5xl mx-auto' : ''}`}>
                                    <div className="absolute top-0 left-0 w-1 h-full bg-brand-primary"></div>
                                    <h4 className="text-white font-bold flex items-center gap-3 mb-3 text-lg">
                                      {renderIcon(node.icon)}
@@ -502,7 +511,8 @@ export default function SocialGallery() {
                                    </p>
                                 </div>
                               </div>
-                            ))}
+                            );
+                          })}
 
                           </div>
                         </TransformComponent>

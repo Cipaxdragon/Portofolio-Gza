@@ -414,6 +414,23 @@ export const hmjGallery = [
   {
     id: 11,
     type: "video",
+    btsType: "canvas",
+    canvasNodes: [
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Rijal_Jamal_Podcast/bts_1.mp4",
+        title: "On-Location Shooting Setup",
+        desc: "Rekaman amatir di balik layar yang menunjukkan proses produksi (live-action shooting) di lokasi luar ruangan (outdoor). Terlihat penyusunan tata letak kamera (framing) menggunakan tripod untuk menjaga stabilitas gambar. Pemilihan lokasi dilakukan secara cermat untuk memanfaatkan pencahayaan alami matahari (natural lighting) serta latar belakang pepohonan yang memberikan kesan sejuk dan sinematik tanpa memerlukan perlengkapan studio yang kompleks.",
+        icon: "camera"
+      },
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Rijal_Jamal_Podcast/Ekhem netizen Indonesia, apalagi Makassar nih, udah dinotice loh.. Lain kali lebih jaga tutur ka.mp4",
+        title: "Final Output (Podcast Snippet)",
+        desc: "Hasil akhir dari penyuntingan video yang menampilkan cuplikan obrolan bersama content creator Rijal Djamal. Meskipun sebagian footage direkam secara mandiri dengan alat yang ringkas (seperti di BTS), hasil pascaproduksinya tetap terlihat jernih, profesional, dan mampu menyampaikan pesan edukatif dengan gaya visual kekinian.",
+        icon: "video"
+      }
+    ],
     url: "/images/showcase/instagram/Rijal_Jamal_Podcast/Image-91296.jpg",
     videoUrl: "/images/showcase/instagram/Rijal_Jamal_Podcast/Ekhem netizen Indonesia, apalagi Makassar nih, udah dinotice loh.. Lain kali lebih jaga tutur ka.mp4",
     likes: "90",
@@ -456,8 +473,56 @@ export const hmjGallery = [
       "TikTok: hmjsiuinam",
       "YouTube: HMJ Sistem Informasi UINAM"
     ].join("\n")
+  },
+  {
+    id: 13,
+    type: "video",
+    btsType: "canvas",
+    canvasNodes: [
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Fajratul_HMJ/bts_3.jpg",
+        title: "Multi-Software Post-Production",
+        desc: "Dokumentasi nyata dari balik layar ruang redaksi kami! Terlihat setup tiga laptop yang berjalan secara simultan untuk menangani pipa kerja pascaproduksi (post-production pipeline) yang kompleks: Laptop kiri menjalankan Figma untuk desain grafis/overlay, laptop tengah menggunakan Adobe Premiere Pro untuk penyuntingan video utama, dan laptop kanan menjalankan software Audio Workstation untuk proses mixing & mastering suara agar audio podcast terdengar renyah dan profesional.",
+        icon: "laptop",
+        fullWidth: true
+      },
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Fajratul_HMJ/bts.jpg",
+        title: "UI/Graphic Design (Figma)",
+        desc: "Detail dari layar laptop pertama (Figma). Di sinilah seluruh elemen visual branding diciptakan. Mulai dari layout vertikal (1080x1920 untuk Reels/TikTok), logo SIPODCAST, hingga elemen grafis topografi 3D wireframe yang digunakan sebagai latar belakang. Semuanya dirancang secara rapi menggunakan sistem komponen di Figma sebelum diekspor sebagai aset PNG transparan.",
+        icon: "penTool"
+      },
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Fajratul_HMJ/bts_2.png",
+        title: "Video Compositing (Premiere Pro)",
+        desc: "Detail dari layar laptop tengah (Adobe Premiere Pro). Aset grafis transparan yang dibuat dari Figma (seperti 'Host_Lower.png' untuk nama pembawa acara) diimpor dan ditumpuk (compositing) di atas trek video utama. Sinkronisasi antara rekaman video multi-kamera dan audio eksternal yang sudah di-mastering juga disatukan pada timeline ini sebelum proses rendering akhir.",
+        icon: "video"
+      },
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Fajratul_HMJ/[SIPODCAST EPISODE 20].mp4",
+        title: "Final Output (Podcast Reels)",
+        desc: "Hasil akhir (Final Render) dari kolaborasi tiga tahapan pascaproduksi di atas. Visual branding yang kuat dari Figma, penyuntingan dinamis dari Premiere Pro, dan kualitas audio yang bersih, semuanya menyatu menjadi sebuah konten Reels Instagram yang interaktif, profesional, dan siap memanjakan mata serta telinga audiens.",
+        icon: "smartphone"
+      }
+    ],
+    url: "/images/showcase/instagram/Fajratul_HMJ/Thumbnail.jpg",
+    videoUrl: "/images/showcase/instagram/Fajratul_HMJ/[SIPODCAST EPISODE 20].mp4",
+    likes: "82",
+    comments: "5",
+    link: "https://www.instagram.com/p/CrniVfEL3hr/",
+    caption: [
+      "Jangan lewatkan obrolan seru bareng ketua HMJ-SI periode 2023-2024! Dapat ditonton di Youtube HMJ Sistem Informasi UINAM dan Spotify Sisfo Uinam 🤩",
+      "",
+      "Youtube:",
+      "https://youtu.be/bt_SXRPZZ2Y",
+      "Spotify:",
+      "https://podcasters.spotify.com/pod/show/hmj-sistem-informasi-uinam/episodes/Berkenalan-Dengan-Ketua-HMJ-Sistem-Informasi-2023-2024--SIPODCAST-Episode-20-e237jme/a-a9ogrvl"
+    ].join("\n")
   }
-
 ];
 
 export const youtubeProfile = {
@@ -507,6 +572,36 @@ export const hmjYoutube = [
     id: 8,
     title: "Lomba Videografi Milad FST UIN Alauddin Makassar | Prodi Sisitem Informasi",
     videoId: "SLlI6CYSNYk"
+  },
+  {
+    id: 9,
+    title: "Berkenalan Dengan Ketua HMJ-Sistem Informasi 2023-2024 | SIPODCAST Episode 20",
+    videoId: "bt_SXRPZZ2Y"
+  },
+  {
+    id: 10,
+    title: "Literasi Digital | SIPODCAST Episode 22 Bareng Kak Emil",
+    videoId: "HiQ3tNz7dmU"
+  },
+  {
+    id: 11,
+    title: "Menyingkapi Rahasia Sukses Meta Marketing | SIPODCAST Episode 23 Bareng Kak Rahman",
+    videoId: "CzevvUkgxNQ"
+  },
+  {
+    id: 12,
+    title: "Inovasi kajur pada Jurusan sistem informasi kedepannya | SIPODCAST Episode 25",
+    videoId: "bcKtOxSegHQ"
+  },
+  {
+    id: 13,
+    title: "SIPODCAST Episode 24 Nongki Nyantai Part 2 Bareng Kakanda Cakra",
+    videoId: "mbBwAe3ptzA"
+  },
+  {
+    id: 14,
+    title: "Kreasi 021 \"My Story Your Story Our Story\"",
+    videoId: "fwiCSi1J5bE"
   }
 ];
 

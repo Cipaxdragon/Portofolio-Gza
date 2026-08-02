@@ -15,6 +15,27 @@ import {
 import { SiFigma } from 'react-icons/si'
 import SectionHeader from '@/components/shared/SectionHeader'
 
+const LiteYouTubeEmbed = ({ videoId, title, onClick }) => {
+  return (
+    <div 
+      className="w-full h-full relative cursor-pointer group"
+      onClick={onClick}
+    >
+      <Image 
+        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} 
+        alt={title} 
+        fill 
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+        <div className="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-brand-primary/90 group-hover:border-brand-primary transition-all duration-300">
+          <Play className="w-8 h-8 text-white ml-1 group-hover:text-black transition-colors duration-300" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function SocialGallery() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -420,16 +441,17 @@ export default function SocialGallery() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="aspect-video w-full rounded-xl overflow-hidden border border-white/5 shadow-lg bg-black relative group"
                 >
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${video.videoId}`}
-                    title={video.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  ></iframe>
+                  <LiteYouTubeEmbed 
+                    videoId={video.videoId} 
+                    title={video.title} 
+                    onClick={() => openPost({
+                      id: `yt-${video.id}`,
+                      type: 'video',
+                      videoUrl: `https://www.youtube.com/embed/${video.videoId}`,
+                      caption: video.title,
+                      link: `https://www.youtube.com/watch?v=${video.videoId}`
+                    })}
+                  />
                 </motion.div>
               ))}
             </div>
@@ -476,16 +498,16 @@ export default function SocialGallery() {
                           <div className="grid grid-cols-2 gap-12 p-12 md:p-24 w-[1200px] md:w-[1800px]">
                             
                             {selectedPost.canvasNodes.map((node, i) => {
-                              const isVideoType = node.type === 'video' || node.type === 'youtube';
+                              const isFullWidth = node.fullWidth || ((node.type === 'video' || node.type === 'youtube') && selectedPost.canvasNodes.length > 2);
                               return (
-                                <div key={i} className={`flex flex-col gap-5 ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'col-span-2' : ''}`}>
+                                <div key={i} className={`flex flex-col gap-5 ${isFullWidth ? 'col-span-2' : ''}`}>
                                   {/* Media Box */}
-                                  <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'aspect-video w-full max-w-5xl mx-auto' : 'aspect-video'}`}>
+                                  <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black ${isFullWidth ? 'aspect-video w-full max-w-5xl mx-auto' : 'aspect-video'}`}>
                                     {node.type === 'video' ? (
                                       <video 
                                         src={node.src} 
                                         autoPlay loop muted playsInline preload="none"
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-contain"
                                       />
                                     ) : node.type === 'youtube' ? (
                                       <iframe 
@@ -495,12 +517,12 @@ export default function SocialGallery() {
                                         allowFullScreen
                                       ></iframe>
                                     ) : (
-                                    <Image src={node.src} alt={node.title} fill className="object-cover" />
+                                    <Image src={node.src} alt={node.title} fill className="object-contain" />
                                   )}
-                                </div>
+                                  </div>
                                 
                                 {/* Info Card (Glassmorphism) */}
-                                <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl relative overflow-hidden group hover:bg-white/10 transition-colors ${isVideoType && selectedPost.canvasNodes.length > 2 ? 'w-full max-w-5xl mx-auto' : ''}`}>
+                                <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl relative overflow-hidden group hover:bg-white/10 transition-colors ${isFullWidth ? 'w-full max-w-5xl mx-auto' : ''}`}>
                                    <div className="absolute top-0 left-0 w-1 h-full bg-brand-primary"></div>
                                    <h4 className="text-white font-bold flex items-center gap-3 mb-3 text-lg">
                                      {renderIcon(node.icon)}
@@ -569,7 +591,7 @@ export default function SocialGallery() {
                   selectedPost.videoUrl ? (
                     selectedPost.videoUrl.includes('youtube.com') || selectedPost.videoUrl.includes('youtu.be') ? (
                       <iframe 
-                        src={`${selectedPost.videoUrl}${selectedPost.videoUrl.includes('?') ? '&' : '?'}autoplay=1`} 
+                        src={`${selectedPost.videoUrl}${selectedPost.videoUrl.includes('?') ? '&' : '?'}autoplay=1&modestbranding=1&rel=0`} 
                         className="w-full h-full min-h-[300px] md:min-h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowFullScreen
@@ -693,23 +715,32 @@ export default function SocialGallery() {
                     </div>
                   )}
                 </div>
-                {/* Footer Action (Only for IG Post) */}
+                {/* Footer Action (Only for IG Post/Youtube) */}
                 {!showBTS && (
                   <div className="p-4 border-t border-white/10 animate-in slide-in-from-bottom-2 duration-300">
-                    <div className="flex items-center gap-4 mb-3">
-                      <Heart className="w-6 h-6 text-white" />
-                      <MessageCircle className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="font-bold text-sm text-white mb-4">
-                      {selectedPost.likes} suka
-                    </div>
+                    {!(selectedPost.link && selectedPost.link.includes('youtube')) && (
+                      <>
+                        <div className="flex items-center gap-4 mb-3">
+                          <Heart className="w-6 h-6 text-white" />
+                          <MessageCircle className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="font-bold text-sm text-white mb-4">
+                          {selectedPost.likes} suka
+                        </div>
+                      </>
+                    )}
                     <a 
                       href={selectedPost.link || `https://instagram.com/${hmjProfile.username}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-200 text-black py-3 rounded-xl font-bold transition-colors"
+                      className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold transition-colors ${
+                        selectedPost.link && selectedPost.link.includes('youtube') 
+                          ? 'bg-[#FF0000] hover:bg-[#CC0000] text-white' 
+                          : 'bg-white hover:bg-gray-200 text-black'
+                      }`}
                     >
-                      Lihat di Instagram <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4" />
+                      {selectedPost.link && selectedPost.link.includes('youtube') ? 'Buka di YouTube' : 'Buka di Instagram'}
                     </a>
                   </div>
                 )}

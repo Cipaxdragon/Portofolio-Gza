@@ -101,13 +101,16 @@ export default function SocialGallery() {
         
         <div className="mb-16 mt-8 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
           {hmjProfile.experiences.map((exp, idx) => (
-            <div key={idx} className={`relative ${idx !== 0 ? 'mt-14' : ''}`}>
+            <div 
+              key={idx} 
+              className={`relative ${idx !== 0 ? 'mt-14' : ''}`}
+            >
               
               {/* Timeline Nodes */}
-              {idx === 0 ? (
+              {(exp.avatarUrl || idx === 0) ? (
                 <div className="absolute -left-[57px] lg:-left-[69px] -top-3 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#111] border-[4px] border-[#0a0a0a] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-hidden z-10 flex items-center justify-center">
                   <div className="relative w-full h-full rounded-full overflow-hidden">
-                    <Image src={hmjProfile.avatarUrl} alt="Logo HMJSI" fill className="object-cover" />
+                    <Image src={exp.avatarUrl || hmjProfile.avatarUrl} alt="Logo Organisasi" fill className="object-contain bg-black" />
                   </div>
                 </div>
               ) : (
@@ -128,6 +131,26 @@ export default function SocialGallery() {
               <p className="text-brand-muted text-sm sm:text-base lg:text-lg leading-relaxed mb-6 whitespace-pre-line">
                 {exp.description}
               </p>
+              
+              {/* Inline Media Card (LinkedIn Style) */}
+              {exp.proofData && (
+                <div 
+                  className="mb-6 flex items-center gap-4 cursor-pointer group rounded-xl hover:bg-white/5 p-2 -ml-2 transition-colors w-full sm:w-max pr-6 border border-transparent hover:border-white/10"
+                  onClick={() => openPost(exp.proofData)}
+                >
+                  <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border border-white/10 bg-black flex-shrink-0">
+                    <Image src={exp.proofData.url} alt="Proof Thumbnail" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <ExternalLink className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold text-sm sm:text-base group-hover:text-brand-primary transition-colors line-clamp-2">
+                      {exp.proofData.title || exp.role}
+                    </h4>
+                  </div>
+                </div>
+              )}
               
               <div className="flex flex-wrap gap-2">
                 {exp.skills.map((skill, index) => (
@@ -497,10 +520,17 @@ export default function SocialGallery() {
 
           {/* Main Full Video (After Movie) */}
           <div className="mb-12">
-            <div className="flex items-center gap-3 mb-5 pl-2 border-l-4 border-brand-primary">
-              <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">
-                Official After Movie
-              </h3>
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center gap-3 pl-2 border-l-4 border-brand-primary">
+                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">
+                  Official After Movie
+                </h3>
+              </div>
+              {activeCommitteeTab === 'Kreasi' && (
+                <div className="relative w-12 h-12">
+                  <Image src="/images/logos/Logo_kreasi 1.png" alt="Logo Kreasi" fill className="object-contain" />
+                </div>
+              )}
             </div>
             
             <div 
@@ -760,7 +790,7 @@ export default function SocialGallery() {
                     }`}
                   >
                     <Video className="w-4 h-4" />
-                    {showBTS ? "Kembali ke Hasil Akhir" : "Lihat Behind The Scenes"}
+                    {showBTS ? "Kembali ke Tampilan Utama" : (selectedPost.btsButtonText || "Lihat Behind The Scenes")}
                   </button>
                 )}
               </div>
@@ -772,15 +802,17 @@ export default function SocialGallery() {
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0 bg-brand-primary/20 flex justify-center items-center">
+                    <div className={`w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0 flex justify-center items-center ${selectedPost.isProof ? 'bg-brand-primary' : 'bg-brand-primary/20'}`}>
                       {showBTS ? (
                         <Video className="w-4 h-4 text-brand-primary" />
+                      ) : selectedPost.isProof ? (
+                        <Layers className="w-4 h-4 text-black" />
                       ) : (
                         <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
                       )}
                     </div>
                     <span className="font-bold text-sm text-white">
-                      {showBTS ? "Project Breakdown" : hmjProfile.username}
+                      {showBTS ? "Project Breakdown" : selectedPost.isProof ? "Role Documentation" : hmjProfile.username}
                     </span>
                   </div>
                   <button onClick={() => setSelectedPost(null)} className="p-1.5 hover:bg-white/10 rounded-full transition-colors">
@@ -789,10 +821,30 @@ export default function SocialGallery() {
                 </div>
 
                 {/* Caption / Description (Scrollable) */}
-                <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar">
                   {showBTS ? (
                     <div className="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap animate-in fade-in duration-300">
                       {selectedPost.btsDescription || "Sebuah cuplikan dari struktur layer dan proses editing di balik layar untuk karya ini."}
+                    </div>
+                  ) : selectedPost.isProof ? (
+                    <div className="flex flex-col animate-in fade-in duration-300 h-full">
+                      <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                        {selectedPost.title}
+                      </h2>
+                      <div className="w-12 h-1 bg-brand-primary mb-6 rounded-full"></div>
+                      <div className="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+                        {selectedPost.caption}
+                      </div>
+                      
+                      <div className="mt-8 pt-6 border-t border-white/10 mt-auto">
+                        <div className="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                          <Check className="w-4 h-4" />
+                          <span>Official Structural Documentation</span>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-2">
+                          Bukti sah desain struktural, manajemen tim, dan antarmuka (UI/UX).
+                        </p>
+                      </div>
                     </div>
                   ) : (
                     <div className="flex gap-3 animate-in fade-in duration-300">
@@ -809,7 +861,7 @@ export default function SocialGallery() {
                   )}
                 </div>
                 {/* Footer Action (Only for IG Post/Youtube) */}
-                {!showBTS && (
+                {!showBTS && !selectedPost.isProof && (
                   <div className="p-4 border-t border-white/10 animate-in slide-in-from-bottom-2 duration-300">
                     {!(selectedPost.link && selectedPost.link.includes('youtube')) && (
                       <>

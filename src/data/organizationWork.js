@@ -19,7 +19,56 @@ export const hmjProfile = {
         { name: "Figma" },
         { name: "Photoshop" },
         { name: "CapCut" }
-      ]
+      ],
+      proofData: {
+        id: "bukti_ketua",
+        title: "Ketua Divisi Kominfo Periode 2024",
+        isProof: true,
+        type: "carousel",
+        url: "/images/showcase/instagram/Jabatan/Periode 2024/Struktural.jpg",
+        slides: [
+          "/images/showcase/instagram/Jabatan/Periode 2024/Struktural.jpg",
+          "/images/showcase/instagram/Jabatan/Periode 2024/Struktural_1.jpg"
+        ],
+        btsType: "canvas",
+        btsButtonText: "Lihat Desain Teknis (Figma)",
+        canvasNodes: [
+          {
+            id: 'figma-ketua-master',
+            type: 'image',
+            title: 'Master Workspace Kominfo',
+            desc: 'Tinjauan makro (birds-eye view) dari seluruh ruang kerja tim Kominfo di Figma. Terlihat manajemen proyek berskala besar dengan berbagai halaman (Pages) terstruktur di panel kiri seperti \'Podcast\', \'Konten VFX\', \'STRUKTURAL\', dan \'LPJ\'. Ini membuktikan alur kerja desain yang sangat terorganisir untuk menangani beragam jenis publikasi himpunan secara simultan.',
+            src: "/images/showcase/instagram/Jabatan/Periode 2024/Behind_The Scenes/Behind_The_Scenes.png",
+            x: -650, y: 50, width: 650, height: 400
+          },
+          {
+            id: 'figma-ketua-1',
+            type: 'image',
+            title: 'Design System & Component Library',
+            desc: 'Tangkapan layar ini memperlihatkan halaman khusus \'Component\' tempat saya membangun sistem desain dasar (Design System) organisasi. Terdapat panduan margin batas aman (Safe Margin), hirarki palet warna, tekstur pola (pattern), dan berbagai elemen UI yang dijadikan Master Component. Hal ini krusial untuk memastikan seluruh desainer dalam divisi memiliki DNA visual yang seragam dan dapat bekerja lebih efisien (reusability).',
+            src: "/images/showcase/instagram/Jabatan/Periode 2024/Behind_The Scenes/Bts_Figma_1.png",
+            x: 50, y: 50, width: 450, height: 350
+          },
+          {
+            id: 'figma-ketua-2',
+            type: 'image',
+            title: 'Podcast Carousel & Feed Layouting',
+            desc: 'Eksplorasi tata letak berskala besar untuk publikasi program SIPODCAST. Bagian atas secara rinci memperlihatkan perancangan infografis carousel geser (microblog) bertema \'Membangun Start Up IT\', lengkap dengan kerangka urutan slide (Outline, Pembukaan, hingga Penutupan). Di bagian bawah, terdapat susunan hierarki untuk sampul Feed Instagram dan Reels yang selaras dengan identitas acara.',
+            src: "/images/showcase/instagram/Jabatan/Periode 2024/Behind_The Scenes/Bts_Figma_2.png",
+            x: 550, y: -20, width: 450, height: 350
+          },
+          {
+            id: 'figma-ketua-3',
+            type: 'image',
+            title: 'Multi-Format Asset Production',
+            desc: 'Fokus pada halaman \'SIPOD-1\', terlihat proses produksi aset digital multi-format untuk satu tayangan konten utuh. Kanvas ini mendemonstrasikan bagaimana satu topik utama (\'Media Sosial Di Dunia Kampus\') dipecah secara sistematis ke dalam berbagai rasio layar: Slide Presentasi lebar (16:9), Instagram Story (SG PODCAST), tayangan tegak (Reels), hingga pembuatan sampul episode. Ini membuktikan manajemen produksi yang adaptif terhadap seluruh platform.',
+            src: "/images/showcase/instagram/Jabatan/Periode 2024/Behind_The Scenes/Bts_Figma_3.png",
+            x: 200, y: 450, width: 550, height: 350
+          }
+        ],
+        btsDescription: "Dokumentasi pengerjaan teknis desain struktural divisi di Figma. Memperlihatkan manajemen layer, komponen antarmuka, dan perancangan aset digital organisasi.",
+        caption: "Bukti Struktural Divisi dan Tangkapan Layar Desain Figma sebagai Ketua Divisi Kominfo HMJSI UINAM.\n\nDalam peran ini, saya tidak hanya memimpin divisi secara konseptual, tetapi juga turun tangan secara teknis dalam merancang struktur organisasi, manajemen UI/UX, dan berbagai aset digital publikasi menggunakan Figma."
+      }
     },
     {
       role: "Anggota Divisi Komunikasi Dan Informasi",
@@ -32,7 +81,19 @@ export const hmjProfile = {
         { name: "Illustrator" },
         { name: "Premiere Pro" },
         { name: "CapCut" }
-      ]
+      ],
+      proofData: {
+        id: "bukti_anggota",
+        title: "Anggota Divisi Kominfo Periode 2023",
+        isProof: true,
+        type: "carousel",
+        url: "/images/showcase/instagram/Jabatan/Periode 2023/Struktural_1.jpg",
+        slides: [
+          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural_1.jpg",
+          "/images/showcase/instagram/Jabatan/Periode 2023/Struktural.jpg"
+        ],
+        caption: "Bukti keanggotaan Struktural pada Divisi Komunikasi dan Informasi HMJSI UINAM Periode 2023."
+      }
     },
     {
       role: "Panitia Divisi Publikasi dan Dokumentasi (Pubdok)",
@@ -59,7 +120,8 @@ export const hmjProfile = {
         { name: "Illustrator" },
         { name: "Photoshop" },
         { name: "CapCut" }
-      ]
+      ],
+      avatarUrl: "/images/logos/Logo_kreasi 1.png"
     }
   ]
 };
@@ -743,4 +805,11 @@ export const hmjReels = [
     link: 'https://www.instagram.com/reel/CpfVpKjJb_u/',
     caption: "Assalamualaikum SItizen😉\r\n\r\nDokumentasi kegiatan yang paling ditunggu-tunggu sudah ada nih. Semoga kalian suka yaa\r\n\r\nDan Semoga RAKER tahun ini dapat meningkatkan kualitas tugas dan pelayanan agar setiap pelaksanaan usulan kebutuhan masing – masing bidang terealisasi dengan tepat dan akurat. Aamiin🙏😊"
   }
+];
+
+// Menggabungkan semua canvasNodes (Behind The Scenes) menjadi satu array global
+export const allBtsNodes = [
+  ...hmjGallery.filter(item => item.canvasNodes).flatMap(item => item.canvasNodes),
+  ...hmjReels.filter(item => item.canvasNodes).flatMap(item => item.canvasNodes),
+  ...hmjProfile.experiences.filter(exp => exp.proofData && exp.proofData.canvasNodes).flatMap(exp => exp.proofData.canvasNodes)
 ];

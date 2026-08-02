@@ -75,6 +75,43 @@ export const hmjGallery = [
   {
     id: 2,
     type: "video",
+    canvasNodes: [
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Ekpetasi_realtia/bts_1.jpg",
+        title: "VFX Screen Replacement",
+        desc: "Proses ini berfokus pada penggantian layar handphone mentah (Green Screen) dengan antarmuka UI kustom menggunakan Adobe After Effects. Teknik yang digunakan melibatkan Motion Tracking berbasis Corner Pin untuk memastikan layar digital menempel sempurna pada perspektif handphone yang bergerak. Tantangan utamanya adalah melakukan masking manual (Rotoscoping) pada jari-jari aktor yang menutupi layar agar UI terlihat berada di balik jari, bukan menimpanya.",
+        icon: "monitor"
+      },
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Ekpetasi_realtia/bts_2.jpg",
+        title: "3D Hologram UI Tracking",
+        desc: "Untuk menciptakan efek elemen UI yang melayang di udara, ruang fisik dianalisis menggunakan 3D Camera Tracker. Setelah titik-titik pelacakan (tracking points) terbentuk, elemen grafis hologram ditempatkan pada sumbu Z (kedalaman) agar bereaksi secara realistis terhadap pergerakan kamera asli (parallax effect). Efek tambahan seperti Glow, chromatic aberration, dan sedikit opacity jitter ditambahkan untuk memperkuat kesan proyeksi digital yang sinematik.",
+        icon: "layers"
+      },
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Ekpetasi_realtia/bts_3.jpg",
+        title: "Master Compositing & Audio Mixing",
+        desc: "Di Adobe Premiere Pro, seluruh adegan yang telah diberi efek visual digabungkan (Master Sequence). Proses ini tidak hanya tentang pemotongan klip (cutting) untuk menjaga ritme, melainkan juga Color Grading mendalam menggunakan Lumetri Color agar tone warna antar adegan selaras. Selain itu, perakitan lapisan efek suara (SFX) berlapis-lapis dilakukan untuk membangun imersi, memastikan setiap transisi visual didukung oleh dentuman audio yang tepat sasaran.",
+        icon: "film"
+      },
+      {
+        type: "image",
+        src: "/images/showcase/instagram/Ekpetasi_realtia/bts_4.jpg",
+        title: "Advanced 2D Motion Tracking",
+        desc: "Mengimplementasikan teknik tracking yang mengunci kotak profil HUD (Heads-Up Display) ke subjek yang sedang berjalan. Karena bentuk dan posisi subjek terus berubah (dinamis), proses tracking konvensional sering meleset, sehingga dibutuhkan penyesuaian keyframe manual secara berkala. Elemen UI ini dirancang dengan gaya sci-fi minimalis untuk menunjukkan keahlian dalam memadukan motion graphics dengan video live-action.",
+        icon: "crosshair"
+      },
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Ekpetasi_realtia/AQMviRBRqBuRSSbiQVlb6aU0LQw0c2H7rEUJdsCqJsThKtR-f1UHCrWOSbQ2ue0ac1Ccp0kUn4g3qLa3ccPlItpwH6ngkYmVvRfY7cs.mp4",
+        title: "Final Render Preview",
+        desc: "Hasil akhir komposisi (Final Render). Di tahap ini, seluruh aset berlapis (mulai dari tracking, rotoscoping, hologram, color grading, hingga audio mixing) telah diekspor menjadi satu kesatuan video utuh. Detail sekecil apa pun dari proses VFX di atas dapat langsung terlihat menyatu secara natural tanpa terlihat seperti editan yang kasar.",
+        icon: "video"
+      }
+    ],
     url: "/images/showcase/instagram/Ekpetasi_realtia/498662995_686574140797437_3726549480794499885_n.jpg",
     videoUrl: "/images/showcase/instagram/Ekpetasi_realtia/AQMviRBRqBuRSSbiQVlb6aU0LQw0c2H7rEUJdsCqJsThKtR-f1UHCrWOSbQ2ue0ac1Ccp0kUn4g3qLa3ccPlItpwH6ngkYmVvRfY7cs.mp4",
     likes: "568",
@@ -97,6 +134,23 @@ export const hmjGallery = [
   {
     id: 3,
     type: "video",
+    btsType: "canvas",
+    canvasNodes: [
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Coming_Soon_Jejak_Desa/bts_1.mp4",
+        title: "Multi-Platform Workflow & VFX Teleport",
+        desc: "Rekaman layar ini memperlihatkan sebagian dari alur kerja (workflow) kompleks yang melibatkan Figma, CapCut, dan Adobe After Effects. Perancangan tata letak dikerjakan di Figma. Untuk efek visual (VFX), diterapkan teknik khusus ala 'Teleportasi Goku' (Instant Transmission) di After Effects—dibuat dengan cara melakukan pemotongan presisi (cut) pada 1 frame saja yang dikombinasikan dengan sentuhan efek Fast Blur berintensitas tinggi agar perpindahan terasa secepat kilat (blink effect). Proses editing penyelarasan ritme juga dioptimalkan menggunakan CapCut.",
+        icon: "monitor"
+      },
+      {
+        type: "video",
+        src: "/images/showcase/instagram/Coming_Soon_Jejak_Desa/AQPH7HucjB5K8swb7BIrxlkCwOr5Ju4oh00aLuOrCVTRxOz4sZ23Sv7AIpFe07xANsEitZgzclqI9D17wn0cu0jMsQJhANXX-QH9F8A.mp4",
+        title: "Final Output (Jejak Desa)",
+        desc: "Video hasil akhir (Master Render). Kombinasi dari ketiga perangkat lunak (Figma, CapCut, After Effects) bersatu menghasilkan potongan video sinematik dengan perpindahan ruang waktu (teleportasi) yang dinamis tanpa menghilangkan nuansa natural alam pedesaan.",
+        icon: "video"
+      }
+    ],
     url: "/images/showcase/instagram/Coming_Soon_Jejak_Desa/498693438_1625524184799162_3388910270256708677_n.jpg",
     videoUrl: "/images/showcase/instagram/Coming_Soon_Jejak_Desa/AQPH7HucjB5K8swb7BIrxlkCwOr5Ju4oh00aLuOrCVTRxOz4sZ23Sv7AIpFe07xANsEitZgzclqI9D17wn0cu0jMsQJhANXX-QH9F8A.mp4",
     likes: "248",
@@ -382,17 +436,155 @@ export const youtubeProfile = {
 export const hmjYoutube = [
   {
     id: 1,
-    title: "Podcast HMJSI Episode 1",
-    videoId: "https://www.youtube.com/watch?v=fwiCSi1J5bE", // Ganti dengan ID video YouTube HMJSI yang asli
+    title: "Media Sosial didunia Kampus | SIPODCAST Eps.28",
+    videoId: "mIA1Ocq5DU4"
   },
   {
     id: 2,
-    title: "Podcast HMJSI Episode 2",
-    videoId: "https://www.youtube.com/watch?v=fwiCSi1J5bE", // Ganti dengan ID video YouTube HMJSI yang asli
+    title: "Perjuangan Menjadi Fullstack Developer Bersama Kak Safira | SIPODCAST Eps.30",
+    videoId: "Ir9sqrhaRIA"
   },
   {
     id: 3,
-    title: "Company Visit HMJSI",
-    videoId: "IDNdlXrZgGM", // Ganti dengan ID video YouTube HMJSI yang asli
+    title: "Mengembangkan Talenta Digital Melalui Startup | SIPODCAST Eps.29",
+    videoId: "_bWL4g0J6DM"
+  },
+  {
+    id: 4,
+    title: "Dari Covid Sampai Sekarang! Strategi & Entrepreneurship Kaku Food Bersama Kak Bayu",
+    videoId: "kR_4JZea13A"
+  },
+  {
+    id: 5,
+    title: "Moderasi Beragama, Integrasi Keilmuan & Manajemen Bersama Pak Budi | SIPODCAST eps.32",
+    videoId: "VrHicp8BdtQ"
+  },
+  {
+    id: 6,
+    title: "Konten Kreator di dunia Kampus | SIPODCAST Episode 21 Bareng @rijaldjamal",
+    videoId: "576WOQ6VC14"
+  },
+  {
+    id: 7,
+    title: "Company Visit 2023 | The Rise of Digital ERA : Preparing For A Connected Future",
+    videoId: "mEnHAA9FV3Q"
+  },
+  {
+    id: 8,
+    title: "Lomba Videografi Milad FST UIN Alauddin Makassar | Prodi Sisitem Informasi",
+    videoId: "SLlI6CYSNYk"
+  }
+];
+
+export const hmjReels = [
+  {
+    id: 101,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_01_DC6XvvhSVb9/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_01_DC6XvvhSVb9/Video.mp4',
+    likes: 65,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/DC6XvvhSVb9/',
+    caption: "Asal-usul nama 'kaku' ternyata punya cerita unik nih SItizen! Sudah tahu belum? Yuk, simak videonya! 🎥✨"
+  },
+  {
+    id: 102,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_02_DC1QYZAy7dJ/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_02_DC1QYZAy7dJ/Video.mp4',
+    likes: 68,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/DC1QYZAy7dJ/',
+    caption: "Tempat Rekomendasi Untuk Belajar Website📚"
+  },
+  {
+    id: 103,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_03_DAUUSwJRP1d/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_03_DAUUSwJRP1d/Video.mp4',
+    likes: 41,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/DAUUSwJRP1d/',
+    caption: "Langkah Pertama Ketika Tahu Keinginan dan Potensi /Bakat Kita 💪"
+  },
+  {
+    id: 104,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_04_DABJxRkuaZ_/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_04_DABJxRkuaZ_/Video.mp4',
+    likes: 101,
+    comments: 2,
+    link: 'https://www.instagram.com/reel/DABJxRkuaZ_/',
+    caption: "Sisfo Camp 2024 🏕️"
+  },
+  {
+    id: 105,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_05_C_kPdZ1sUNg/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_05_C_kPdZ1sUNg/Video.mp4',
+    likes: 72,
+    comments: 1,
+    link: 'https://www.instagram.com/reel/C_kPdZ1sUNg/',
+    caption: "Behind The Scene SIPODCAST #29🎙️"
+  },
+  {
+    id: 106,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_06_C-7jljlgbKx/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_06_C-7jljlgbKx/Video.mp4',
+    likes: 78,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/C-7jljlgbKx/',
+    caption: "Tips and trik manajemen sosmed ala kak iccang"
+  },
+  {
+    id: 107,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_07_C1Ll_lRpKW8/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_07_C1Ll_lRpKW8/Video.mp4',
+    likes: 23,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/C1Ll_lRpKW8/',
+    caption: "Assalamualaikum Warahmatullahi Wabarakaatuh\r\n\r\nHalo SItizen!\r\n\r\nDalam episode ini, kita akan dibuat mengerti mengenai seberapa besarnya peranan teknologi terhadap perkembangan public speaking, contohnya seperti kemampuan presentasi dan keberanian berbicara di depan umum. Dari alat bantu canggih hingga platform digital yang mendukung, kita dapat memaparkan langkah-langkah praktis untuk mengasah keterampilan berbicara yang efektif\r\n\r\nYang merasa hal ini relate dalam kehidupannya ataupun masih kurang percaya boleh segera menonton SIpodcast episode 27 di kanal Youtub HMJ Sistem Informasi UINAM 🤗\r\n\r\nAccess link 👉 https://youtu.be/IiOThyLGi3A"
+  },
+  {
+    id: 108,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_08_C1I4R2Tpx3H/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_08_C1I4R2Tpx3H/Video.mp4',
+    likes: 58,
+    comments: 2,
+    link: 'https://www.instagram.com/reel/C1I4R2Tpx3H/',
+    caption: "Assalamu'alaikum Warahmatullahi Wabarakaatuh\r\n\r\nHalo SItizen! \r\n\r\nEpisode 26 udah tayang ya di Youtube official kita (HMJ Sistem Informasi UINAM)! Kali ini bersama narasumber kita kak Raniah Auranti yang dengan senang hati berbagi informasi seputar Machine Learning\r\n\r\nPenasaran apa itu Machine Learning? Segera buka Youtube kalian dan kita simak pembicaraan SIpidcast kali ini! Go go go~!!"
+  },
+  {
+    id: 109,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_09_C082rh6p1bN/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_09_C082rh6p1bN/Video.mp4',
+    likes: 81,
+    comments: 2,
+    link: 'https://www.instagram.com/reel/C082rh6p1bN/',
+    caption: "Assalamu'alaikum Warahmatullahi Wabaraakatuh\r\n\r\nHalo SItizen! \r\n\r\nSIpodcast kali ini membahas tentang inovasi Ketua Jurusan Sistem Informasi baru kita loh! Jadi yang penasaran chit chatan bareng beliau, simak baik-baik ya perbincangan kita kali ini!\r\n\r\nOh ya, kalau kalian suka, tekan likenya dan mari tuangkan juga pendapat kalian setelah menonton habis SIpodcast episode 25 di kolom komentar bawah 👇😄👇"
+  },
+  {
+    id: 110,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_10_CtOye8UuBKR/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_10_CtOye8UuBKR/Video.mp4',
+    likes: 52,
+    comments: 1,
+    link: 'https://www.instagram.com/reel/CtOye8UuBKR/',
+    caption: "🚀 Selamat datang di Sisfo Store! 🎉 Kini hadir program kerja dari Divisi Kesekretariatan dan Logistik dari Himpunan Mahasiswa Jurusan Sistem Informasi yang menyediakan barang dan layanan terbaik untuk kebutuhan kuliahmu.\r\n\r\nJangan lupa untuk follow kami di Instagram @sisfo_store untuk mendapatkan update terbaru tentang barang dan promosi menarik lainnya!"
+  },
+  {
+    id: 111,
+    type: 'video',
+    url: '/images/showcase/instagram/Reels/Reel_11_CpfVpKjJb_u/Thumbnail.png',
+    videoUrl: '/images/showcase/instagram/Reels/Reel_11_CpfVpKjJb_u/Video.mp4',
+    likes: 74,
+    comments: 0,
+    link: 'https://www.instagram.com/reel/CpfVpKjJb_u/',
+    caption: "Assalamualaikum SItizen😉\r\n\r\nDokumentasi kegiatan yang paling ditunggu-tunggu sudah ada nih. Semoga kalian suka yaa\r\n\r\nDan Semoga RAKER tahun ini dapat meningkatkan kualitas tugas dan pelayanan agar setiap pelaksanaan usulan kebutuhan masing – masing bidang terealisasi dengan tepat dan akurat. Aamiin🙏😊"
   }
 ];

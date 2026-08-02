@@ -53,6 +53,7 @@ function ServiceBlock({ service, isEven }) {
               loop 
               muted 
               playsInline 
+              preload="none"
               className="w-full h-full object-cover mix-blend-screen"
             />
             <div className="absolute inset-0 bg-brand-accent/5 pointer-events-none mix-blend-overlay"></div>

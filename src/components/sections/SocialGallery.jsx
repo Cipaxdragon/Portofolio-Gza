@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { hmjProfile, hmjGallery, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
-import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video } from 'lucide-react'
+import { hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
+import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video, MousePointer2, Monitor, Layers, Film, Crosshair } from 'lucide-react'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import { 
   TbBrandAdobePhotoshop,
   TbBrandAdobeIllustrator,
@@ -17,11 +18,32 @@ import SectionHeader from '@/components/shared/SectionHeader'
 export default function SocialGallery() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentBtsSlide, setCurrentBtsSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState('posts');
+  const [showBTS, setShowBTS] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  const constraintsRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const filteredGallery = activeTab === 'reels' 
+    ? [...hmjReels, ...hmjGallery.filter(post => post.type === 'video')]
+    : hmjGallery;
 
   const openPost = (post) => {
     setSelectedPost(post);
     setCurrentSlide(0);
+    setCurrentBtsSlide(0);
+    setShowBTS(false);
   };
+
+  const btsGallery = [...hmjGallery, ...hmjReels].filter(post => post.btsUrl || (post.btsSlides && post.btsSlides.length > 0));
 
   const getToolIcon = (name) => {
     switch (name) {
@@ -30,13 +52,25 @@ export default function SocialGallery() {
       case 'Photoshop': return <TbBrandAdobePhotoshop className="w-4 h-4 text-[#31A8FF]" />
       case 'Illustrator': return <TbBrandAdobeIllustrator className="w-4 h-4 text-[#FF9A00]" />
       case 'Figma': return <SiFigma className="w-[14px] h-[14px] text-[#F24E1E]" />
-      case 'CapCut': return <img src="https://cdn.simpleicons.org/capcut/FFFFFF" alt="CapCut" className="w-[14px] h-[14px] object-contain" />
+      case 'CapCut': return <Image src="/images/logos/capcut-seeklogo.png" alt="CapCut" className="w-[14px] h-[14px] object-contain" width={14} height={14} />
       default: return null
     }
   }
 
+  const renderIcon = (iconName) => {
+    switch(iconName) {
+      case 'monitor': return <Monitor className="w-4 h-4 text-brand-primary" />;
+      case 'layers': return <Layers className="w-4 h-4 text-brand-primary" />;
+      case 'film': return <Film className="w-4 h-4 text-brand-primary" />;
+      case 'crosshair': return <Crosshair className="w-4 h-4 text-brand-primary" />;
+      case 'video': return <Video className="w-4 h-4 text-brand-primary" />;
+      default: return <div className="w-2 h-2 rounded-full bg-brand-primary"></div>;
+    }
+  }
+
   return (
-    <section className="py-20 lg:py-32 relative z-10 border-t border-brand-border">
+    <>
+      <section id="works" className="py-20 md:py-32 bg-black min-h-screen relative overflow-hidden" ref={constraintsRef}>
       {/* Menggunakan max-w-4xl untuk membatasi kelebaran */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         
@@ -152,19 +186,30 @@ export default function SocialGallery() {
 
           {/* RIGHT: Instagram Grid (Now Full Width) */}
           <div className="w-full border-t border-white/10 pt-10 lg:pt-16">
-            <div className="mb-8 flex justify-center">
-              <div className="inline-flex items-center gap-2 border-t-2 border-white pt-3 px-2 -mt-[42px] lg:-mt-[66px]">
-                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="mb-8 flex justify-center gap-8 sm:gap-16 text-sm font-bold tracking-widest uppercase">
+              <div 
+                onClick={() => setActiveTab('posts')}
+                className={`inline-flex items-center gap-2 border-t-[3px] pt-3 px-2 -mt-[42px] lg:-mt-[66px] cursor-pointer transition-colors ${activeTab === 'posts' ? 'border-white text-white' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="3" y1="9" x2="21" y2="9"></line>
                   <line x1="9" y1="21" x2="9" y2="9"></line>
                 </svg>
-                <span className="text-sm font-bold tracking-widest uppercase text-white">Posts</span>
+                <span>Posts</span>
+              </div>
+              <div 
+                onClick={() => setActiveTab('reels')}
+                className={`inline-flex items-center gap-2 border-t-[3px] pt-3 px-2 -mt-[42px] lg:-mt-[66px] cursor-pointer transition-colors ${activeTab === 'reels' ? 'border-white text-white' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+              >
+                <Video className="w-4 h-4" />
+                <span>Reels</span>
               </div>
             </div>
             
-            <div className="grid grid-cols-3 gap-1 sm:gap-1.5 md:gap-2 lg:gap-3">
-              {hmjGallery.map((post, index) => (
+            {filteredGallery.length > 0 ? (
+              <div className="grid grid-cols-3 gap-1 sm:gap-1.5 md:gap-2 lg:gap-3">
+                {filteredGallery.map((post, index) => (
                 <motion.div 
                   key={post.id}
                   onClick={() => openPost(post)}
@@ -203,7 +248,12 @@ export default function SocialGallery() {
                   )}
                 </motion.div>
               ))}
-            </div>
+              </div>
+            ) : (
+              <div className="py-20 text-center text-gray-500 font-medium">
+                Belum ada postingan untuk tab ini.
+              </div>
+            )}
 
             {/* View More on Instagram Button */}
             <div className="mt-12 flex justify-center">
@@ -219,6 +269,96 @@ export default function SocialGallery() {
             </div>
           </div>
         </div>
+
+        {/* --- THE CRAFT (BEHIND THE SCENES) --- */}
+        {btsGallery.length > 0 && (
+          <div className="mb-24 pt-12 border-t border-white/10">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-white mb-4">The Craft & Timelines</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Melihat lebih dekat proses di balik layar. Geser (pan) area kanvas di bawah ini layaknya Figma untuk melihat-lihat layer editing dari karya kami.
+              </p>
+            </div>
+            
+            {/* FIGMA-LIKE CANVAS VIEWPORT */}
+            <div 
+              ref={constraintsRef}
+              className="w-full h-[600px] bg-[#0f0f0f] border border-white/10 rounded-3xl overflow-hidden relative shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]"
+              style={{ cursor: 'grab' }}
+              onMouseDown={(e) => { e.currentTarget.style.cursor = 'grabbing'; }}
+              onMouseUp={(e) => { e.currentTarget.style.cursor = 'grab'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.cursor = 'grab'; }}
+            >
+              
+              {/* Canvas Background Grid (Miro/Figma style) */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+
+              <motion.div 
+                drag 
+                dragConstraints={constraintsRef} 
+                dragElastic={0.1}
+                dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                className="w-[3000px] h-[2000px] relative"
+                initial={{ x: -300, y: -200 }} // Start slightly panned
+              >
+                {btsGallery.map((post, idx) => {
+                  // Generate scattered layout positions
+                  const scatterPositions = [
+                    { top: '15%', left: '10%' },
+                    { top: '45%', left: '28%' },
+                    { top: '25%', left: '55%' },
+                    { top: '65%', left: '15%' },
+                    { top: '55%', left: '70%' },
+                    { top: '80%', left: '40%' },
+                    { top: '30%', left: '80%' },
+                    { top: '85%', left: '75%' },
+                    { top: '10%', left: '40%' },
+                    { top: '90%', left: '20%' },
+                  ];
+                  const pos = scatterPositions[idx % scatterPositions.length];
+                  
+                  return (
+                    <motion.div 
+                      key={`bts-${post.id}-${idx}`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                        transition={{ delay: 0.2 + (idx * 0.1) }}
+                      className="absolute bg-[#111] rounded-2xl overflow-hidden border border-white/10 group shadow-2xl"
+                      style={{ top: pos.top, left: pos.left, width: '400px' }}
+                    >
+                      <div className="relative aspect-video w-full bg-black">
+                        <Image src={post.btsUrl || (post.btsSlides && post.btsSlides[0])} alt="Behind the scenes" fill className="object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <button 
+                            onClick={(e) => { 
+                              e.stopPropagation(); // prevent drag trigger if possible
+                              openPost(post); 
+                              setShowBTS(true); 
+                            }}
+                            className="bg-brand-primary text-black font-bold px-6 py-2 rounded-full text-sm hover:scale-105 transition-transform"
+                          >
+                            Buka Postingan
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-4 border-t border-white/10 bg-black/50 backdrop-blur-sm pointer-events-none">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Video className="w-4 h-4 text-brand-primary" />
+                          <span className="text-xs font-bold text-brand-primary tracking-wider uppercase">Editing Timeline</span>
+                        </div>
+                        <p className="text-xs text-gray-300 truncate">
+                          {post.caption ? post.caption.split('\n')[0] : 'Project Timeline Breakdown'}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </div>
+        )}
+
         {/* --- BLOCK 2: YOUTUBE --- */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           
@@ -297,6 +437,7 @@ export default function SocialGallery() {
         </div>
 
       </div>
+    </section>
 
       {/* INSTAGRAM POST MODAL */}
       <AnimatePresence>
@@ -309,17 +450,112 @@ export default function SocialGallery() {
             onClick={() => setSelectedPost(null)}
           >
             <motion.div 
+              layout
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#111] border border-white/10 rounded-2xl overflow-hidden shadow-2xl max-w-5xl w-full max-h-[90vh] flex flex-col md:flex-row"
+              className={`bg-[#111] border border-white/10 rounded-2xl overflow-hidden shadow-2xl w-full max-h-[90vh] flex flex-col md:flex-row transition-all duration-500 ease-out ${showBTS ? 'max-w-[90vw] md:max-w-[85vw] md:h-[80vh]' : 'max-w-3xl md:h-[480px]'}`}
             >
-              {/* Left: Image / Video Area */}
-              <div className="relative w-full md:w-3/5 bg-black h-[40vh] md:h-auto min-h-[300px] flex items-center justify-center group">
+              {/* Kiri: Media */}
+              <div className={`relative bg-black flex items-center justify-center group transition-all duration-500 ease-out ${showBTS ? (selectedPost.canvasNodes ? 'w-full h-[100vh] md:h-full' : 'w-full h-[40vh] md:h-full md:w-3/4') : 'w-full h-[40vh] md:h-full md:w-[55%]'}`}>
                 
-                {selectedPost.type === 'video' ? (
+                {showBTS && (selectedPost.btsUrl || selectedPost.btsSlides || selectedPost.canvasNodes) ? (
+                  selectedPost.canvasNodes ? (
+                    <div className="w-full h-full relative cursor-grab active:cursor-grabbing bg-[#0a0a0a]">
+                      <TransformWrapper
+                        initialScale={0.8}
+                        minScale={0.2}
+                        maxScale={4}
+                        centerOnInit
+                        wheel={{ step: 0.01, smoothStep: 0.002 }}
+                        pinch={{ step: 5 }}
+                      >
+                        <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }}>
+                          <div className="grid grid-cols-2 gap-12 p-12 md:p-24 w-[1200px] md:w-[1800px]">
+                            
+                            {selectedPost.canvasNodes.map((node, i) => (
+                              <div key={i} className={`flex flex-col gap-5 ${node.type === 'video' ? 'col-span-2' : ''}`}>
+                                {/* Media Box */}
+                                <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black ${node.type === 'video' ? 'aspect-video w-full max-w-5xl mx-auto' : 'aspect-video'}`}>
+                                  {node.type === 'video' ? (
+                                    <video 
+                                      src={node.src} 
+                                      autoPlay loop muted playsInline preload="none"
+                                      className="w-full h-full object-cover"
+                                    />
+                                  ) : (
+                                    <Image src={node.src} alt={node.title} fill className="object-cover" />
+                                  )}
+                                </div>
+                                
+                                {/* Info Card (Glassmorphism) */}
+                                <div className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl relative overflow-hidden group hover:bg-white/10 transition-colors ${node.type === 'video' ? 'w-full max-w-5xl mx-auto' : ''}`}>
+                                   <div className="absolute top-0 left-0 w-1 h-full bg-brand-primary"></div>
+                                   <h4 className="text-white font-bold flex items-center gap-3 mb-3 text-lg">
+                                     {renderIcon(node.icon)}
+                                     {node.title}
+                                   </h4>
+                                   <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                                     {node.desc}
+                                   </p>
+                                </div>
+                              </div>
+                            ))}
+
+                          </div>
+                        </TransformComponent>
+                      </TransformWrapper>
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm px-5 py-2.5 rounded-full text-white/90 text-xs sm:text-sm flex items-center gap-2 pointer-events-none z-50 shadow-2xl border border-white/10">
+                        <MousePointer2 className="w-4 h-4 text-brand-primary" /> Scroll to Zoom, Drag to Pan
+                      </div>
+                    </div>
+                  ) : selectedPost.btsSlides ? (
+                    <>
+                      {(selectedPost.btsSlides[currentSlide]).endsWith('.mp4') ? (
+                        <video 
+                          src={selectedPost.btsSlides[currentSlide]} 
+                          autoPlay 
+                          loop 
+                          muted 
+                          playsInline
+                          preload="none"
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <Image src={selectedPost.btsSlides[currentSlide]} alt="Behind the Scenes Timeline" fill className="object-contain" />
+                      )}
+                      
+                      {/* BTS Carousel Controls */}
+                      {currentSlide > 0 && (
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setCurrentSlide(prev => prev - 1); }}
+                          className="absolute left-6 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all"
+                        >
+                          <ChevronLeft className="w-6 h-6" />
+                        </button>
+                      )}
+                      {currentSlide < selectedPost.btsSlides.length - 1 && (
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setCurrentSlide(prev => prev + 1); }}
+                          className="absolute right-6 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all"
+                        >
+                          <ChevronRight className="w-6 h-6" />
+                        </button>
+                      )}
+                      
+                      {/* BTS Carousel Dots */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-50">
+                        {selectedPost.btsSlides.map((_, i) => (
+                          <div key={i} className={`h-2 rounded-full transition-all ${currentSlide === i ? 'w-6 bg-brand-primary' : 'w-2 bg-white/50'}`}></div>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Image src={selectedPost.btsUrl} alt="Behind the Scenes Timeline" fill className="object-contain" />
+                  )
+                ) : selectedPost.type === 'video' ? (
                   selectedPost.videoUrl ? (
                     selectedPost.videoUrl.includes('youtube.com') || selectedPost.videoUrl.includes('youtu.be') ? (
                       <iframe 
@@ -333,6 +569,7 @@ export default function SocialGallery() {
                         src={selectedPost.videoUrl} 
                         controls 
                         autoPlay 
+                        preload="none"
                         className="w-full h-full object-contain"
                       />
                     )
@@ -348,6 +585,7 @@ export default function SocialGallery() {
                         loop 
                         muted 
                         playsInline
+                        preload="none"
                         className="w-full h-full object-contain"
                       />
                     ) : (
@@ -383,64 +621,94 @@ export default function SocialGallery() {
                   <Image src={selectedPost.url} alt="Post image" fill className="object-contain" />
                 )}
 
+                {/* BTS Title Overlay (Removed: Moved to right sidebar) */}
+                {/* BTS Close Button (Removed: Moved to right sidebar) */}
+
+                {/* BTS Toggle Overlay Button */}
+                {(selectedPost.btsUrl || selectedPost.btsSlides || selectedPost.canvasNodes) && (
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setShowBTS(!showBTS); }}
+                    className={`absolute top-6 left-6 z-50 transition-all duration-300 flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm shadow-xl backdrop-blur-md border ${
+                      showBTS 
+                        ? 'bg-white text-black hover:bg-gray-200 border-white/50' 
+                        : 'bg-black/70 text-white hover:bg-black border-white/20 hover:border-brand-primary'
+                    }`}
+                  >
+                    <Video className="w-4 h-4" />
+                    {showBTS ? "Kembali ke Hasil Akhir" : "Lihat Behind The Scenes"}
+                  </button>
+                )}
               </div>
 
-              {/* Right: Content Area */}
-              <div className="w-full md:w-2/5 flex flex-col min-h-0 max-h-[50vh] md:max-h-full border-t md:border-t-0 md:border-l border-white/10 bg-[#111]">
+              {/* Right: Content Area (Dihilangkan sepenuhnya saat mode Canvas aktif agar layar luas) */}
+              {(!showBTS || (!selectedPost.canvasNodes && selectedPost.btsType !== 'canvas')) && (
+                <div className={`w-full flex flex-col min-h-0 md:h-full max-h-[50vh] md:max-h-full border-t md:border-t-0 md:border-l border-white/10 bg-[#111] transition-all duration-500 ${showBTS ? 'md:w-1/4' : 'md:w-[45%]'}`}>
                 
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
-                      <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                    <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0 bg-brand-primary/20 flex justify-center items-center">
+                      {showBTS ? (
+                        <Video className="w-4 h-4 text-brand-primary" />
+                      ) : (
+                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                      )}
                     </div>
-                    <span className="font-bold text-sm text-white">{hmjProfile.username}</span>
+                    <span className="font-bold text-sm text-white">
+                      {showBTS ? "Project Breakdown" : hmjProfile.username}
+                    </span>
                   </div>
                   <button onClick={() => setSelectedPost(null)} className="p-1.5 hover:bg-white/10 rounded-full transition-colors">
                     <X className="w-5 h-5 text-gray-400" />
                   </button>
                 </div>
 
-                {/* Caption (Scrollable) */}
+                {/* Caption / Description (Scrollable) */}
                 <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
-                      <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                  {showBTS ? (
+                    <div className="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap animate-in fade-in duration-300">
+                      {selectedPost.btsDescription || "Sebuah cuplikan dari struktur layer dan proses editing di balik layar untuk karya ini."}
                     </div>
-                    <div>
-                      <span className="font-bold text-sm text-white mr-2">{hmjProfile.username}</span>
-                      <span className="text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">
-                        {selectedPost.caption || "Dokumentasi kegiatan dan karya desain dari Himpunan Mahasiswa Jurusan Sistem Informasi (HMJSI) UIN Alauddin Makassar. ✨\n\n#HMJSI #SistemInformasi #UINAM #Design"}
-                      </span>
+                  ) : (
+                    <div className="flex gap-3 animate-in fade-in duration-300">
+                      <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
+                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                      </div>
+                      <div>
+                        <span className="font-bold text-sm text-white mr-2">{hmjProfile.username}</span>
+                        <span className="text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">
+                          {selectedPost.caption || "Dokumentasi kegiatan dan karya desain dari Himpunan Mahasiswa Jurusan Sistem Informasi (HMJSI) UIN Alauddin Makassar. ✨\n\n#HMJSI #SistemInformasi #UINAM #Design"}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-
-                {/* Footer Action */}
-                <div className="p-4 border-t border-white/10">
-                  <div className="flex items-center gap-4 mb-3">
-                    <Heart className="w-6 h-6 text-white" />
-                    <MessageCircle className="w-6 h-6 text-white" />
+                {/* Footer Action (Only for IG Post) */}
+                {!showBTS && (
+                  <div className="p-4 border-t border-white/10 animate-in slide-in-from-bottom-2 duration-300">
+                    <div className="flex items-center gap-4 mb-3">
+                      <Heart className="w-6 h-6 text-white" />
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="font-bold text-sm text-white mb-4">
+                      {selectedPost.likes} suka
+                    </div>
+                    <a 
+                      href={selectedPost.link || `https://instagram.com/${hmjProfile.username}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-200 text-black py-3 rounded-xl font-bold transition-colors"
+                    >
+                      Lihat di Instagram <ExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
-                  <div className="font-bold text-sm text-white mb-4">
-                    {selectedPost.likes} suka
-                  </div>
-                  <a 
-                    href={selectedPost.link || `https://instagram.com/${hmjProfile.username}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-brand-primary hover:bg-blue-600 text-white rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
-                  >
-                    Lihat di Instagram <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-
+                )}
               </div>
+            )}
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
-    </section>
+    </>
   )
 }

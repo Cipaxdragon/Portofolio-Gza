@@ -39,6 +39,7 @@ export default function Hero() {
         muted
         loop
         playsInline
+        preload="none"
       />
 
       {/* Fallback: Dot grid if no video */}

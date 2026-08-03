@@ -1,10 +1,10 @@
 export const afilabsWorks = [
   {
     id: "arvala",
-    title: "Arvala UI Motion Library",
+    title: "Arvala Brand Mockup Animations",
     role: "Motion Graphics Designer",
-    category: "UI Animation & Motion Systems",
-    description: "Pengembangan sistem animasi antarmuka (UI Animation) berskala besar untuk proyek internal Arvala di Afilabs. Terdiri dari eksplorasi puluhan variasi animasi transisi, pergerakan kartu, dan efek interaksi mikro yang dirancang dengan presisi menggunakan Adobe After Effects.",
+    category: "Brand Mockup & Motion",
+    description: "Pengembangan presentasi animasi untuk mockup merek (Brand Mockup) berskala besar untuk proyek internal Arvala di Afilabs. Terdiri dari eksplorasi puluhan variasi animasi transisi, pergerakan kartu, dan efek interaksi mikro yang dirancang dengan presisi menggunakan Adobe After Effects.",
     mainVideo: "/images/showcase/Afilabs_Karya/Arvala/Arvala_Show_9.mp4",
     aspectRatio: "video", // 16:9
     featured: true,
@@ -26,7 +26,7 @@ export const afilabsWorks = [
       },
       {
         title: "Advanced Preview",
-        description: "Review hasil render akhir dari salah satu variasi UI.",
+        description: "Review hasil render akhir dari salah satu variasi Mockup.",
         videoUrl: "/images/showcase/Afilabs_Karya/BehindtheScensAarvala/Preview_11.mp4"
       }
     ],

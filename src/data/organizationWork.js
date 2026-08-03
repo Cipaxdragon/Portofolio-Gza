@@ -8,8 +8,8 @@ export const afilabsProfile = {
       periode: "Magang Informal",
       duration: "11 Juni 2025 - 23 Oktober 2025 · 4 Bulan",
       orgName: "Afilabs Creative Agency",
-      description: "Berkesempatan magang secara informal melalui referensi senior di agensi kreatif Afilabs.\n- Berfokus penuh sebagai Motion Graphics Designer dalam merancang animasi visual yang dinamis.\n- Berkontribusi aktif dalam pembuatan aset motion graphics bermutu tinggi untuk berbagai proyek industri kreatif.\n- Melakukan riset dan eksplorasi puluhan variasi animasi antarmuka (UI Animation) menggunakan After Effects untuk proyek internal Arvala.",
-      skills: ["Motion Graphics", "UI Animation", "Video Editing", "Team Collaboration"],
+      description: "Menjalani masa magang di agensi kreatif Afilabs sebagai wadah untuk mendalami dan mengasah keterampilan di bidang Motion Graphics.\n- Berfokus penuh dalam mempelajari dan merancang animasi visual yang dinamis dan modern.\n- Terlibat aktif dalam pembuatan aset motion graphics bermutu tinggi untuk berbagai proyek industri kreatif.\n- Melakukan riset mendalam serta eksplorasi puluhan variasi animasi untuk presentasi Mockup Brand (Photoshop Mockup Animation) menggunakan After Effects untuk proyek internal Arvala.",
+      skills: ["Motion Graphics", "Brand Mockup", "Video Editing", "Team Collaboration"],
       tools: [
         { name: "After Effects" },
         { name: "Premiere Pro" },

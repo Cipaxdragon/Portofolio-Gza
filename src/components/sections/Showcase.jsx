@@ -153,7 +153,7 @@ export default function Showcase() {
                       activeTab === 'variations' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
                     }`}
                   >
-                    <Layers className="w-4 h-4" /> UI Variations ({selectedWork.variations.length})
+                    <Layers className="w-4 h-4" /> Mockup Variations ({selectedWork.variations.length})
                   </button>
                 )}
               </div>
@@ -215,8 +215,8 @@ export default function Showcase() {
                 {activeTab === 'variations' && selectedWork.variations && (
                   <div className="animate-in fade-in duration-500">
                     <div className="mb-6">
-                      <h3 className="text-xl font-bold text-white mb-2">UI Animation Library</h3>
-                      <p className="text-gray-400">Beberapa variasi animasi antarmuka yang dirancang selama proyek ini.</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Mockup Animation Library</h3>
+                      <p className="text-gray-400">Beberapa variasi animasi presentasi mockup merek yang dirancang selama proyek ini.</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {selectedWork.variations.map((vari, idx) => (

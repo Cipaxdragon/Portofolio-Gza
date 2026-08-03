@@ -67,10 +67,10 @@ export default function BtsCanvasSection() {
                         />
                       ) : node.type === 'youtube' ? (
                         <iframe 
-                          src={`https://www.youtube.com/embed/${node.videoId}?autoplay=0&controls=0&mute=1&loop=1&playlist=${node.videoId}`} 
-                          className="w-full h-full border-none pointer-events-none" 
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          tabIndex="-1"
+                          src={`${node.src}?autoplay=1&mute=1&loop=1&playlist=${node.src.split('/').pop()}`} 
+                          className="w-full h-full object-cover"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
                         />
                       ) : (
                         <Image src={node.src} alt={node.title || "BTS"} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />

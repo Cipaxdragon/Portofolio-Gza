@@ -634,7 +634,7 @@ export default function SocialGallery() {
                                       />
                                     ) : node.type === 'youtube' ? (
                                       <iframe 
-                                        src={`${node.src}?autoplay=1&mute=1&loop=1`} 
+                                        src={`${node.src}?autoplay=1&mute=1&loop=1&playlist=${node.src.split('/').pop()}`} 
                                         className="w-full h-full"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowFullScreen

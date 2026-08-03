@@ -1,3 +1,26 @@
+import { afilabsWorks } from './afilabsWorks';
+
+export const afilabsProfile = {
+  avatarUrl: "/images/logos/afilabs_Logo.jpg",
+  experiences: [
+    {
+      role: "Motion Graphics Designer (Intern)",
+      periode: "Magang Informal",
+      duration: "11 Juni 2025 - 23 Oktober 2025 · 4 Bulan",
+      orgName: "Afilabs Creative Agency",
+      description: "Berkesempatan magang secara informal melalui referensi senior di agensi kreatif Afilabs.\n- Berfokus penuh sebagai Motion Graphics Designer dalam merancang animasi visual yang dinamis.\n- Berkontribusi aktif dalam pembuatan aset motion graphics bermutu tinggi untuk berbagai proyek industri kreatif.\n- Melakukan riset dan eksplorasi puluhan variasi animasi antarmuka (UI Animation) menggunakan After Effects untuk proyek internal Arvala.",
+      skills: ["Motion Graphics", "UI Animation", "Video Editing", "Team Collaboration"],
+      tools: [
+        { name: "After Effects" },
+        { name: "Premiere Pro" },
+        { name: "Figma" },
+        { name: "Photoshop" }
+      ],
+      avatarUrl: "/images/logos/afilabs_Logo.jpg"
+    }
+  ]
+};
+
 export const hmjProfile = {
   username: "hmjsi.uinam",
   name: "HMJ Sistem Informasi UINAM",
@@ -33,14 +56,6 @@ export const hmjProfile = {
         btsType: "canvas",
         btsButtonText: "Lihat Desain Teknis (Figma)",
         canvasNodes: [
-          {
-            id: 'figma-ketua-master',
-            type: 'image',
-            title: 'Master Workspace Kominfo',
-            desc: 'Tinjauan makro (birds-eye view) dari seluruh ruang kerja tim Kominfo di Figma. Terlihat manajemen proyek berskala besar dengan berbagai halaman (Pages) terstruktur di panel kiri seperti \'Podcast\', \'Konten VFX\', \'STRUKTURAL\', dan \'LPJ\'. Ini membuktikan alur kerja desain yang sangat terorganisir untuk menangani beragam jenis publikasi himpunan secara simultan.',
-            src: "/images/showcase/instagram/Jabatan/Periode 2024/Behind_The Scenes/Behind_The_Scenes.png",
-            x: -650, y: 50, width: 650, height: 400
-          },
           {
             id: 'figma-ketua-1',
             type: 'image',
@@ -686,11 +701,6 @@ export const hmjYoutube = [
     id: 13,
     title: "SIPODCAST Episode 24 Nongki Nyantai Part 2 Bareng Kakanda Cakra",
     videoId: "mbBwAe3ptzA"
-  },
-  {
-    id: 14,
-    title: "Kreasi 021 \"My Story Your Story Our Story\"",
-    videoId: "fwiCSi1J5bE"
   }
 ];
 
@@ -807,9 +817,20 @@ export const hmjReels = [
   }
 ];
 
+const afilabsBtsNodes = afilabsWorks.flatMap(work => 
+  (work.bts || []).map(btsItem => ({
+    type: "video",
+    src: btsItem.videoUrl,
+    title: btsItem.title,
+    desc: btsItem.description,
+    icon: "video"
+  }))
+);
+
 // Menggabungkan semua canvasNodes (Behind The Scenes) menjadi satu array global
 export const allBtsNodes = [
   ...hmjGallery.filter(item => item.canvasNodes).flatMap(item => item.canvasNodes),
   ...hmjReels.filter(item => item.canvasNodes).flatMap(item => item.canvasNodes),
-  ...hmjProfile.experiences.filter(exp => exp.proofData && exp.proofData.canvasNodes).flatMap(exp => exp.proofData.canvasNodes)
+  ...hmjProfile.experiences.filter(exp => exp.proofData && exp.proofData.canvasNodes).flatMap(exp => exp.proofData.canvasNodes),
+  ...afilabsBtsNodes
 ];

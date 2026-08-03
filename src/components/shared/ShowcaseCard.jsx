@@ -20,13 +20,30 @@ export default function ShowcaseCard({ item, size = 'medium' }) {
       whileHover="hover"
       data-cursor="hover"
     >
-      {/* Background Image */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${item.thumbnail})` }}
-        variants={{ hover: { scale: 1.05 } }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      />
+      {/* Background Media */}
+      {item.videoThumbnail ? (
+        <motion.div
+          className="absolute inset-0"
+          variants={{ hover: { scale: 1.05 } }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover pointer-events-none"
+            src={item.videoThumbnail}
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${item.thumbnail})` }}
+          variants={{ hover: { scale: 1.05 } }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        />
+      )}
 
       {/* Dark Overlay */}
       <motion.div

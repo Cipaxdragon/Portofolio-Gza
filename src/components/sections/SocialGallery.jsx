@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
+import { afilabsProfile, hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
 import { committeeReels } from '@/data/committeeData'
 import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video, MousePointer2, Monitor, Layers, Film, Crosshair } from 'lucide-react'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
@@ -91,99 +91,104 @@ export default function SocialGallery() {
     }
   }
 
+  const renderTimeline = (profile, title) => (
+    <div className="mb-12">
+      <SectionHeader title={title} align="left" />
+      <div className="mb-16 mt-8 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
+        {profile.experiences.map((exp, idx) => (
+          <div 
+            key={idx} 
+            className={`relative ${idx !== 0 ? 'mt-14' : ''}`}
+          >
+            {/* Timeline Nodes */}
+            {(exp.avatarUrl || idx === 0) ? (
+              <div className="absolute -left-[57px] lg:-left-[69px] -top-3 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#111] border-[4px] border-[#0a0a0a] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-hidden z-10 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-full overflow-hidden">
+                  <Image src={exp.avatarUrl || profile.avatarUrl} alt="Logo" fill className="object-contain bg-black" />
+                </div>
+              </div>
+            ) : (
+              <div className="absolute -left-[40px] lg:-left-[48px] top-1.5 w-[18px] h-[18px] rounded-full bg-[#0a0a0a] border-[4px] border-brand-primary z-10 shadow-[0_0_12px_rgba(var(--brand-primary-rgb),0.8)]"></div>
+            )}
+            
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-1">{exp.role}</h3>
+            <div className="mb-4">
+              <p className="text-brand-primary font-medium text-xs sm:text-sm md:text-base">
+                {exp.orgName || profile.name} • {exp.periode}
+              </p>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                {exp.duration}
+              </p>
+            </div>
+            
+            <p className="text-brand-muted text-sm sm:text-base lg:text-lg leading-relaxed mb-6 whitespace-pre-line">
+              {exp.description}
+            </p>
+            
+            {/* Inline Media Card (LinkedIn Style) */}
+            {exp.proofData && (
+              <div 
+                className="mb-6 flex items-center gap-4 cursor-pointer group rounded-xl hover:bg-white/5 p-2 -ml-2 transition-colors w-full sm:w-max pr-6 border border-transparent hover:border-white/10"
+                onClick={() => openPost(exp.proofData)}
+              >
+                <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border border-white/10 bg-black flex-shrink-0">
+                  <Image src={exp.proofData.url} alt="Proof Thumbnail" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <ExternalLink className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-sm sm:text-base group-hover:text-brand-primary transition-colors line-clamp-2">
+                    {exp.proofData.title || exp.role}
+                  </h4>
+                </div>
+              </div>
+            )}
+            
+            <div className="flex flex-wrap gap-2">
+              {exp.skills.map((skill, index) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 lg:px-4 lg:py-1.5 bg-[#1a1a1a] border border-white/10 rounded-full text-xs lg:text-sm font-medium text-gray-300 hover:text-white hover:border-brand-primary/50 transition-colors cursor-default"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+
+            {/* Tools & Apps Used */}
+            {exp.tools && (
+              <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-5 pt-5 border-t border-white/10">
+                <span className="text-sm font-medium text-gray-400 mr-1 lg:mr-2">Aplikasi:</span>
+                {exp.tools.map((tool, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-center gap-2 px-3.5 py-1.5 bg-black/40 border border-white/5 rounded-full text-xs font-medium text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all cursor-default"
+                    title={tool.name}
+                  >
+                    <div className="flex items-center justify-center">
+                      {getToolIcon(tool.name)}
+                    </div>
+                    {tool.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+
   return (
     <>
       <section id="works" className="py-20 md:py-32 bg-black min-h-screen relative overflow-hidden" ref={constraintsRef}>
       {/* Menggunakan max-w-4xl untuk membatasi kelebaran */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         
-        <SectionHeader title="Organization Work." align="left" />
-        
-        <div className="mb-16 mt-8 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
-          {hmjProfile.experiences.map((exp, idx) => (
-            <div 
-              key={idx} 
-              className={`relative ${idx !== 0 ? 'mt-14' : ''}`}
-            >
-              
-              {/* Timeline Nodes */}
-              {(exp.avatarUrl || idx === 0) ? (
-                <div className="absolute -left-[57px] lg:-left-[69px] -top-3 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#111] border-[4px] border-[#0a0a0a] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-hidden z-10 flex items-center justify-center">
-                  <div className="relative w-full h-full rounded-full overflow-hidden">
-                    <Image src={exp.avatarUrl || hmjProfile.avatarUrl} alt="Logo Organisasi" fill className="object-contain bg-black" />
-                  </div>
-                </div>
-              ) : (
-                <div className="absolute -left-[40px] lg:-left-[48px] top-1.5 w-[18px] h-[18px] rounded-full bg-[#0a0a0a] border-[4px] border-brand-primary z-10 shadow-[0_0_12px_rgba(var(--brand-primary-rgb),0.8)]"></div>
-              )}
-              
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-1">{exp.role}</h3>
-              <div className="mb-4">
-                <p className="text-brand-primary font-medium text-xs sm:text-sm md:text-base">
-                  {exp.orgName || hmjProfile.name} • {exp.periode}
-                </p>
-                <p className="text-gray-400 text-xs sm:text-sm mt-1 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                  {exp.duration}
-                </p>
-              </div>
-              
-              <p className="text-brand-muted text-sm sm:text-base lg:text-lg leading-relaxed mb-6 whitespace-pre-line">
-                {exp.description}
-              </p>
-              
-              {/* Inline Media Card (LinkedIn Style) */}
-              {exp.proofData && (
-                <div 
-                  className="mb-6 flex items-center gap-4 cursor-pointer group rounded-xl hover:bg-white/5 p-2 -ml-2 transition-colors w-full sm:w-max pr-6 border border-transparent hover:border-white/10"
-                  onClick={() => openPost(exp.proofData)}
-                >
-                  <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border border-white/10 bg-black flex-shrink-0">
-                    <Image src={exp.proofData.url} alt="Proof Thumbnail" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold text-sm sm:text-base group-hover:text-brand-primary transition-colors line-clamp-2">
-                      {exp.proofData.title || exp.role}
-                    </h4>
-                  </div>
-                </div>
-              )}
-              
-              <div className="flex flex-wrap gap-2">
-                {exp.skills.map((skill, index) => (
-                  <span 
-                    key={index}
-                    className="px-3 py-1 lg:px-4 lg:py-1.5 bg-[#1a1a1a] border border-white/10 rounded-full text-xs lg:text-sm font-medium text-gray-300 hover:text-white hover:border-brand-primary/50 transition-colors cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              {/* Tools & Apps Used */}
-              {exp.tools && (
-                <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-5 pt-5 border-t border-white/10">
-                  <span className="text-sm font-medium text-gray-400 mr-1 lg:mr-2">Aplikasi:</span>
-                  {exp.tools.map((tool, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center gap-2 px-3.5 py-1.5 bg-black/40 border border-white/5 rounded-full text-xs font-medium text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all cursor-default"
-                      title={tool.name}
-                    >
-                      <div className="flex items-center justify-center">
-                        {getToolIcon(tool.name)}
-                      </div>
-                      {tool.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        {renderTimeline(afilabsProfile, "Professional Experience.")}
+        {renderTimeline(hmjProfile, "Organization Work.")}
 
         {/* --- BLOCK 1: INSTAGRAM --- */}
         <div className="flex flex-col mb-24">
@@ -487,7 +492,7 @@ export default function SocialGallery() {
         <div className="mt-32 pt-16 border-t border-white/10">
           <SectionHeader 
             title="Inauguration Committees" 
-            subtitle="Documentation & Event Publications before HMJ" 
+            subtitle="Berperan sebagai tim inti dalam Divisi Publikasi dan Dokumentasi (Pubdok). Bertanggung jawab penuh atas manajemen dokumentasi lapangan, serta penyuntingan (editing) video rekapitulasi dan materi grafis untuk menyukseskan perayaan Inagurasi tingkat Jurusan hingga Fakultas." 
           />
           
           <div className="flex justify-center mb-10">

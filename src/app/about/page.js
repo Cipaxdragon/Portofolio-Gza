@@ -14,6 +14,8 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import AboutFull from '@/components/sections/AboutFull'
 import ThingsToLearn from '@/components/sections/ThingsToLearn'
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
+import { afilabsProfile, hmjProfile } from '@/data/organizationWork'
 
 export default function AboutPage() {
   return (
@@ -61,40 +63,21 @@ export default function AboutPage() {
         {/* Experience / Rekam Jejak */}
         <div className="mb-32">
           <RevealText>
-            <h2 className="font-display text-3xl sm:text-4xl mb-12 flex items-center gap-4">
+            <h2 className="font-display text-3xl sm:text-4xl mb-4 flex items-center gap-4">
               <Briefcase className="text-brand-accent" size={32} />
               Rekam Jejak
             </h2>
           </RevealText>
-
-          <div className="relative border-l border-brand-border ml-4 sm:ml-6 flex flex-col gap-12">
-            {profile.experience.map((exp, idx) => (
-              <CardMotion key={idx} delay={0.1 * idx}>
-                <div className="relative pl-8 sm:pl-12 group">
-                  {/* Timeline dot */}
-                  <div className="absolute top-1.5 -left-[5px] w-2.5 h-2.5 bg-brand-bg border border-brand-accent rounded-full group-hover:bg-brand-accent group-hover:shadow-[0_0_10px_rgba(0,217,255,0.5)] transition-all" />
-                  
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
-                    <h3 className="text-xl font-bold text-brand-text group-hover:text-brand-accent transition-colors">
-                      {exp.role}
-                    </h3>
-                    <span className="text-sm font-medium text-brand-muted flex items-center gap-1.5">
-                      <ChevronRight size={14} className="hidden sm:block" />
-                      {exp.company}
-                    </span>
-                  </div>
-                  
-                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-brand-accent/80 mb-4">
-                    <Calendar size={14} />
-                    <span>{exp.period}</span>
-                  </div>
-                  
-                  <p className="text-brand-text/70 text-sm leading-relaxed max-w-3xl">
-                    {exp.description}
-                  </p>
-                </div>
-              </CardMotion>
-            ))}
+          <div className="mx-auto max-w-4xl pt-8">
+            <ExperienceTimeline 
+              profile={afilabsProfile} 
+              title="Professional Experience." 
+            />
+            
+            <ExperienceTimeline 
+              profile={hmjProfile} 
+              title="Organization Work." 
+            />
           </div>
         </div>
 

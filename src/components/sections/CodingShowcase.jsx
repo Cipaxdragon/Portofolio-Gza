@@ -59,7 +59,7 @@ export default function CodingShowcase() {
                     rel="noopener noreferrer"
                     className="p-2 bg-white/5 hover:bg-white/10 rounded-full transition-colors"
                   >
-                    <Github className="w-5 h-5 text-gray-300" />
+                    <FaGithub className="w-5 h-5 text-gray-300" />
                   </a>
                 </div>
 

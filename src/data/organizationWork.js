@@ -113,6 +113,7 @@ export const hmjProfile = {
     {
       role: "Panitia Divisi Publikasi dan Dokumentasi (Pubdok)",
       orgName: "Inagurasi Fakultas Sains dan Teknologi (Saintek)",
+      avatarUrl: "/images/logos/logo_saintek.png",
       periode: "Inagurasi 2022",
       duration: "Agustus 2022",
       description: "Bertanggung jawab atas dokumentasi dan publikasi acara puncak Inagurasi Fakultas Sains dan Teknologi tingkat universitas.\n- Mendokumentasikan seluruh rangkaian acara Inagurasi Fakultas.\n- Memproduksi video rekapitulasi kegiatan (After Movie) dan materi publikasi media sosial.",

@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import ServicesHero from '@/components/sections/ServicesHero'
 import ServicesFull from '@/components/sections/ServicesFull'
 
 export const metadata = {
@@ -11,7 +12,8 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main className="bg-black min-h-screen">
+        <ServicesHero />
         <ServicesFull />
       </main>
       <Footer />

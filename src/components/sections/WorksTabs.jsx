@@ -13,7 +13,7 @@ import { Palette, Code2, ListFilter } from 'lucide-react'
 
 export default function WorksTabs() {
   const [activeTab, setActiveTab] = useState('creative')
-  const [creativeFilter, setCreativeFilter] = useState('afilabs') // 'afilabs' | 'hmj' | 'inaugurasi' | 'kreasi'
+  const [creativeFilter, setCreativeFilter] = useState(null) // 'afilabs' | 'hmj' | 'inaugurasi' | 'kreasi'
 
   const handleFilterSelect = (id) => {
     setCreativeFilter(id)
@@ -119,32 +119,11 @@ export default function WorksTabs() {
                 </AnimatePresence>
               </div>
 
-              {/* FILTERED CONTENT (GALLERY) */}
-              <AnimatePresence mode="wait">
-                {creativeFilter === 'afilabs' && (
-                  <motion.div
-                    key="afilabs-gallery"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <Showcase />
-                  </motion.div>
-                )}
-
-                {(creativeFilter === 'hmj23' || creativeFilter === 'hmj24' || creativeFilter === 'inaugurasi' || creativeFilter === 'kreasi') && (
-                  <motion.div
-                    key="social-gallery"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <SocialGallery filterId={creativeFilter} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* ALL CONTENT (GALLERY) */}
+              <div className="flex flex-col gap-12 overflow-hidden">
+                <Showcase />
+                <SocialGallery filterId={null} />
+              </div>
 
               {/* GLOBAL BEHIND THE SCENES CANVAS */}
               <div className="mt-16">

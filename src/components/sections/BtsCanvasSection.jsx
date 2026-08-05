@@ -73,7 +73,7 @@ export default function BtsCanvasSection() {
                           allowFullScreen
                         />
                       ) : (
-                        <Image src={node.src} alt={node.title || "BTS"} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                        <Image src={node.src} alt={node.title || "BTS"} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                       )}
                       
                       {/* Gradient Overlay for Text Readability */}

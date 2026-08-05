@@ -114,7 +114,7 @@ export default function SocialGallery({ activeDetailId }) {
               <div className="relative w-24 h-24 sm:w-36 sm:h-36 flex-shrink-0 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-fuchsia-600 p-[3px]">
                 <div className="w-full h-full bg-black rounded-full p-[3px]">
                   <div className="w-full h-full rounded-full overflow-hidden relative">
-                    <Image src={hmjProfile.avatarUrl} alt="Avatar" fill className="object-cover" />
+                    <Image src={hmjProfile.avatarUrl} alt="Avatar" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function SocialGallery({ activeDetailId }) {
                       style={{ top: pos.top, left: pos.left, width: '400px' }}
                     >
                       <div className="relative aspect-video w-full bg-black">
-                        <Image src={post.btsUrl || (post.btsSlides && post.btsSlides[0])} alt="Behind the scenes" fill className="object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
+                        <Image src={post.btsUrl || (post.btsSlides && post.btsSlides[0])} alt="Behind the scenes" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <button 
                             onClick={(e) => { 
@@ -342,7 +342,7 @@ export default function SocialGallery({ activeDetailId }) {
               {/* Profile Details */}
               <div className="px-6 pb-8 relative -mt-10">
                 <div className="relative w-20 h-20 rounded-full border-4 border-[#0f0f0f] overflow-hidden bg-black mb-4 shadow-lg flex items-center justify-center">
-                  <Image src={hmjProfile.avatarUrl} alt="Channel Avatar" fill className="object-cover" />
+                  <Image src={hmjProfile.avatarUrl} alt="Channel Avatar" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                 </div>
                 
                 <h3 className="text-xl font-bold text-white leading-tight mb-1">
@@ -470,7 +470,7 @@ export default function SocialGallery({ activeDetailId }) {
               </div>
               {activeCommitteeTab === 'Kreasi' && (
                 <div className="relative w-12 h-12">
-                  <Image src="/images/logos/Logo_kreasi 1.png" alt="Logo Kreasi" fill className="object-contain" />
+                  <Image src="/images/logos/Logo_kreasi 1.png" alt="Logo Kreasi" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                 </div>
               )}
             </div>
@@ -503,7 +503,7 @@ export default function SocialGallery({ activeDetailId }) {
                 className="aspect-[9/16] w-full bg-[#1a1a1a] rounded-xl overflow-hidden cursor-pointer group relative border border-white/10 shadow-lg"
                 onClick={() => openPost(reel)}
               >
-                <Image src={reel.url} alt="Thumbnail" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={reel.url} alt="Thumbnail" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 
                 {/* Play Icon Overlay */}
                 <div className="absolute top-3 right-3 text-white drop-shadow-md">
@@ -583,7 +583,7 @@ export default function SocialGallery({ activeDetailId }) {
                                         allowFullScreen
                                       ></iframe>
                                     ) : (
-                                    <Image src={node.src} alt={node.title} fill className="object-contain" />
+                                    <Image src={node.src} alt={node.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                                   )}
                                   </div>
                                 
@@ -622,7 +622,7 @@ export default function SocialGallery({ activeDetailId }) {
                           className="w-full h-full object-contain"
                         />
                       ) : (
-                        <Image src={selectedPost.btsSlides[currentSlide]} alt="Behind the Scenes Timeline" fill className="object-contain" />
+                        <Image src={selectedPost.btsSlides[currentSlide]} alt="Behind the Scenes Timeline" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                       )}
                       
                       {/* BTS Carousel Controls */}
@@ -651,7 +651,7 @@ export default function SocialGallery({ activeDetailId }) {
                       </div>
                     </>
                   ) : (
-                    <Image src={selectedPost.btsUrl} alt="Behind the Scenes Timeline" fill className="object-contain" />
+                    <Image src={selectedPost.btsUrl} alt="Behind the Scenes Timeline" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                   )
                 ) : selectedPost.type === 'video' ? (
                   selectedPost.videoUrl ? (
@@ -672,7 +672,7 @@ export default function SocialGallery({ activeDetailId }) {
                       />
                     )
                   ) : (
-                    <Image src={selectedPost.url} alt="Video thumbnail" fill className="object-contain" />
+                    <Image src={selectedPost.url} alt="Video thumbnail" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                   )
                 ) : selectedPost.type === 'carousel' && selectedPost.slides ? (
                   <>
@@ -687,7 +687,7 @@ export default function SocialGallery({ activeDetailId }) {
                         className="w-full h-full object-contain"
                       />
                     ) : (
-                      <Image src={selectedPost.slides[currentSlide] || selectedPost.url} alt="Post image" fill className="object-contain" />
+                      <Image src={selectedPost.slides[currentSlide] || selectedPost.url} alt="Post image" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                     )}
                     
                     {/* Carousel Controls */}
@@ -716,7 +716,7 @@ export default function SocialGallery({ activeDetailId }) {
                     </div>
                   </>
                 ) : (
-                  <Image src={selectedPost.url} alt="Post image" fill className="object-contain" />
+                  <Image src={selectedPost.url} alt="Post image" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" />
                 )}
 
                 {/* BTS Title Overlay (Removed: Moved to right sidebar) */}
@@ -751,7 +751,7 @@ export default function SocialGallery({ activeDetailId }) {
                       ) : selectedPost.isProof ? (
                         <Layers className="w-4 h-4 text-black" />
                       ) : (
-                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                       )}
                     </div>
                     <span className="font-bold text-sm text-white">
@@ -792,7 +792,7 @@ export default function SocialGallery({ activeDetailId }) {
                   ) : (
                     <div className="flex gap-3 animate-in fade-in duration-300">
                       <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
-                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill className="object-cover" />
+                        <Image src={hmjProfile.avatarUrl} alt="avatar" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                       </div>
                       <div>
                         <span className="font-bold text-sm text-white mr-2">{hmjProfile.username}</span>

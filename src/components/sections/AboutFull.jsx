@@ -158,7 +158,7 @@ export default function AboutFull() {
                   <span className="text-[10px] uppercase tracking-widest text-brand-muted font-mono">Education</span>
                   <div className="flex items-center gap-2 text-brand-text text-sm">
                     <div className="w-4 h-4 relative flex-shrink-0 opacity-80">
-                      <Image src={profile.education.logo} alt={profile.education.university} fill className="object-contain" sizes="16px" />
+                      <Image src={profile.education.logo} alt={profile.education.university} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" sizes="16px" />
                     </div>
                     <span>{profile.education.university}</span>
                   </div>
@@ -167,7 +167,7 @@ export default function AboutFull() {
                   <span className="text-[10px] uppercase tracking-widest text-brand-muted font-mono">Major</span>
                   <div className="flex items-center gap-2 text-brand-text text-sm">
                     <div className="w-4 h-4 relative flex-shrink-0 opacity-80">
-                      <Image src="/images/logos/hmjsi.png" alt="Sistem Informasi" fill className="object-contain" sizes="16px" />
+                      <Image src="/images/logos/hmjsi.png" alt="Sistem Informasi" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" sizes="16px" />
                     </div>
                     <span>Sistem informasi</span>
                   </div>

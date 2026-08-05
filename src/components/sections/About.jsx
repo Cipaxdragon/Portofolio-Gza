@@ -164,13 +164,13 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 relative flex-shrink-0 opacity-80">
-                    <Image src={profile.education.logo} alt={profile.education.university} fill className="object-contain" sizes="20px" />
+                    <Image src={profile.education.logo} alt={profile.education.university} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" sizes="20px" />
                   </div>
                   <span>{profile.education.university}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 relative flex-shrink-0 opacity-80">
-                    <Image src="/images/logos/hmjsi.png" alt="Sistem Informasi" fill className="object-contain" sizes="20px" />
+                    <Image src="/images/logos/hmjsi.png" alt="Sistem Informasi" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" sizes="20px" />
                   </div>
                   <span>Sistem informasi</span>
                 </div>

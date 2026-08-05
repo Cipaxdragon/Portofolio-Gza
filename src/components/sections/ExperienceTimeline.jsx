@@ -66,7 +66,7 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
             {(exp.avatarUrl || idx === 0) ? (
               <div className="absolute -left-[57px] lg:-left-[69px] -top-3 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#111] border-[4px] border-[#0a0a0a] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-hidden z-10 flex items-center justify-center">
                 <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <Image src={exp.avatarUrl || profile.avatarUrl} alt="Logo" fill className="object-contain bg-black" />
+                  <Image src={exp.avatarUrl || profile.avatarUrl} alt="Logo" fill sizes="64px" className="object-contain bg-black" />
                 </div>
               </div>
             ) : (
@@ -97,7 +97,7 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
                 onClick={() => handleOpenProof(exp.proofData)}
               >
                 <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border border-white/10 bg-black flex-shrink-0">
-                  <Image src={exp.proofData.url} alt="Proof Thumbnail" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <Image src={exp.proofData.url} alt="Proof Thumbnail" fill sizes="(max-width: 768px) 128px, 256px" className="object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <ExternalLink className="w-5 h-5 text-white" />
                   </div>
@@ -207,7 +207,7 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
                                 <div className="absolute inset-0 pt-8 p-4 overflow-y-auto custom-scrollbar">
                                   {node.type === 'image' && (
                                     <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/5 mb-3">
-                                      <Image src={node.src} alt={node.title} fill className="object-cover" />
+                                      <Image src={node.src} alt={node.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                                     </div>
                                   )}
                                   <p className="text-gray-300 text-xs leading-relaxed">{node.desc}</p>
@@ -227,8 +227,9 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
                   <>
                     <Image 
                       src={selectedProof.slides ? selectedProof.slides[currentSlide] : selectedProof.url} 
-                      alt={selectedProof.title} 
+                      alt="Proof Details" 
                       fill 
+                      sizes="100vw"
                       className="object-contain" 
                     />
                     
@@ -259,7 +260,7 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full overflow-hidden relative border border-white/20">
-                      <Image src={profile.avatarUrl || selectedProof.url} alt="Avatar" fill className="object-cover bg-black" />
+                      <Image src={profile.avatarUrl || selectedProof.url} alt="Avatar" fill sizes="32px" className="object-cover bg-black" />
                     </div>
                     <div>
                       <h3 className="text-white font-bold text-sm leading-tight">{profile.username || "Detail Bukti"}</h3>

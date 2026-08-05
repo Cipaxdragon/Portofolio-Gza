@@ -7,14 +7,10 @@ import { afilabsProfile, hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubePr
 import { committeeReels } from '@/data/committeeData'
 import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video, MousePointer2, Monitor, Layers, Film, Crosshair } from 'lucide-react'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
-import { 
-  TbBrandAdobePhotoshop,
-  TbBrandAdobeIllustrator,
-  TbBrandAdobePremiere,
-  TbBrandAdobeAfterEffect
-} from 'react-icons/tb'
+import { TbBrandAdobePhotoshop, TbBrandAdobeIllustrator, TbBrandAdobePremiere, TbBrandAdobeAfterEffect } from 'react-icons/tb'
 import { SiFigma } from 'react-icons/si'
 import SectionHeader from '@/components/shared/SectionHeader'
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 
 const LiteYouTubeEmbed = ({ videoId, title, onClick }) => {
   return (
@@ -37,22 +33,22 @@ const LiteYouTubeEmbed = ({ videoId, title, onClick }) => {
   );
 };
 
-export default function SocialGallery({ filterId }) {
+export default function SocialGallery({ activeDetailId }) {
   const [selectedPost, setSelectedPost] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBtsSlide, setCurrentBtsSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('posts');
-  const [activeCommitteeTab, setActiveCommitteeTab] = useState(filterId === 'inaugurasi' ? 'Saintek' : 'Kreasi');
+  const [activeCommitteeTab, setActiveCommitteeTab] = useState(activeDetailId === 'inaugurasi' ? 'Saintek' : 'Kreasi');
   const [showBTS, setShowBTS] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (filterId === 'inaugurasi') setActiveCommitteeTab('Saintek');
-    else if (filterId === 'kreasi') setActiveCommitteeTab('Kreasi');
-  }, [filterId]);
+    if (activeDetailId === 'inaugurasi') setActiveCommitteeTab('Saintek');
+    else if (activeDetailId === 'kreasi') setActiveCommitteeTab('Kreasi');
+  }, [activeDetailId]);
 
-  const showHmjSection = !filterId || filterId.includes('hmj');
-  const showCommitteeSection = !filterId || filterId === 'kreasi' || filterId === 'inaugurasi';
+  const showHmjSection = true;
+  const showCommitteeSection = true;
   
   const constraintsRef = useRef(null);
 
@@ -80,12 +76,33 @@ export default function SocialGallery({ filterId }) {
 
   return (
     <>
-      <section id="works" className="py-20 md:py-32 bg-black min-h-screen relative overflow-hidden" ref={constraintsRef}>
+      <section id="works" className="py-20 md:py-32 bg-black relative overflow-hidden" ref={constraintsRef}>
       {/* Menggunakan max-w-4xl untuk membatasi kelebaran */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 flex flex-col gap-24">
         
         {showHmjSection && (
-          <>
+          <div id="gallery-hmj" className="scroll-mt-32">
+            
+            <AnimatePresence mode="wait">
+              {(activeDetailId === 'hmj24' || activeDetailId === 'hmj23') && (
+                <motion.div
+                  key="hmj-detail"
+                  initial={{ opacity: 0, height: 0, y: 20 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: -20 }}
+                  className="mb-16 overflow-hidden"
+                >
+                  <ExperienceTimeline 
+                    profile={{ 
+                      ...hmjProfile, 
+                      experiences: hmjProfile.experiences.filter(e => e.role && e.role.includes(activeDetailId === 'hmj24' ? "Ketua" : "Anggota")) 
+                    }} 
+                    title="Detail Pengalaman." 
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Social Media Content & Gallery */}
             <div className="pt-8">
           

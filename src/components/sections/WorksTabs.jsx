@@ -18,10 +18,19 @@ export default function WorksTabs() {
   const handleFilterSelect = (id) => {
     setCreativeFilter(id)
     
-    // Smooth scroll down to works gallery
+    // Smooth scroll down to the specific gallery section
     setTimeout(() => {
-      document.getElementById('works-gallery-start')?.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
+      let targetId = 'works-gallery-start'
+      if (id === 'afilabs') targetId = 'gallery-afilabs'
+      else if (id === 'hmj24' || id === 'hmj23') targetId = 'gallery-hmj'
+      else if (id === 'kreasi' || id === 'inaugurasi') targetId = 'gallery-committee'
+
+      const element = document.getElementById(targetId)
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY - 100 // offset for navbar
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    }, 150)
   }
 
   return (
@@ -77,7 +86,7 @@ export default function WorksTabs() {
               <div className="mx-auto max-w-6xl pt-12 pb-2 border-b border-white/10 mb-12 flex flex-col items-center">
                 <div className="flex items-center gap-3 mb-2 bg-brand-primary/10 border border-brand-primary/20 px-4 py-2 rounded-xl">
                   <ListFilter className="w-4 h-4 text-brand-primary flex-shrink-0" />
-                  <p className="text-gray-300 text-xs sm:text-sm font-medium">Filter Karya Berdasarkan Pengalaman</p>
+                  <p className="text-gray-300 text-xs sm:text-sm font-medium">Pilih Pengalaman untuk melihat detail</p>
                 </div>
                 
                 <HorizontalTimeline 
@@ -87,42 +96,28 @@ export default function WorksTabs() {
                 />
               </div>
 
-              {/* GALLERY ANCHOR */}
-              <div id="works-gallery-start" className="scroll-mt-32" />
-
-              {/* VERTICAL DETAIL INFO */}
-              <div className="mx-auto max-w-4xl px-4 sm:px-6 mb-16">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`detail-${creativeFilter}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {creativeFilter === 'afilabs' && (
-                      <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
-                    )}
-                    {creativeFilter === 'hmj24' && (
-                      <ExperienceTimeline profile={{ ...hmjProfile, experiences: hmjProfile.experiences.filter(e => e.role && e.role.includes("Ketua")) }} title="Detail Pengalaman." />
-                    )}
-                    {creativeFilter === 'hmj23' && (
-                      <ExperienceTimeline profile={{ ...hmjProfile, experiences: hmjProfile.experiences.filter(e => e.role && e.role.includes("Anggota")) }} title="Detail Pengalaman." />
-                    )}
-                    {creativeFilter === 'inaugurasi' && (
-                      <ExperienceTimeline profile={{ ...hmjProfile, experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes("Saintek")) }} title="Detail Pengalaman." />
-                    )}
-                    {creativeFilter === 'kreasi' && (
-                      <ExperienceTimeline profile={{ ...hmjProfile, experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes("Kreasi")) }} title="Detail Pengalaman." />
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
               {/* ALL CONTENT (GALLERY) */}
-              <div className="flex flex-col gap-12 overflow-hidden">
-                <Showcase />
-                <SocialGallery filterId={null} />
+              <div className="flex flex-col gap-12 overflow-hidden w-full">
+                
+                <div id="gallery-afilabs" className="scroll-mt-32">
+                  <AnimatePresence mode="wait">
+                    {creativeFilter === 'afilabs' && (
+                      <motion.div
+                        key="afilabs-detail"
+                        initial={{ opacity: 0, height: 0, y: 20 }}
+                        animate={{ opacity: 1, height: 'auto', y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -20 }}
+                        className="mx-auto max-w-4xl px-4 sm:px-6 mb-16 overflow-hidden"
+                      >
+                        <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  
+                  <Showcase />
+                </div>
+
+                <SocialGallery activeDetailId={creativeFilter} />
               </div>
 
               {/* GLOBAL BEHIND THE SCENES CANVAS */}

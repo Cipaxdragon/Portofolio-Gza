@@ -29,14 +29,14 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
 
   return (
     <div className="w-full relative mb-4">
-      <div className="relative max-w-5xl mx-auto grid grid-cols-3 md:flex md:justify-between items-center px-2 sm:px-12 py-4 md:py-4 gap-y-12 md:gap-y-0 overflow-hidden md:overflow-visible">
+      <div className="relative max-w-5xl mx-auto grid grid-cols-3 md:flex md:justify-between items-center px-2 sm:px-12 py-4 md:py-4 gap-y-4 md:gap-y-0 overflow-hidden md:overflow-visible">
         
         {/* === BACKGROUND TRACKS === */}
         {/* Desktop Horizontal Line */}
         <div className="hidden md:block absolute left-16 right-16 top-1/2 h-[2px] bg-white/10 -translate-y-1/2 z-0" />
         
         {/* Mobile Snaking Lines Wrappers */}
-        <div className="md:hidden absolute left-[16.66%] right-[16.66%] top-[100px] xs:top-[104px] sm:top-[124px] h-[2px] bg-white/10 z-0">
+        <div className="md:hidden absolute left-[16.66%] right-[16.66%] top-[84px] h-[2px] bg-white/10 z-0">
           <div 
             className="h-full bg-white/70 transition-all duration-700 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             style={{ width: (() => {
@@ -48,7 +48,7 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
           />
         </div>
         
-        <div className="md:hidden absolute right-[16.66%] top-[100px] xs:top-[104px] sm:top-[124px] bottom-[84px] xs:bottom-[88px] sm:bottom-[108px] w-[2px] bg-white/10 z-0">
+        <div className="md:hidden absolute right-[16.66%] top-[84px] bottom-[68px] w-[2px] bg-white/10 z-0">
           <div 
             className="w-full bg-white/70 transition-all duration-700 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             style={{ height: (() => {
@@ -58,7 +58,7 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
           />
         </div>
 
-        <div className="md:hidden absolute left-[50%] right-[16.66%] bottom-[84px] xs:bottom-[88px] sm:bottom-[108px] h-[2px] bg-white/10 z-0">
+        <div className="md:hidden absolute left-[50%] right-[16.66%] bottom-[68px] h-[2px] bg-white/10 z-0">
           <div 
             className="absolute right-0 top-0 h-full bg-white/70 transition-all duration-700 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             style={{ width: (() => {
@@ -121,25 +121,25 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
               }}
             >
               {/* Top Text Space */}
-              <div className="h-20 sm:h-24 flex flex-col items-center justify-end pb-3 sm:pb-4 w-full transition-all duration-300">
-                <h3 className={`text-[9px] xs:text-[10px] sm:text-xs md:text-sm text-center font-bold leading-tight w-24 xs:w-28 sm:w-40 mb-1 ${isActive ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+              <div className="h-[64px] md:h-24 flex flex-col items-center justify-end pb-2 md:pb-4 w-full transition-all duration-300">
+                <h3 className={`text-[9px] sm:text-xs md:text-sm text-center font-bold leading-tight w-24 sm:w-40 mb-1 ${isActive ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
                   {shortOrgName}
                 </h3>
-                <p className={`text-[8px] xs:text-[9px] sm:text-xs text-center font-medium leading-tight w-24 xs:w-28 sm:w-40 ${isActive ? 'text-gray-300' : 'text-gray-500 group-hover:text-gray-400'}`}>
+                <p className={`text-[8px] sm:text-xs text-center font-medium leading-tight w-24 sm:w-40 ${isActive ? 'text-gray-300' : 'text-gray-500 group-hover:text-gray-400'}`}>
                   {shortRole}
                 </p>
               </div>
               
               {/* Node Circle */}
-              <div className={`relative w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center border-4 transition-all duration-500 shrink-0 ${isActive ? 'bg-[#111] border-white shadow-[0_0_20px_rgba(255,255,255,0.4)] scale-110' : 'bg-[#0a0a0a] border-white/20 group-hover:border-white/50 group-hover:scale-105'}`}>
-                 <div className={`relative w-full h-full rounded-full overflow-hidden ${exp.tabId === 'afilabs' ? 'bg-white' : 'bg-black p-1.5 sm:p-2'}`}>
-                   <Image src={exp.avatarUrl || exp.profileAvatar} alt="Logo" fill className={`object-contain ${exp.tabId === 'afilabs' ? 'p-1.5 scale-110' : 'p-2'}`} />
+              <div className={`relative w-10 h-10 md:w-16 md:h-16 rounded-full flex items-center justify-center border-4 transition-all duration-500 shrink-0 ${isActive ? 'bg-[#111] border-white shadow-[0_0_20px_rgba(255,255,255,0.4)] md:scale-110' : 'bg-[#0a0a0a] border-white/20 group-hover:border-white/50 group-hover:scale-105'}`}>
+                 <div className={`relative w-full h-full rounded-full overflow-hidden ${exp.tabId === 'afilabs' ? 'bg-white' : 'bg-black p-1.5 md:p-2'}`}>
+                   <Image src={exp.avatarUrl || exp.profileAvatar} alt="Logo" fill className={`object-contain ${exp.tabId === 'afilabs' ? 'p-1.5 md:scale-110' : 'p-2'}`} />
                  </div>
               </div>
               
               {/* Bottom Text Space */}
-              <div className="h-16 sm:h-20 flex items-start justify-center pt-3 sm:pt-4 w-full transition-all duration-300">
-                <span className={`inline-block text-[8px] xs:text-[10px] sm:text-xs text-center font-semibold px-2 xs:px-3 py-1 rounded-full border ${isActive ? 'bg-white/20 text-white border-white/50' : 'bg-white/5 text-gray-500 border-white/10 group-hover:text-gray-300'}`}>
+              <div className="h-[48px] md:h-20 flex items-start justify-center pt-2 md:pt-4 w-full transition-all duration-300">
+                <span className={`inline-block text-[8px] sm:text-xs text-center font-semibold px-2 md:px-3 py-1 rounded-full border ${isActive ? 'bg-white/20 text-white border-white/50' : 'bg-white/5 text-gray-500 border-white/10 group-hover:text-gray-300'}`}>
                   {shortYear}
                 </span>
               </div>

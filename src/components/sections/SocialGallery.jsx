@@ -400,11 +400,32 @@ export default function SocialGallery({ activeDetailId }) {
             </div>
           </div>
         </div>
-        </>
-        )}
+      </div>
+    )}
 
         {showCommitteeSection && (
-          <div className={showHmjSection ? "mt-32 pt-16 border-t border-white/10" : "pt-8"}>
+          <div id="gallery-committee" className={showHmjSection ? "mt-32 pt-16 border-t border-white/10 scroll-mt-32" : "pt-8 scroll-mt-32"}>
+            
+            <AnimatePresence mode="wait">
+              {(activeDetailId === 'kreasi' || activeDetailId === 'inaugurasi') && (
+                <motion.div
+                  key="committee-detail"
+                  initial={{ opacity: 0, height: 0, y: 20 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: -20 }}
+                  className="mb-16 overflow-hidden"
+                >
+                  <ExperienceTimeline 
+                    profile={{ 
+                      ...hmjProfile, 
+                      experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes(activeDetailId === 'kreasi' ? "Kreasi" : "Saintek")) 
+                    }} 
+                    title="Detail Pengalaman." 
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* --- BLOCK 3: EVENT COMMITTEES --- */}
           <SectionHeader 
             title="Inauguration Committees" 

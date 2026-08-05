@@ -4,11 +4,11 @@ export const afilabsProfile = {
   avatarUrl: "/images/logos/afilabs_Logo.jpg",
   experiences: [
     {
-      role: "Motion Graphics Designer (Intern)",
-      periode: "Magang Informal",
-      duration: "11 Juni 2025 - 23 Oktober 2025 · 4 Bulan",
+      role: "Motion Graphics Designer (Probation)",
+      periode: "Masa Percobaan Kerja (Probation)",
+      duration: "11 Juni 2025 - 23 Oktober 2025 (4 Bulan)",
       orgName: "Afilabs Creative Agency",
-      description: "Menjalani masa magang di agensi kreatif Afilabs sebagai wadah untuk mendalami dan mengasah keterampilan di bidang Motion Graphics.\n- Berfokus penuh dalam mempelajari dan merancang animasi visual yang dinamis dan modern.\n- Terlibat aktif dalam pembuatan aset motion graphics bermutu tinggi untuk berbagai proyek industri kreatif.\n- Melakukan riset mendalam serta eksplorasi puluhan variasi animasi untuk presentasi Mockup Brand (Photoshop Mockup Animation) menggunakan After Effects untuk proyek internal Arvala.",
+      description: "Menjalani masa percobaan (probation) di agensi kreatif Afilabs sebagai Motion Graphics Designer.\n- Berfokus penuh dalam merancang animasi visual yang dinamis dan modern untuk berbagai kebutuhan kampanye digital.\n- Terlibat secara intensif dalam produksi aset motion graphics dan post-production untuk proyek industri kreatif.\n- Melakukan riset mendalam serta eksplorasi puluhan variasi animasi untuk presentasi Mockup Brand menggunakan After Effects untuk proyek internal Arvala.",
       skills: ["Motion Graphics", "Brand Mockup", "Video Editing", "Team Collaboration"],
       tools: [
         { name: "After Effects" },

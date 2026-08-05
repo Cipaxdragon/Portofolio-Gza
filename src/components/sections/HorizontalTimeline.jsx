@@ -58,7 +58,7 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
           } else if (shortRole.includes("Anggota Divisi")) {
             shortRole = "Anggota Divisi Kominfo";
           } else if (shortRole.includes("Motion Graphics")) {
-            shortRole = "Motion Graphics Intern";
+            shortRole = "Motion Graphics Designer";
           }
 
           if (exp.tabId === 'kreasi') shortOrgName = "Kreasi 021";
@@ -71,7 +71,7 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
           if (shortYear.includes("2024")) shortYear = "2024";
           else if (shortYear.includes("2023")) shortYear = "2023";
           else if (shortYear.includes("2022")) shortYear = "2022";
-          else if (shortYear.includes("Magang")) shortYear = "2025";
+          else if (shortYear.includes("Probation") || shortYear.includes("Percobaan")) shortYear = "2025";
 
           return (
             <div 

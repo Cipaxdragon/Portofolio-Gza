@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Showcase from '@/components/sections/Showcase'
 import SocialGallery from '@/components/sections/SocialGallery'
@@ -9,11 +9,34 @@ import CodingShowcase from '@/components/sections/CodingShowcase'
 import HorizontalTimeline from '@/components/sections/HorizontalTimeline'
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 import { afilabsProfile, hmjProfile } from '@/data/organizationWork'
-import { Palette, Code2, ListFilter } from 'lucide-react'
+import { Palette, Code2, ListFilter, ArrowUp } from 'lucide-react'
 
 export default function WorksTabs() {
   const [activeTab, setActiveTab] = useState('creative')
-  const [creativeFilter, setCreativeFilter] = useState(null) // 'afilabs' | 'hmj' | 'inaugurasi' | 'kreasi'
+  const [creativeFilter, setCreativeFilter] = useState(null)
+  const [showBackToTimeline, setShowBackToTimeline] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Tampilkan tombol jika scroll lebih dari 600px dan ada filter aktif
+      if (window.scrollY > 600 && creativeFilter) {
+        setShowBackToTimeline(true)
+      } else {
+        setShowBackToTimeline(false)
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [creativeFilter])
+
+  const scrollToTimeline = () => {
+    const element = document.getElementById('timeline-filter-start')
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 120
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+  }
 
   const handleFilterSelect = (id) => {
     setCreativeFilter(id)
@@ -83,7 +106,7 @@ export default function WorksTabs() {
               transition={{ duration: 0.3 }}
             >
               {/* HORIZONTAL TIMELINE FILTER */}
-              <div className="mx-auto max-w-6xl pt-12 pb-2 border-b border-white/10 mb-12 flex flex-col items-center">
+              <div id="timeline-filter-start" className="mx-auto max-w-6xl pt-12 pb-2 border-b border-white/10 mb-12 flex flex-col items-center scroll-mt-24">
                 <div className="flex items-center gap-3 mb-2 bg-brand-primary/10 border border-brand-primary/20 px-4 py-2 rounded-xl">
                   <ListFilter className="w-4 h-4 text-brand-primary flex-shrink-0" />
                   <p className="text-gray-300 text-xs sm:text-sm font-medium">Pilih Pengalaman untuk melihat detail</p>
@@ -140,6 +163,22 @@ export default function WorksTabs() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* FLOATING ACTION BUTTON (BACK TO TIMELINE) */}
+      <AnimatePresence>
+        {showBackToTimeline && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            onClick={scrollToTimeline}
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center gap-2 bg-brand-primary text-black px-4 py-3 rounded-full shadow-[0_0_20px_rgba(0,217,255,0.3)] hover:scale-105 hover:bg-white transition-all group"
+          >
+            <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+            <span className="text-sm font-bold hidden sm:block">Kembali ke Timeline</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </>
   )
 }

@@ -167,21 +167,19 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
             >
               <div className={`relative bg-black flex items-center justify-center transition-all duration-500 ease-out ${showBTS ? (selectedProof.canvasNodes ? 'w-full h-[100vh] md:h-full' : 'w-full h-[40vh] md:h-full md:w-3/4') : 'w-full h-[40vh] md:h-full md:w-[55%]'}`}>
                 {showBTS && selectedProof.canvasNodes ? (
-                    <div className="w-full h-full relative cursor-grab active:cursor-grabbing bg-[#0a0a0a]">
+                    <div className="w-full h-full relative cursor-grab active:cursor-grabbing bg-[#0a0a0a] overflow-hidden">
+                      {/* Infinite Grid Background */}
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-[0.03] pointer-events-none" />
+                      
                       <TransformWrapper
-                        initialScale={0.8}
-                        minScale={0.2}
+                        initialScale={1.2}
+                        minScale={0.5}
                         maxScale={4}
                         centerOnInit={true}
                         wheel={{ step: 0.1 }}
                       >
                         <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }} contentStyle={{ width: "100%", height: "100%" }}>
                           <div className="w-[1200px] h-[800px] relative">
-                            <div className="absolute inset-0 grid grid-cols-[repeat(40,minmax(0,1fr))] grid-rows-[repeat(40,minmax(0,1fr))] opacity-[0.03] pointer-events-none">
-                              {Array.from({ length: 1600 }).map((_, i) => (
-                                <div key={i} className="border-r border-b border-white" />
-                              ))}
-                            </div>
                             
                             {selectedProof.canvasNodes.map((node) => (
                               <motion.div

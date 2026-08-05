@@ -82,7 +82,7 @@ export const hmjProfile = {
           }
         ],
         btsDescription: "Dokumentasi pengerjaan teknis desain struktural divisi di Figma. Memperlihatkan manajemen layer, komponen antarmuka, dan perancangan aset digital organisasi.",
-        caption: "Bukti Struktural Divisi dan Tangkapan Layar Desain Figma sebagai Ketua Divisi Kominfo HMJSI UINAM.\n\nDalam peran ini, saya tidak hanya memimpin divisi secara konseptual, tetapi juga turun tangan secara teknis dalam merancang struktur organisasi, manajemen UI/UX, dan berbagai aset digital publikasi menggunakan Figma."
+        caption: "Sebagai bukti kepemimpinan saya di Divisi Kominfo HMJSI UINAM, berikut adalah dokumentasi struktural dan sistem manajerial yang saya rancang di Figma.\n\nSesuai dengan peran utama saya dalam memimpin produksi konten, pengelolaan media sosial, hingga inisiasi program podcast—seluruh alur koordinasi tim, mulai dari perancangan UI/UX website hingga penyusunan target publikasi harian dan bulanan, dikonseptualisasikan secara teknis dan terpusat melalui kanvas ini."
       }
     },
     {

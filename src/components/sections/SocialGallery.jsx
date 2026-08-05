@@ -447,7 +447,7 @@ export default function SocialGallery({ activeDetailId }) {
                 }`}
                 onClick={() => setActiveCommitteeTab('Kreasi')}
               >
-                Inagurasi Kreasi
+                Kreasi
               </button>
               <button
                 className={`relative px-8 py-2.5 rounded-full font-bold text-sm transition-colors z-10 w-[180px] ${

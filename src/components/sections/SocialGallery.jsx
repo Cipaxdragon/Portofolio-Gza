@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { afilabsProfile, hmjProfile, hmjGallery, hmjReels, hmjYoutube, youtubeProfile } from '@/data/organizationWork'
 import { committeeReels } from '@/data/committeeData'
 import { Play, Heart, MessageCircle, MoreHorizontal, ChevronDown, Check, Copy, X, ExternalLink, ChevronLeft, ChevronRight, Video, MousePointer2, Monitor, Layers, Film, Crosshair } from 'lucide-react'
+import { Box, Camera, Laptop, PenTool, Smartphone } from 'lucide-react'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import { TbBrandAdobePhotoshop, TbBrandAdobeIllustrator, TbBrandAdobePremiere, TbBrandAdobeAfterEffect } from 'react-icons/tb'
 import { SiFigma } from 'react-icons/si'
@@ -32,6 +33,22 @@ const LiteYouTubeEmbed = ({ videoId, title, onClick }) => {
     </div>
   );
 };
+
+const renderIcon = (iconName) => {
+  switch (iconName) {
+    case 'monitor': return <Monitor className="w-5 h-5 text-brand-primary" />
+    case 'layers': return <Layers className="w-5 h-5 text-brand-primary" />
+    case 'film': return <Film className="w-5 h-5 text-brand-primary" />
+    case 'crosshair': return <Crosshair className="w-5 h-5 text-brand-primary" />
+    case 'video': return <Video className="w-5 h-5 text-brand-primary" />
+    case 'box': return <Box className="w-5 h-5 text-brand-primary" />
+    case 'camera': return <Camera className="w-5 h-5 text-brand-primary" />
+    case 'laptop': return <Laptop className="w-5 h-5 text-brand-primary" />
+    case 'penTool': return <PenTool className="w-5 h-5 text-brand-primary" />
+    case 'smartphone': return <Smartphone className="w-5 h-5 text-brand-primary" />
+    default: return <MousePointer2 className="w-5 h-5 text-brand-primary" />
+  }
+}
 
 export default function SocialGallery({ activeDetailId }) {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -95,9 +112,9 @@ export default function SocialGallery({ activeDetailId }) {
                   <ExperienceTimeline 
                     profile={{ 
                       ...hmjProfile, 
-                      experiences: hmjProfile.experiences.filter(e => e.role && e.role.includes(activeDetailId === 'hmj24' ? "Ketua" : "Anggota")) 
+                      experiences: hmjProfile.experiences.filter(e => e.role && (e.role.includes("Ketua") || e.role.includes("Anggota"))) 
                     }} 
-                    title="Detail Pengalaman." 
+                    title="Detail Pengalaman (2 Periode)." 
                   />
                 </motion.div>
               )}
@@ -402,7 +419,6 @@ export default function SocialGallery({ activeDetailId }) {
         </div>
       </div>
     )}
-
         {showCommitteeSection && (
           <div id="gallery-committee" className={showHmjSection ? "mt-32 pt-16 border-t border-white/10 scroll-mt-32" : "pt-8 scroll-mt-32"}>
             
@@ -418,7 +434,7 @@ export default function SocialGallery({ activeDetailId }) {
                   <ExperienceTimeline 
                     profile={{ 
                       ...hmjProfile, 
-                      experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes(activeDetailId === 'kreasi' ? "Kreasi" : "Saintek")) 
+                      experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes(activeCommitteeTab === 'Kreasi' ? "Kreasi" : "Saintek")) 
                     }} 
                     title="Detail Pengalaman." 
                   />

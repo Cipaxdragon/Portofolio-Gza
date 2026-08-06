@@ -10,6 +10,7 @@ import HorizontalTimeline from '@/components/sections/HorizontalTimeline'
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 import { afilabsProfile, hmjProfile } from '@/data/organizationWork'
 import { Palette, Code2, ListFilter, ArrowUp } from 'lucide-react'
+import Image from 'next/image'
 
 export default function WorksTabs() {
   const [activeTab, setActiveTab] = useState('creative')
@@ -18,17 +19,40 @@ export default function WorksTabs() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Tampilkan tombol jika scroll lebih dari 600px dan ada filter aktif
-      if (window.scrollY > 600 && creativeFilter) {
+      // Tampilkan tombol jika scroll lebih dari 600px
+      if (window.scrollY > 600) {
         setShowBackToTimeline(true)
       } else {
         setShowBackToTimeline(false)
       }
+
+      // Auto-update active logo based on scroll position
+      const sections = [
+        { id: 'gallery-committee', filterId: 'kreasi' }, // Urutan dari bawah ke atas agar tertangkap yang paling bawah dulu
+        { id: 'gallery-hmj', filterId: 'hmj24' },
+        { id: 'gallery-afilabs', filterId: 'afilabs' }
+      ];
+
+      for (let i = 0; i < sections.length; i++) {
+        const el = document.getElementById(sections[i].id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // Jika ujung atas area tersebut sudah melewati atau berada di paruh atas layar
+          if (rect.top <= window.innerHeight / 2) {
+             setCreativeFilter(prev => {
+                if (sections[i].id === 'gallery-hmj' && (prev === 'hmj24' || prev === 'hmj23')) return prev;
+                if (sections[i].id === 'gallery-committee' && (prev === 'kreasi' || prev === 'inaugurasi')) return prev;
+                return sections[i].filterId;
+             });
+             break; // Hentikan loop karena kita menemukan area terdalam
+          }
+        }
+      }
     }
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [creativeFilter])
+  }, [])
 
   const scrollToTimeline = () => {
     const element = document.getElementById('timeline-filter-start')
@@ -164,19 +188,70 @@ export default function WorksTabs() {
         </AnimatePresence>
       </div>
 
-      {/* FLOATING ACTION BUTTON (BACK TO TIMELINE) */}
+      {/* FLOATING VERTICAL MINI TIMELINE (QUICK NAV) */}
       <AnimatePresence>
-        {showBackToTimeline && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            onClick={scrollToTimeline}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center gap-2 bg-brand-primary text-black px-4 py-3 rounded-full shadow-[0_0_20px_rgba(0,217,255,0.3)] hover:scale-105 hover:bg-white transition-all group"
+        {showBackToTimeline && activeTab === 'creative' && (
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 bg-black/60 backdrop-blur-md p-2 rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
           >
-            <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-            <span className="text-sm font-bold hidden sm:block">Kembali ke Timeline</span>
-          </motion.button>
+            {/* Background Line */}
+            <div className="absolute top-4 bottom-4 w-[2px] bg-white/10 z-0" />
+            
+            {[
+              { id: 'afilabs', icon: afilabsProfile.avatarUrl, title: 'Afilabs' },
+              { id: 'hmj24', icon: hmjProfile.avatarUrl, title: 'Ketua Divisi' },
+              { id: 'hmj23', icon: hmjProfile.avatarUrl, title: 'Anggota Divisi' },
+              { id: 'inaugurasi', icon: '/images/logos/logo_saintek.png', title: 'Inaugurasi' },
+              { id: 'kreasi', icon: '/images/logos/Logo_kreasi 1.png', title: 'Kreasi' }
+            ].map((item, idx) => {
+              // Cek apakah item ini harus aktif secara grup
+              const isGroupActive = 
+                (item.id === 'hmj24' || item.id === 'hmj23') ? (creativeFilter === 'hmj24' || creativeFilter === 'hmj23') :
+                (item.id === 'kreasi' || item.id === 'inaugurasi') ? (creativeFilter === 'kreasi' || creativeFilter === 'inaugurasi') :
+                creativeFilter === item.id;
+              
+              const isActive = creativeFilter === item.id || isGroupActive;
+              
+              // Garis glowing penghubung ke bawah (jika dalam satu grup dan grupnya sedang aktif)
+              const hasActiveLineBelow = 
+                (item.id === 'hmj24' && isGroupActive) || 
+                (item.id === 'inaugurasi' && isGroupActive);
+
+              return (
+                <div key={item.id} className="relative z-10 group flex flex-col items-center">
+                  {/* Garis penghubung aktif ke item di bawahnya */}
+                  {hasActiveLineBelow && (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[2px] h-[calc(100%+0.75rem)] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] z-[-1]" />
+                  )}
+
+                  <button
+                    onClick={() => handleFilterSelect(item.id)}
+                    className={`relative w-8 h-8 md:w-10 md:h-10 rounded-full border-2 transition-all duration-300 flex items-center justify-center overflow-hidden bg-black ${
+                      isActive 
+                        ? 'border-white scale-110 shadow-[0_0_15px_rgba(255,255,255,0.4)]' 
+                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-white/50 hover:scale-105'
+                    }`}
+                  >
+                    <Image 
+                      src={item.icon} 
+                      alt={item.title} 
+                      fill 
+                      sizes="40px"
+                      className={`object-contain ${item.id === 'afilabs' || item.id === 'inaugurasi' || item.id === 'kreasi' ? 'bg-white p-1' : 'bg-black p-1'}`} 
+                    />
+                  </button>
+                  
+                  {/* Tooltip */}
+                  <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 border border-white/10 text-white text-[10px] md:text-xs font-semibold rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap backdrop-blur-sm">
+                    {item.title}
+                  </div>
+                </div>
+              )
+            })}
+          </motion.div>
         )}
       </AnimatePresence>
     </>

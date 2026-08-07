@@ -100,25 +100,15 @@ export default function SocialGallery({ activeDetailId }) {
         {showHmjSection && (
           <div id="gallery-hmj" className="scroll-mt-32">
             
-            <AnimatePresence mode="wait">
-              {(activeDetailId === 'hmj24' || activeDetailId === 'hmj23') && (
-                <motion.div
-                  key="hmj-detail"
-                  initial={{ opacity: 0, height: 0, y: 20 }}
-                  animate={{ opacity: 1, height: 'auto', y: 0 }}
-                  exit={{ opacity: 0, height: 0, y: -20 }}
-                  className="mb-16 overflow-hidden"
-                >
-                  <ExperienceTimeline 
-                    profile={{ 
-                      ...hmjProfile, 
-                      experiences: hmjProfile.experiences.filter(e => e.role && (e.role.includes("Ketua") || e.role.includes("Anggota"))) 
-                    }} 
-                    title="Detail Pengalaman (2 Periode)." 
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="mb-16 overflow-hidden">
+                <ExperienceTimeline 
+                  profile={{ 
+                    ...hmjProfile, 
+                    experiences: hmjProfile.experiences.filter(e => e.role && (e.role.includes("Ketua") || e.role.includes("Anggota"))) 
+                  }} 
+                  title="Detail Pengalaman (2 Periode)." 
+                />
+              </div>
 
             {/* Social Media Content & Gallery */}
             <div className="pt-8">
@@ -422,25 +412,15 @@ export default function SocialGallery({ activeDetailId }) {
         {showCommitteeSection && (
           <div id="gallery-committee" className={showHmjSection ? "mt-32 pt-16 border-t border-white/10 scroll-mt-32" : "pt-8 scroll-mt-32"}>
             
-            <AnimatePresence mode="wait">
-              {(activeDetailId === 'kreasi' || activeDetailId === 'inaugurasi') && (
-                <motion.div
-                  key="committee-detail"
-                  initial={{ opacity: 0, height: 0, y: 20 }}
-                  animate={{ opacity: 1, height: 'auto', y: 0 }}
-                  exit={{ opacity: 0, height: 0, y: -20 }}
-                  className="mb-16 overflow-hidden"
-                >
-                  <ExperienceTimeline 
-                    profile={{ 
-                      ...hmjProfile, 
-                      experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes(activeCommitteeTab === 'Kreasi' ? "Kreasi" : "Saintek")) 
-                    }} 
-                    title="Detail Pengalaman." 
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="mb-16 overflow-hidden">
+                <ExperienceTimeline 
+                  profile={{ 
+                    ...hmjProfile, 
+                    experiences: hmjProfile.experiences.filter(e => e.orgName && e.orgName.includes(activeCommitteeTab === 'Kreasi' ? "Kreasi" : "Saintek")) 
+                  }} 
+                  title="Detail Pengalaman." 
+                />
+              </div>
 
             {/* --- BLOCK 3: EVENT COMMITTEES --- */}
           <SectionHeader 

@@ -147,19 +147,9 @@ export default function WorksTabs() {
               <div className="flex flex-col gap-12 overflow-hidden w-full">
                 
                 <div id="gallery-afilabs" className="scroll-mt-32">
-                  <AnimatePresence mode="wait">
-                    {creativeFilter === 'afilabs' && (
-                      <motion.div
-                        key="afilabs-detail"
-                        initial={{ opacity: 0, height: 0, y: 20 }}
-                        animate={{ opacity: 1, height: 'auto', y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -20 }}
-                        className="mx-auto max-w-4xl px-4 sm:px-6 mb-16 overflow-hidden"
-                      >
-                        <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div className="mx-auto max-w-4xl px-4 sm:px-6 mb-16 overflow-hidden">
+                    <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
+                  </div>
                   
                   <Showcase />
                 </div>

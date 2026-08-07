@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
-import Showcase from '@/components/sections/Showcase'
+import DualPortal from '@/components/sections/DualPortal'
 import Blog from '@/components/sections/Blog'
 import Services from '@/components/sections/Services'
 import Contact from '@/components/sections/Contact'
@@ -26,7 +26,7 @@ export default function Home() {
           <main>
             <Hero />
             <About />
-            <Showcase />
+            <DualPortal />
             {/* <Blog /> */}
             <Services />
             <Contact />

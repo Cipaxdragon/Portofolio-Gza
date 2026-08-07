@@ -126,17 +126,6 @@ export default function Showcase() {
 
               {/* Tabs Navigation */}
               <div className="flex px-4 sm:px-6 border-b border-white/10 overflow-x-auto hide-scrollbar shrink-0 bg-black/30">
-                {selectedWork.bts && selectedWork.bts.length > 0 && (
-                  <button 
-                    onClick={() => setActiveTab('bts')}
-                    className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
-                      activeTab === 'bts' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <Film className="w-4 h-4" /> Behind the Scenes
-                  </button>
-                )}
-                
                 <button 
                   onClick={() => setActiveTab('overview')}
                   className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
@@ -154,6 +143,17 @@ export default function Showcase() {
                     }`}
                   >
                     <Layers className="w-4 h-4" /> Mockup Variations ({selectedWork.variations.length})
+                  </button>
+                )}
+
+                {selectedWork.bts && selectedWork.bts.length > 0 && (
+                  <button 
+                    onClick={() => setActiveTab('bts')}
+                    className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
+                      activeTab === 'bts' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <Film className="w-4 h-4" /> Behind the Scenes
                   </button>
                 )}
               </div>

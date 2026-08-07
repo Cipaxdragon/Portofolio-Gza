@@ -48,7 +48,7 @@ export default function DualPortal() {
                   <div className="mt-8 flex flex-col gap-3 max-w-md">
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
                       <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
-                        <video src="/images/showcase/Afilabs_Karya/Arvala/4_Elegance_Alternating_Grid.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/4_Elegance_Alternating_Grid.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">Arvala Brand Mockup</p>
@@ -57,7 +57,7 @@ export default function DualPortal() {
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
                       <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
-                        <video src="/images/showcase/Afilabs_Karya/Arvala/7_Sporty_Fan_Animation.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/7_Sporty_Fan_Animation.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">Afilabs Commercial</p>
@@ -66,7 +66,7 @@ export default function DualPortal() {
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
                       <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
-                        <video src="/images/showcase/instagram/Other/kreasi/Reel_02_Ce9ETnsAGTF/Video.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        <video src="/images/showcase/instagram/Other/kreasi/Reel_02_Ce9ETnsAGTF/Video.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">HMJ-SI Kepanitiaan</p>
@@ -114,7 +114,7 @@ export default function DualPortal() {
                   <div className="mt-8 flex flex-col gap-3 max-w-md">
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
                       <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
-                        <video src="/images/showcase/Afilabs_Karya/Arvala/6_Train_2_Card_Push.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/6_Train_2_Card_Push.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">Ghazali Personal Portfolio</p>
@@ -123,7 +123,7 @@ export default function DualPortal() {
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
                       <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
-                         <video src="/images/showcase/Afilabs_Karya/Arvala/5_Cafe_3d_Card_Stacked.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                         <video src="/images/showcase/Afilabs_Karya/Arvala/5_Cafe_3d_Card_Stacked.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">Inventaris Lab Web App</p>

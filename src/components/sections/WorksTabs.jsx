@@ -17,6 +17,17 @@ export default function WorksTabs() {
   const [creativeFilter, setCreativeFilter] = useState(null)
   const [showBackToTimeline, setShowBackToTimeline] = useState(false)
 
+  // Set active tab based on URL query parameter (e.g., ?tab=koding)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const tabParam = params.get('tab')
+      if (tabParam === 'koding' || tabParam === 'creative') {
+        setActiveTab(tabParam)
+      }
+    }
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       // Tampilkan tombol jika scroll lebih dari 600px

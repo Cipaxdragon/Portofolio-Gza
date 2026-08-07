@@ -23,7 +23,7 @@ export default function DualPortal() {
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[500px]">
           
           {/* PORTAL 1: CREATIVE & LEADERSHIP */}
-          <Link href="/works" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
+          <Link href="/works?tab=creative" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -90,7 +90,7 @@ export default function DualPortal() {
           </Link>
 
           {/* PORTAL 2: PROGRAMMING & DEVELOPMENT */}
-          <Link href="/works" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
+          <Link href="/works?tab=koding" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}

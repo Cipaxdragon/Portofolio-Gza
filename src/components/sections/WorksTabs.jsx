@@ -17,16 +17,25 @@ export default function WorksTabs() {
   const [creativeFilter, setCreativeFilter] = useState(null)
   const [showBackToTimeline, setShowBackToTimeline] = useState(false)
 
-  // Set active tab based on URL query parameter (e.g., ?tab=koding)
+  // Set active tab based on URL query parameter (e.g., ?tab=coding)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const tabParam = params.get('tab')
-      if (tabParam === 'koding' || tabParam === 'creative') {
+      if (tabParam === 'coding' || tabParam === 'creative') {
         setActiveTab(tabParam)
       }
     }
   }, [])
+
+  const handleTabChange = (newTab) => {
+    setActiveTab(newTab)
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location)
+      url.searchParams.set('tab', newTab)
+      window.history.pushState({}, '', url)
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,7 +119,7 @@ export default function WorksTabs() {
             
             {/* Buttons */}
             <button
-              onClick={() => setActiveTab('creative')}
+              onClick={() => handleTabChange('creative')}
               className={`relative z-10 flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold rounded-full transition-colors duration-300 ${
                 activeTab === 'creative' ? 'text-white' : 'text-gray-400 hover:text-white'
               }`}
@@ -118,7 +127,7 @@ export default function WorksTabs() {
               <Palette className="w-4 h-4" /> Creative
             </button>
             <button
-              onClick={() => setActiveTab('coding')}
+              onClick={() => handleTabChange('coding')}
               className={`relative z-10 flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold rounded-full transition-colors duration-300 ${
                 activeTab === 'coding' ? 'text-white' : 'text-gray-400 hover:text-white'
               }`}

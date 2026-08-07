@@ -1,250 +1,141 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Terminal, Palette, ArrowRight, Code2, Film, Layers, MonitorPlay } from 'lucide-react'
 import SectionHeader from '@/components/shared/SectionHeader'
-import { afilabsWorks } from '@/data/afilabsWorks'
-import { X, Play, Film, MonitorPlay, Layers } from 'lucide-react'
 
 export default function Showcase() {
-  const [selectedWork, setSelectedWork] = useState(null)
-  const [activeTab, setActiveTab] = useState('overview') // 'overview' | 'bts' | 'variations'
-
-  // Block body scroll when modal is open
-  useEffect(() => {
-    if (selectedWork) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => { document.body.style.overflow = 'unset' }
-  }, [selectedWork])
-
-  const openModal = (work) => {
-    setSelectedWork(work)
-    setActiveTab(work.bts && work.bts.length > 0 ? 'bts' : 'overview')
-  }
-
-  const closeModal = () => {
-    setSelectedWork(null)
-  }
-
   return (
-    <section id="showcase" className="relative px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeader
-          title="Afilabs Internship."
-          subtitle="Eksplorasi mahakarya profesional dan kolaborasi kreatif selama menjalani masa magang di Afilabs Creative Agency."
-        />
-
-        {/* BENTO GRID LAYOUT */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[300px] md:auto-rows-[400px]">
-          {afilabsWorks.map((work, i) => (
-            <motion.div
-              key={work.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              onClick={() => openModal(work)}
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-brand-primary/50 transition-colors bg-black ${
-                work.featured ? 'md:col-span-2 lg:col-span-2 row-span-1 md:row-span-2' : 'col-span-1 row-span-1'
-              }`}
-            >
-              {/* Background Video (Muted, AutoPlay, Loop) */}
-              <video 
-                src={work.mainVideo}
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105"
-              />
-              
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
-              
-              {/* Content */}
-              <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
-                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-brand-primary/20 text-brand-primary border border-brand-primary/30 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-                      {work.category}
-                    </span>
-                    {work.bts && work.bts.length > 0 && (
-                      <span className="px-3 py-1 bg-white/10 text-white border border-white/20 rounded-full text-xs font-bold backdrop-blur-md flex items-center gap-1">
-                        <Film className="w-3 h-3" /> BTS
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
-                    {work.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm sm:text-base line-clamp-2 max-w-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {work.description}
-                  </p>
-                </div>
-              </div>
-              
-              {/* Play Button Indicator */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-110">
-                <Play className="w-6 h-6 text-white ml-1" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+    <section id="showcase" className="relative px-6 py-24 sm:py-32 bg-black min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl h-[800px] opacity-20 pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-primary rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full blur-[120px] mix-blend-screen" />
       </div>
 
-      {/* MODAL / POPUP */}
-      <AnimatePresence>
-        {selectedWork && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-xl"
-          >
-            <motion.div 
-              initial={{ scale: 0.95, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              className="relative w-full max-w-6xl max-h-[90vh] bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl"
+      <div className="mx-auto max-w-7xl relative z-10 w-full">
+        <SectionHeader
+          title="Masterpieces & Portfolios."
+          subtitle="Jelajahi dua dunia keahlian utama saya. Pilih dimensi karya yang ingin Anda eksplorasi lebih dalam."
+        />
+
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[500px]">
+          
+          {/* PORTAL 1: CREATIVE & LEADERSHIP */}
+          <Link href="/works" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="absolute inset-0 w-full h-full"
             >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 shrink-0 bg-black/50">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white">{selectedWork.title}</h2>
-                  <p className="text-brand-primary text-sm">{selectedWork.role}</p>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-black to-black z-10 transition-opacity duration-500 group-hover:opacity-80" />
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-1000 ease-out mix-blend-overlay" />
+              
+              <div className="relative z-20 flex flex-col h-full p-8 md:p-12">
+                <div className="flex-1">
+                  <div className="inline-flex items-center justify-center p-4 bg-purple-500/20 backdrop-blur-xl rounded-2xl border border-purple-500/30 mb-6 group-hover:-translate-y-2 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all duration-300">
+                    <Palette className="w-10 h-10 text-purple-400" />
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">Visual Arts & <br/> Leadership</h3>
+                  <p className="text-gray-400 text-lg md:text-xl max-w-md font-light leading-relaxed">
+                    Eksplorasi mahakarya desain UI/UX, motion graphics, produksi video komersial Afilabs, serta kiprah organisasi.
+                  </p>
+
+                  {/* Mini Preview */}
+                  <div className="mt-8 flex flex-col gap-3 max-w-md">
+                    <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
+                      <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/4_Elegance_Alternating_Grid.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-bold">Arvala Brand Mockup</p>
+                        <p className="text-gray-400 text-xs">Motion Graphics</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
+                      <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/7_Sporty_Fan_Animation.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-bold">Afilabs Commercial</p>
+                        <p className="text-gray-400 text-xs">Video Production</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button 
-                  onClick={closeModal}
-                  className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
 
-              {/* Tabs Navigation */}
-              <div className="flex px-4 sm:px-6 border-b border-white/10 overflow-x-auto hide-scrollbar shrink-0 bg-black/30">
-                {selectedWork.bts && selectedWork.bts.length > 0 && (
-                  <button 
-                    onClick={() => setActiveTab('bts')}
-                    className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
-                      activeTab === 'bts' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <Film className="w-4 h-4" /> Behind the Scenes
-                  </button>
-                )}
-                
-                <button 
-                  onClick={() => setActiveTab('overview')}
-                  className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
-                    activeTab === 'overview' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
-                  }`}
-                >
-                  <MonitorPlay className="w-4 h-4" /> Project Overview
-                </button>
-                
-                {selectedWork.variations && selectedWork.variations.length > 0 && (
-                  <button 
-                    onClick={() => setActiveTab('variations')}
-                    className={`px-4 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
-                      activeTab === 'variations' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <Layers className="w-4 h-4" /> Mockup Variations ({selectedWork.variations.length})
-                  </button>
-                )}
-              </div>
-
-              {/* Modal Content Scrollable Area */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6 custom-scrollbar">
-                
-                {/* TAB: OVERVIEW */}
-                {activeTab === 'overview' && (
-                  <div className="flex flex-col gap-6 animate-in fade-in duration-500">
-                    <div className={`w-full bg-black rounded-xl overflow-hidden border border-white/5 mx-auto flex items-center justify-center ${
-                      selectedWork.aspectRatio === 'portrait' ? 'max-w-md aspect-[9/16]' : 'aspect-video'
-                    }`}>
-                      <video 
-                        src={selectedWork.mainVideo}
-                        controls 
-                        autoPlay 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="max-w-4xl mx-auto w-full">
-                      <h3 className="text-lg font-bold text-white mb-2">Project Description</h3>
-                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                        {selectedWork.description}
-                      </p>
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {selectedWork.tools.map((tool, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs text-gray-300">
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* TAB: BEHIND THE SCENES */}
-                {activeTab === 'bts' && selectedWork.bts && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-500">
-                    {selectedWork.bts.map((btsItem, idx) => (
-                      <div key={idx} className="flex flex-col bg-black/40 border border-white/10 rounded-xl overflow-hidden group">
-                        <div className="relative aspect-video bg-black border-b border-white/10">
-                          <video 
-                            src={btsItem.videoUrl}
-                            controls 
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="p-5">
-                          <h4 className="font-bold text-white text-lg mb-2">{btsItem.title}</h4>
-                          <p className="text-gray-400 text-sm">{btsItem.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* TAB: VARIATIONS (Khusus Arvala) */}
-                {activeTab === 'variations' && selectedWork.variations && (
-                  <div className="animate-in fade-in duration-500">
-                    <div className="mb-6">
-                      <h3 className="text-xl font-bold text-white mb-2">Mockup Animation Library</h3>
-                      <p className="text-gray-400">Beberapa variasi animasi presentasi mockup merek yang dirancang selama proyek ini.</p>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {selectedWork.variations.map((vari, idx) => (
-                        <div key={idx} className="bg-black border border-white/10 rounded-xl overflow-hidden group hover:border-brand-primary/50 transition-colors">
-                          <div className="relative bg-[#050505]">
-                            <video 
-                              src={vari.url}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              className="w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity block"
-                            />
-                          </div>
-                          <div className="p-3 bg-black/80 backdrop-blur-sm border-t border-white/5">
-                            <p className="text-sm font-semibold text-white text-center">{vari.name}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
+                <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6">
+                   <span className="text-purple-400 font-semibold tracking-wider uppercase text-sm group-hover:text-purple-300 transition-colors">Lihat Selengkapnya</span>
+                   <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-purple-500 group-hover:border-purple-400 transition-all duration-300 group-hover:scale-110">
+                     <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                   </div>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </Link>
+
+          {/* PORTAL 2: PROGRAMMING & DEVELOPMENT */}
+          <Link href="/works" className="group relative block h-full min-h-[400px] rounded-3xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-4 focus:ring-offset-black">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 via-[#0a0a0a] to-black z-10 transition-opacity duration-500 group-hover:opacity-80" />
+              
+              {/* Hacker Grid Background Pattern */}
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] group-hover:bg-[size:45px_45px] transition-all duration-1000 ease-out opacity-20" />
+              
+              <div className="relative z-20 flex flex-col h-full p-8 md:p-12 border border-white/5 group-hover:border-brand-primary/30 rounded-3xl transition-colors duration-500">
+                <div className="flex-1">
+                  <div className="inline-flex items-center justify-center p-4 bg-brand-primary/10 backdrop-blur-xl rounded-2xl border border-brand-primary/30 mb-6 group-hover:-translate-y-2 group-hover:shadow-[0_0_30px_rgba(0,217,255,0.4)] transition-all duration-300">
+                    <Terminal className="w-10 h-10 text-brand-primary" />
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">Software <br/> Engineering</h3>
+                  <p className="text-gray-400 text-lg md:text-xl max-w-md font-light leading-relaxed">
+                    Jelajahi repositori kode, live demo aplikasi web premium, arsitektur sistem, dan kloning GitHub interaktif.
+                  </p>
+
+                  {/* Mini Preview */}
+                  <div className="mt-8 flex flex-col gap-3 max-w-md">
+                    <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
+                      <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
+                        <video src="/images/showcase/Afilabs_Karya/Arvala/6_Train_2_Card_Push.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-bold">Ghazali Personal Portfolio</p>
+                        <p className="text-gray-400 text-xs font-mono">Next.js • React • Tailwind</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
+                      <div className="w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10">
+                         <video src="/images/showcase/Afilabs_Karya/Arvala/5_Cafe_3d_Card_Stacked.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-bold">Inventaris Lab Web App</p>
+                        <p className="text-gray-400 text-xs font-mono">Laravel • MySQL • Bootstrap</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6">
+                   <span className="text-brand-primary font-semibold tracking-wider uppercase text-sm font-mono group-hover:text-white transition-colors">Lihat Selengkapnya</span>
+                   <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-brand-primary group-hover:border-cyan-400 transition-all duration-300 group-hover:scale-110">
+                     <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform group-hover:text-black" />
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+          </Link>
+
+        </div>
+      </div>
     </section>
   )
 }

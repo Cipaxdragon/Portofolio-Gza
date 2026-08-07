@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Works', href: '/works' },
   { label: 'Services', href: '/services' },
-  { label: 'Blog', href: '/blog' },
+  // { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/#contact' },
 ]
 
@@ -58,19 +58,25 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="mx-auto max-w-5xl flex items-center justify-between px-6 py-4">
-          {/* Logo */}
+          {/* Logo (Kiri) */}
           <Link
             href="/"
             onClick={() => setMobileOpen(false)}
-            className="text-label !text-brand-text tracking-[0.25em] font-mono"
+            className="block h-6 sm:h-7"
             data-cursor="hover"
           >
-            Ghazali
+            <Image 
+              src="/images/Logo_Gaze.png" 
+              alt="Gaze Logo" 
+              width={120} 
+              height={36} 
+              className="opacity-80 hover:opacity-100 transition-opacity w-auto h-full object-contain"
+            />
           </Link>
 
           {/* Desktop Links */}
           <div className="hidden sm:flex items-center gap-8">
-            {navLinks.map((link) => {
+            {navLinks.filter(link => link.label !== 'Contact').map((link) => {
               const isActive = pathname.startsWith(link.href) && link.href !== '/#contact'
               return (
                 <Link
@@ -88,19 +94,17 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Hamburger (Mobile) or Gaze Logo (Desktop) */}
+          {/* Right Side: CTA & Mobile Menu */}
           <div className="flex items-center gap-4">
-            {/* Eye / Gaze Logo (Visible on desktop) */}
-            <div className="hidden sm:block h-6 sm:h-7">
-              <Image 
-                src="/images/Logo_Gaze.png" 
-                alt="Gaze Logo" 
-                width={120} 
-                height={36} 
-                className="opacity-80 hover:opacity-100 transition-opacity w-auto h-full object-contain"
-              />
-            </div>
-
+            <Link 
+              href="/#contact" 
+              onClick={(e) => handleNavClick(e, '/#contact')}
+              className="hidden sm:inline-flex items-center justify-center px-6 py-2 bg-brand-accent text-black font-bold rounded-full hover:bg-white hover:-translate-y-0.5 transition-all shadow-[0_0_15px_rgba(0,217,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]"
+              data-cursor="hover"
+            >
+              Let's Talk
+            </Link>
+            
             {/* Mobile Hamburger */}
             <button
               className="sm:hidden text-brand-text"

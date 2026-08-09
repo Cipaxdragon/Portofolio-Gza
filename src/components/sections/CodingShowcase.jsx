@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, BookMarked, Layout, Package, Star, Folder, File, FileCode2, Search, Link as LinkIcon, Users, MapPin, GitFork, ArrowLeft, TerminalSquare, MonitorPlay, ExternalLink, Code2, X, CheckCircle2, Server, Database, Wrench, Award } from 'lucide-react'
+import { BookOpen, BookMarked, Layout, Package, Star, Folder, File, FileCode2, Search, Link as LinkIcon, Users, MapPin, GitFork, ArrowLeft, TerminalSquare, MonitorPlay, ExternalLink, Code2, X, CheckCircle2, Server, Database, Wrench, Award, Rocket, Bot } from 'lucide-react'
 import { FaGithub, FaReact, FaLaravel, FaDatabase, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaFigma } from 'react-icons/fa'
 import { SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiFramer, SiMysql, SiPhp, SiVite, SiBootstrap } from 'react-icons/si'
 import ReactMarkdown from 'react-markdown'
@@ -35,6 +35,22 @@ const SkillsSection = () => {
       skills: [
         { name: "Laravel", icon: <FaLaravel className="text-[#FF2D20]" /> }
       ]
+    },
+    {
+      title: "Bahasa Dikuasai",
+      icon: <TerminalSquare className="w-5 h-5 text-[#27c93f]" />,
+      skills: [
+        { name: "PHP", icon: <SiPhp className="text-[#777BB4]" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> }
+      ]
+    },
+    {
+      title: "Tools AI",
+      icon: <Bot className="w-5 h-5 text-purple-500" />,
+      colSpan: "md:col-span-3",
+      skills: [
+        { name: "Antigravity", icon: <img src="/images/logos/antigravity.jpg" alt="Antigravity AI" className="w-6 h-6 rounded bg-white p-0.5 object-cover" /> }
+      ]
     }
   ]
 
@@ -43,7 +59,7 @@ const SkillsSection = () => {
       <h3 className="text-2xl sm:text-3xl font-bold text-white mb-8 flex items-center gap-3">
         <Code2 className="text-brand-primary w-8 h-8" /> Tech Arsenal
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {skillCategories.map((cat, idx) => (
           <motion.div 
             key={idx}
@@ -51,7 +67,7 @@ const SkillsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1, duration: 0.5 }}
-            className="bg-[#0d1117] border border-white/10 rounded-2xl p-6 hover:border-brand-primary/30 transition-colors group relative overflow-hidden"
+            className={`bg-[#0d1117] border border-white/10 rounded-2xl p-6 hover:border-brand-primary/30 transition-colors group relative overflow-hidden ${cat.colSpan || ''}`}
           >
             <div className="absolute -right-10 -top-10 w-32 h-32 bg-brand-primary/5 rounded-full blur-2xl group-hover:bg-brand-primary/10 transition-colors" />
             <div className="flex items-center gap-3 mb-6 relative z-10">
@@ -62,8 +78,8 @@ const SkillsSection = () => {
             </div>
             <div className="flex flex-wrap gap-3 relative z-10">
               {cat.skills.map((skill, sIdx) => (
-                <span key={sIdx} className="flex items-center gap-2 px-3 py-2 bg-[#161b22] text-gray-300 border border-white/5 hover:border-brand-primary/50 hover:text-white hover:bg-white/5 rounded-lg text-sm font-semibold transition-all cursor-default shadow-sm hover:shadow-[0_0_15px_rgba(0,217,255,0.15)] hover:-translate-y-0.5">
-                  <div className="w-4 h-4 flex items-center justify-center">
+                <span key={sIdx} className="flex items-center gap-3 px-4 py-2.5 bg-[#161b22] text-gray-300 border border-white/5 hover:border-brand-primary/50 hover:text-white hover:bg-white/5 rounded-lg text-sm sm:text-base font-semibold transition-all cursor-default shadow-sm hover:shadow-[0_0_15px_rgba(0,217,255,0.15)] hover:-translate-y-0.5">
+                  <div className="flex items-center justify-center text-[1.4rem]">
                     {skill.icon}
                   </div>
                   {skill.name}

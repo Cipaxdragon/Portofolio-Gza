@@ -83,21 +83,25 @@ export default function WorksTabs() {
   }
 
   const handleFilterSelect = (id) => {
-    setCreativeFilter(id)
-    
-    // Smooth scroll down to the specific gallery section
-    setTimeout(() => {
-      let targetId = 'works-gallery-start'
-      if (id === 'afilabs') targetId = 'gallery-afilabs'
-      else if (id === 'hmj24' || id === 'hmj23') targetId = 'gallery-hmj'
-      else if (id === 'kreasi' || id === 'inaugurasi') targetId = 'gallery-committee'
+    if (creativeFilter === id) {
+      setCreativeFilter(null);
+    } else {
+      setCreativeFilter(id);
+      
+      // Smooth scroll down to the specific gallery section
+      setTimeout(() => {
+        let targetId = 'works-gallery-start'
+        if (id === 'afilabs') targetId = 'gallery-afilabs'
+        else if (id === 'hmj24' || id === 'hmj23') targetId = 'gallery-hmj'
+        else if (id === 'kreasi' || id === 'inaugurasi') targetId = 'gallery-committee'
 
-      const element = document.getElementById(targetId)
-      if (element) {
-        const y = element.getBoundingClientRect().top + window.scrollY - 100 // offset for navbar
-        window.scrollTo({ top: y, behavior: 'smooth' })
-      }
-    }, 150)
+        const element = document.getElementById(targetId)
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 100 // offset for navbar
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      }, 150)
+    }
   }
 
   return (
@@ -166,13 +170,15 @@ export default function WorksTabs() {
               {/* ALL CONTENT (GALLERY) */}
               <div className="flex flex-col gap-12 overflow-hidden w-full">
                 
-                <div id="gallery-afilabs" className="scroll-mt-32">
-                  <div className="mx-auto max-w-4xl px-4 sm:px-6 mb-16 overflow-hidden">
-                    <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
+                {(!creativeFilter || creativeFilter === 'afilabs') && (
+                  <div id="gallery-afilabs" className="scroll-mt-32">
+                    <div className="mx-auto max-w-4xl px-4 sm:px-6 mb-16 overflow-hidden">
+                      <ExperienceTimeline profile={afilabsProfile} title="Detail Pengalaman." />
+                    </div>
+                    
+                    <Showcase />
                   </div>
-                  
-                  <Showcase />
-                </div>
+                )}
 
                 <SocialGallery activeDetailId={creativeFilter} />
               </div>

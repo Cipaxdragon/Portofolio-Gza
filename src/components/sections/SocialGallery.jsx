@@ -64,9 +64,9 @@ export default function SocialGallery({ activeDetailId }) {
     else if (activeDetailId === 'kreasi') setActiveCommitteeTab('Kreasi');
   }, [activeDetailId]);
 
-  const showHmjSection = true;
-  const showCommitteeSection = true;
-  
+  const showHmjSection = !activeDetailId || activeDetailId === 'hmj' || activeDetailId === 'hmj23' || activeDetailId === 'hmj24';
+  const showCommitteeSection = !activeDetailId || activeDetailId === 'inaugurasi' || activeDetailId === 'kreasi';
+
   const constraintsRef = useRef(null);
 
   useEffect(() => {
@@ -75,6 +75,10 @@ export default function SocialGallery({ activeDetailId }) {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  if (!showHmjSection && !showCommitteeSection) {
+    return null;
+  }
 
   const filteredGallery = activeTab === 'reels' 
     ? [...hmjReels, ...hmjGallery.filter(post => post.type === 'video')]
@@ -104,9 +108,14 @@ export default function SocialGallery({ activeDetailId }) {
                 <ExperienceTimeline 
                   profile={{ 
                     ...hmjProfile, 
-                    experiences: hmjProfile.experiences.filter(e => e.role && (e.role.includes("Ketua") || e.role.includes("Anggota"))) 
+                    experiences: hmjProfile.experiences.filter(e => {
+                      if (!e.role) return false;
+                      if (activeDetailId === 'hmj23') return e.role.includes("Anggota");
+                      if (activeDetailId === 'hmj24') return e.role.includes("Ketua");
+                      return e.role.includes("Ketua") || e.role.includes("Anggota");
+                    }) 
                   }} 
-                  title="Detail Pengalaman (2 Periode)." 
+                  title="Detail Pengalaman."
                 />
               </div>
 

@@ -79,7 +79,9 @@ export default function HorizontalTimeline({ profiles, onSelect, activeId }) {
 
           // Cleanup period string
           let shortYear = exp.periode;
-          if (shortYear.includes("2024")) shortYear = "2024";
+          if (exp.tabId === 'hmj23') shortYear = "2023";
+          else if (exp.tabId === 'hmj24') shortYear = "2024";
+          else if (shortYear.includes("2024")) shortYear = "2024";
           else if (shortYear.includes("2023")) shortYear = "2023";
           else if (shortYear.includes("2022")) shortYear = "2022";
           else if (shortYear.includes("Probation") || shortYear.includes("Percobaan")) shortYear = "2025";

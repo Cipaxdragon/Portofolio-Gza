@@ -50,8 +50,10 @@ export default function ExperienceTimeline({ profile, title, onOpenProof, onSele
 
   return (
     <div className="mb-12">
-      <SectionHeader title={title} align="left" />
-      <div className="mb-16 mt-8 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
+      <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-8">
+        {title}
+      </h2>
+      <div className="mb-16 border-l-2 border-brand-primary/30 pl-8 lg:pl-10 ml-6 sm:ml-8">
         {profile.experiences.map((exp, idx) => (
           <div 
             key={idx} 

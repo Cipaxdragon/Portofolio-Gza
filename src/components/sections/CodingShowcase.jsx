@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, BookMarked, Layout, Package, Star, Folder, File, FileCode2, Search, Link as LinkIcon, Users, MapPin, GitFork, ArrowLeft, TerminalSquare, MonitorPlay, ExternalLink, Code2, X, CheckCircle2, Server, Database, Wrench, Award } from 'lucide-react'
 import { FaGithub, FaReact, FaLaravel, FaDatabase, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaFigma } from 'react-icons/fa'
-import { SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiFramer, SiMysql, SiPhp, SiVite } from 'react-icons/si'
+import { SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiFramer, SiMysql, SiPhp, SiVite, SiBootstrap } from 'react-icons/si'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -25,32 +25,15 @@ const SkillsSection = () => {
       skills: [
         { name: "React", icon: <FaReact className="text-[#61DAFB]" /> },
         { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
-        { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-        { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
-        { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
-        { name: "Framer Motion", icon: <SiFramer className="text-white" /> }
+        { name: "Bootstrap", icon: <SiBootstrap className="text-[#7952B3]" /> }
       ]
     },
     {
-      title: "Backend & Database",
-      icon: <Database className="w-5 h-5 text-[#ff5f56]" />,
+      title: "Backend Development",
+      icon: <Server className="w-5 h-5 text-[#ff5f56]" />,
       skills: [
-        { name: "Laravel", icon: <FaLaravel className="text-[#FF2D20]" /> },
-        { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
-        { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-        { name: "RESTful APIs", icon: <Database className="text-gray-400" /> },
-        { name: "PHP", icon: <SiPhp className="text-[#777BB4]" /> }
-      ]
-    },
-    {
-      title: "Tools & Others",
-      icon: <Wrench className="w-5 h-5 text-[#27c93f]" />,
-      skills: [
-        { name: "Git", icon: <FaGitAlt className="text-[#F05032]" /> },
-        { name: "GitHub", icon: <FaGithub className="text-white" /> },
-        { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
-        { name: "Vite", icon: <SiVite className="text-[#646CFF]" /> }
+        { name: "Laravel", icon: <FaLaravel className="text-[#FF2D20]" /> }
       ]
     }
   ]
@@ -60,7 +43,7 @@ const SkillsSection = () => {
       <h3 className="text-2xl sm:text-3xl font-bold text-white mb-8 flex items-center gap-3">
         <Code2 className="text-brand-primary w-8 h-8" /> Tech Arsenal
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl gap-6">
         {skillCategories.map((cat, idx) => (
           <motion.div 
             key={idx}

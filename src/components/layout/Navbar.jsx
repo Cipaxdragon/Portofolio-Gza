@@ -11,8 +11,7 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Works', href: '/works' },
   { label: 'Services', href: '/services' },
-  // { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '?contact=true' },
 ]
 
 export default function Navbar() {
@@ -30,17 +29,11 @@ export default function Navbar() {
   const handleNavClick = (e, href) => {
     setMobileOpen(false)
 
-    // Handle hash links (like Contact)
     if (href.startsWith('/#')) {
       const targetId = href.replace('/#', '#')
-      
       if (pathname === '/') {
-        // If already on home page, just scroll smoothly
         e.preventDefault()
         document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        // If on another page, let Next.js navigate to /#contact natively
-        // (Next.js Link handles scrolling to hash automatically on navigation)
       }
     }
   }
@@ -77,7 +70,7 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="hidden sm:flex items-center gap-8">
             {navLinks.filter(link => link.label !== 'Contact').map((link) => {
-              const isActive = pathname.startsWith(link.href) && link.href !== '/#contact'
+              const isActive = pathname.startsWith(link.href) && !link.href.startsWith('?')
               return (
                 <Link
                   key={link.label}
@@ -97,8 +90,8 @@ export default function Navbar() {
           {/* Right Side: CTA & Mobile Menu */}
           <div className="flex items-center gap-4">
             <Link 
-              href="/#contact" 
-              onClick={(e) => handleNavClick(e, '/#contact')}
+              href="?contact=true" 
+              onClick={(e) => handleNavClick(e, '?contact=true')}
               className="hidden sm:inline-flex items-center justify-center px-6 py-2 bg-brand-accent text-black font-bold rounded-full hover:bg-white hover:-translate-y-0.5 transition-all shadow-[0_0_15px_rgba(0,217,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]"
               data-cursor="hover"
             >

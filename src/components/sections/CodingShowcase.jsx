@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, BookMarked, Layout, Package, Star, Folder, File, FileCode2, Search, Link as LinkIcon, Users, MapPin, GitFork, ArrowLeft, TerminalSquare, MonitorPlay, ExternalLink, Code2, X, CheckCircle2, Server, Database, Wrench, Award, Rocket, Bot } from 'lucide-react'
-import { FaGithub, FaReact, FaLaravel, FaDatabase, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaFigma } from 'react-icons/fa'
-import { SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiFramer, SiMysql, SiPhp, SiVite, SiBootstrap } from 'react-icons/si'
+import { FaGithub, FaReact, FaLaravel, FaDatabase, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaFigma, FaRobot } from 'react-icons/fa'
+import { SiNextdotjs, SiTailwindcss, SiJavascript, SiTypescript, SiFramer, SiMysql, SiPhp, SiVite, SiBootstrap, SiExpress, SiGoogle } from 'react-icons/si'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -33,7 +33,9 @@ const SkillsSection = () => {
       title: "Backend Development",
       icon: <Server className="w-5 h-5 text-[#ff5f56]" />,
       skills: [
-        { name: "Laravel", icon: <FaLaravel className="text-[#FF2D20]" /> }
+        { name: "Laravel", icon: <FaLaravel className="text-[#FF2D20]" /> },
+        { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
+        { name: "Express.js", icon: <SiExpress className="text-white" /> }
       ]
     },
     {
@@ -49,7 +51,8 @@ const SkillsSection = () => {
       icon: <Bot className="w-5 h-5 text-purple-500" />,
       colSpan: "md:col-span-3",
       skills: [
-        { name: "Antigravity", icon: <img src="/images/logos/antigravity.jpg" alt="Antigravity AI" className="w-6 h-6 rounded bg-white p-0.5 object-cover" /> }
+        { name: "Antigravity", icon: <img src="/images/logos/antigravity.jpg" alt="Antigravity AI" className="w-6 h-6 rounded-md object-cover" /> },
+        { name: "Gemini AI", icon: <SiGoogle className="text-[#4285F4]" /> }
       ]
     }
   ]

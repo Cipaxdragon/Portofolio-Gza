@@ -88,7 +88,7 @@ export const codingWorks = [
     description: "Aplikasi web Single Page Application (SPA) untuk mengelola seluruh proses pendaftaran dan penjadwalan ujian akademik skripsi (Sempro, Ujian Hasil, Munaqasyah) di Jurusan Sistem Informasi UIN Alauddin Makassar. Dibangun sebagai proyek mata kuliah APSI dengan React modern, Context API, dan simulasi database menggunakan localStorage.",
     repoName: "cipaxdragon/APSI_3_React",
     repoUrl: "https://github.com/cipaxdragon/APSI_3_React",
-    liveUrl: "",
+    liveUrl: "https://apsi-3-react.vercel.app/",
     language: "JavaScript",
     languageColor: "#f1e05a",
     stars: 6,

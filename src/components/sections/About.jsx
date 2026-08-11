@@ -181,7 +181,7 @@ export default function About() {
 
         {/* Compact Skills Section for Home */}
         <div className="mt-24 sm:mt-32">
-          <SectionHeader title="Core Values & Tech Stack" />
+          <SectionHeader title="Core Values & Philosophy" />
           
           <div className="flex flex-col gap-10 mt-8">
             

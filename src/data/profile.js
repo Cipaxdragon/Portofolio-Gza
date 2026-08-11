@@ -21,28 +21,28 @@ export const profile = {
 
   coreQualities: [
     {
-      title: 'Clean Code',
-      description: 'Menulis kode yang rapi, terstruktur, dan mudah dipelihara untuk jangka panjang.',
-      icon: 'code',
-      color: 'bg-[#E879F9]', // Fuchsia
+      title: 'Dynamic Visuals',
+      description: 'Menciptakan pengalaman pengguna yang hidup melalui motion graphics presisi dan desain UI/UX premium.',
+      icon: 'eye',
+      color: 'bg-[#38BDF8]',
     },
     {
-      title: 'Visual Impact',
-      description: 'Menciptakan animasi dan grafis yang memukau serta fungsional untuk pengguna.',
-      icon: 'eye',
-      color: 'bg-[#38BDF8]', // Light Blue
+      title: 'Robust Systems',
+      description: 'Membangun arsitektur web modern (MVC, SPA) dengan fungsionalitas sistem yang komprehensif dan kode rapi.',
+      icon: 'code',
+      color: 'bg-[#E879F9]',
+    },
+    {
+      title: 'AI & Automation',
+      description: 'Mengintegrasikan kecerdasan buatan (Gemini/OpenAI) untuk menciptakan automasi interaktif dan dinamis.',
+      icon: 'brain',
+      color: 'bg-[#A78BFA]',
     },
     {
       title: 'Problem Solving',
-      description: 'Menerapkan pemikiran kritis untuk mengatasi tantangan teknis yang rumit.',
-      icon: 'brain',
-      color: 'bg-[#4ADE80]', // Green
-    },
-    {
-      title: 'Performance',
-      description: 'Mengoptimalkan aplikasi untuk kecepatan, efisiensi, dan pengalaman mulus.',
+      description: 'Menerapkan pemikiran logis dan sistematis untuk memecahkan bug serta tantangan teknis yang kompleks.',
       icon: 'zap',
-      color: 'bg-[#A78BFA]', // Purple
+      color: 'bg-[#4ADE80]',
     }
   ],
 

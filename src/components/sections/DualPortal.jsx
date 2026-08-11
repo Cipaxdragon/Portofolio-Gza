@@ -69,7 +69,7 @@ export default function DualPortal() {
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-purple-900/20 transition-colors">
                       <div className="relative w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10 group-hover:border-brand-primary/50 transition-colors">
                         <div className="absolute inset-0 z-[9999] bg-transparent pointer-events-auto" onContextMenu={(e) => e.preventDefault()}></div>
-                        <video src="/images/showcase/instagram/Other/kreasi/Reel_02_Ce9ETnsAGTF/Video.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
+                        <video src="/images/showcase/instagram/Ekpetasi_realtia/AQMviRBRqBuRSSbiQVlb6aU0LQw0c2H7rEUJdsCqJsThKtR-f1UHCrWOSbQ2ue0ac1Ccp0kUn4g3qLa3ccPlItpwH6ngkYmVvRfY7cs.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
                         <p className="text-white text-sm font-bold">HMJ-SI Kepanitiaan</p>

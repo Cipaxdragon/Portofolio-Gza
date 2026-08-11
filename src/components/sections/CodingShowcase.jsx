@@ -266,6 +266,24 @@ export default function CodingShowcase() {
     }
   }
 
+  const handleViewSourceCode = (project) => {
+    const repoName = project.repoName.split('/')[1];
+    const targetRepo = repos.find(r => r.name === repoName);
+    
+    if (targetRepo) {
+      setSelectedProject(null); // Close modal
+      handleOpenRepo(targetRepo); // Open repo in the viewer
+      
+      // Scroll to the GitHub viewer section smoothly
+      setTimeout(() => {
+        document.getElementById('github-clone-section')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Fallback if not found (e.g., API hasn't loaded or repo is on a different account)
+      window.open(project.repoUrl, '_blank');
+    }
+  }
+
   const filteredRepos = repos.filter(repo => repo.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
   return (
@@ -364,7 +382,7 @@ export default function CodingShowcase() {
       </div>
 
       {/* SECTION 2: GITHUB CLONE */}
-      <div className="w-full bg-[#0d1117] border-t border-white/10 text-[#c9d1d9] font-sans pt-12 pb-24 relative z-10">
+      <div id="github-clone-section" className="w-full bg-[#0d1117] border-t border-white/10 text-[#c9d1d9] font-sans pt-12 pb-24 relative z-10">
         <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-8">
           
           {/* LEFT SIDEBAR: PROFILE */}
@@ -614,13 +632,13 @@ export default function CodingShowcase() {
 
                   <div className="flex flex-wrap gap-3">
                     {selectedProject.liveUrl && (
-                      <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-brand-primary text-black font-bold text-sm rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,217,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                      <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#00d9ff] text-black font-bold text-sm rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,217,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
                         <ExternalLink className="w-4 h-4" /> Live Preview
                       </a>
                     )}
-                    <a href={selectedProject.repoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white font-bold text-sm rounded-xl hover:bg-white/10 border border-white/10 transition-colors">
+                    <button onClick={() => handleViewSourceCode(selectedProject)} className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white font-bold text-sm rounded-xl hover:bg-white/10 border border-white/10 transition-colors">
                       <FaGithub className="w-5 h-5" /> Source Code
-                    </a>
+                    </button>
                   </div>
 
                   <hr className="border-white/10" />

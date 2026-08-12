@@ -633,7 +633,7 @@ export default function CodingShowcase() {
                   <div className="flex flex-wrap gap-3">
                     {selectedProject.liveUrl && (
                       <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#00d9ff] text-black font-bold text-sm rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,217,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
-                        <ExternalLink className="w-4 h-4" /> Live Preview
+                        <ExternalLink className="w-4 h-4" /> {selectedProject.liveLabel || "Live Preview"}
                       </a>
                     )}
                     <button onClick={() => handleViewSourceCode(selectedProject)} className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white font-bold text-sm rounded-xl hover:bg-white/10 border border-white/10 transition-colors">

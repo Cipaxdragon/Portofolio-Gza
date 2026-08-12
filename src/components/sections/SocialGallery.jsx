@@ -93,8 +93,6 @@ export default function SocialGallery({ activeDetailId }) {
 
   const btsGallery = [...hmjGallery, ...hmjReels].filter(post => post.btsUrl || (post.btsSlides && post.btsSlides.length > 0));
 
-
-
   return (
     <>
       <section id="works" className="py-20 md:py-32 bg-black relative overflow-hidden" ref={constraintsRef}>

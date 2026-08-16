@@ -8,7 +8,7 @@ export const afilabsProfile = {
       periode: "Masa Percobaan Kerja (Probation)",
       duration: "11 Juni 2025 - 23 Oktober 2025 (4 Bulan)",
       orgName: "Afilabs Creative Agency",
-      description: "Menjalani masa percobaan (probation) di agensi kreatif Afilabs sebagai Motion Graphics Designer.\n- Berfokus penuh dalam merancang animasi visual yang dinamis dan modern untuk berbagai kebutuhan kampanye digital.\n- Terlibat secara intensif dalam produksi aset motion graphics dan post-production untuk proyek industri kreatif.\n- Melakukan riset mendalam serta eksplorasi puluhan variasi animasi untuk presentasi Mockup Brand menggunakan After Effects untuk proyek internal Arvala.",
+      description: "Berperan sebagai Motion Graphics Designer selama masa probation.\n- Merancang animasi visual dinamis untuk kampanye digital.\n- Terlibat dalam post-production proyek industri kreatif.\n- Eksplorasi animasi Mockup Brand untuk proyek internal Arvala.",
       skills: ["Motion Graphics", "Brand Mockup", "Video Editing", "Team Collaboration"],
       tools: [
         { name: "After Effects" },
@@ -34,7 +34,7 @@ export const hmjProfile = {
       role: "Ketua Divisi Komunikasi Dan Informasi",
       periode: "Periode 2024/2025",
       duration: "Maret 2024 - Januari 2025 · 11 Bulan",
-      description: "Memimpin Divisi Kominfo dalam produksi konten, pengelolaan media sosial, dan pembuatan website organisasi. Menginisiasi podcast bersama tokoh inspiratif. Menyusun sistem kerja tim untuk mencapai target publikasi harian maupun bulanan.",
+      description: "Memimpin Divisi Kominfo dalam produksi konten, sosmed, dan website. Menginisiasi program podcast dan menyusun sistem kerja tim untuk mencapai target publikasi.",
       skills: ["VideoDirector", "Content Creation", "Podcasting", "Motion Graphics", "Video Editing"],
       tools: [
         { name: "Premiere Pro" },
@@ -89,7 +89,7 @@ export const hmjProfile = {
       role: "Anggota Divisi Komunikasi Dan Informasi",
       periode: "Periode 2023/2024",
       duration: "Maret 2023 - Februari 2024 · 1 Tahun",
-      description: "Berkontribusi dalam pembuatan dan distribusi konten media sosial himpunan.\n- Membantu desain grafis untuk kebutuhan publikasi acara internal dan eksternal.\n- Mengelola dokumentasi kegiatan himpunan dalam bentuk foto dan video.\n- Mendukung pengelolaan website organisasi dan memastikan informasi terupdate.\n- Panitia Acara Program Kerja Podcast",
+      description: "Berkontribusi dalam konten media sosial dan dokumentasi himpunan.\n- Mendesain grafis untuk publikasi acara.\n- Mengelola dokumentasi foto dan video.\n- Menjadi Panitia Program Kerja Podcast.",
       skills: ["Flyer Design", "Content Creation", "Motion Graphics", "Video Editing"],
       tools: [
         { name: "Photoshop" },
@@ -116,7 +116,7 @@ export const hmjProfile = {
       avatarUrl: "/images/logos/logo_saintek.png",
       periode: "Inagurasi 2022",
       duration: "Agustus 2022",
-      description: "Bertanggung jawab atas dokumentasi dan publikasi acara puncak Inagurasi Fakultas Sains dan Teknologi tingkat universitas.\n- Mendokumentasikan seluruh rangkaian acara Inagurasi Fakultas.\n- Memproduksi video rekapitulasi kegiatan (After Movie) dan materi publikasi media sosial.",
+      description: "Bertanggung jawab atas dokumentasi acara puncak Inagurasi Fakultas.\n- Mendokumentasikan seluruh rangkaian acara.\n- Memproduksi After Movie dan materi sosmed.",
       skills: ["Event Documentation", "Videography", "Photography", "Video Editing"],
       tools: [
         { name: "Premiere Pro" },
@@ -129,7 +129,7 @@ export const hmjProfile = {
       orgName: "Inagurasi Jurusan Sistem Informasi (Kreasi 021)",
       periode: "Inagurasi 2022",
       duration: "Mei 2022",
-      description: "Berperan aktif dalam menyukseskan perayaan Inagurasi tingkat jurusan (Kreasi 021).\n- Membuat desain grafis untuk kebutuhan identitas acara seperti Launching Logo dan Bazar.\n- Terlibat dalam pengambilan gambar dan penyuntingan video Behind The Scene serta video promosi acara.",
+      description: "Menyukseskan perayaan Inagurasi jurusan (Kreasi 021).\n- Membuat desain grafis (Logo, Bazar).\n- Memproduksi video Behind The Scene dan promosi acara.",
       skills: ["Graphic Design", "Content Creation", "Videography", "Video Editing"],
       tools: [
         { name: "Premiere Pro" },

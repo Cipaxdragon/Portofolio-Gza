@@ -11,16 +11,13 @@ export default function BtsCanvasSection() {
   if (!allBtsNodes || allBtsNodes.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-32 bg-black relative border-t border-white/10 overflow-hidden">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 mb-12">
-        <SectionHeader 
-          title="Global Behind The Scenes" 
-          subtitle="Explore the raw process behind the final outputs" 
-          align="center"
-        />
-        <p className="text-center text-gray-400 mt-4 text-sm sm:text-base max-w-2xl mx-auto">
-          Scroll to Zoom in and out. Click and drag to Pan across the canvas. 
-          Discover all the untold stories, software timelines, and raw footages.
+    <section className="py-12 md:py-20 bg-black relative border-t border-white/10 overflow-hidden">
+      <div className="mx-auto max-w-2xl px-6 mb-8 text-center flex flex-col items-center">
+        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-3">
+          Global <span className="text-brand-primary">Behind The Scenes</span>
+        </h2>
+        <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+          Explore the raw process behind the final outputs. Scroll to zoom, click & drag to pan across the canvas to discover untold stories, software timelines, dan raw footages.
         </p>
       </div>
 

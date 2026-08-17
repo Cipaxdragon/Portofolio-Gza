@@ -383,6 +383,13 @@ export default function CodingShowcase() {
 
       {/* SECTION 2: GITHUB CLONE */}
       <div id="github-clone-section" className="w-full bg-[#0d1117] border-t border-white/10 text-[#c9d1d9] font-sans pt-12 pb-24 relative z-10">
+        
+        {/* HEADLINE GITHUB */}
+        <div className="max-w-6xl mx-auto px-4 md:px-8 mb-8 flex items-center gap-3">
+          <FaGithub className="w-8 h-8 text-white" />
+          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">GitHub Activity</h2>
+        </div>
+
         <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-8">
           
           {/* LEFT SIDEBAR: PROFILE */}
@@ -395,11 +402,13 @@ export default function CodingShowcase() {
               </div>
             ) : profile && (
               <div className="flex flex-col">
-                <img src={profile.avatar_url} alt="Profile" className="w-full max-w-[296px] rounded-full border border-[#30363d] mb-4 shadow-[0_0_0_1px_rgba(240,246,252,0.1)]" />
-                <h1 className="flex flex-col mb-4">
-                  <span className="text-2xl font-bold text-[#c9d1d9]">{profile.name}</span>
-                  <span className="text-xl text-[#8b949e] font-light">{profile.login}</span>
-                </h1>
+                <div className="flex items-center gap-4 mb-4 md:block md:mb-0">
+                  <img src={profile.avatar_url} alt="Profile" className="w-20 h-20 md:w-full md:max-w-[296px] md:h-auto rounded-full border border-[#30363d] md:mb-4 shadow-[0_0_0_1px_rgba(240,246,252,0.1)] shrink-0" />
+                  <h1 className="flex flex-col">
+                    <span className="text-2xl font-bold text-[#c9d1d9] leading-tight">{profile.name}</span>
+                    <span className="text-xl text-[#8b949e] font-light leading-tight">{profile.login}</span>
+                  </h1>
+                </div>
                 <button className="w-full py-1.5 mb-4 bg-[#21262d] hover:bg-[#30363d] border border-[#363b42] rounded-md text-sm font-semibold transition-colors">
                   Follow
                 </button>

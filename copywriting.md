@@ -23,8 +23,9 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 - **Header:** `✨ PORTFOLIO & PROJECTS`, `Crafting Digital Experiences.`, `Explore a curated collection of my work spanning across UI/UX design, videography, graphic design, and frontend development.`
 - **Tabs:** `Creative`, `Coding`, `Behind the Scenes`
 - **Koding Tab:** `Programming & Development.`, `Repositori kode, antarmuka aplikasi, dan proyek pengembangan perangkat lunak sebagai mahasiswa Sistem Informasi.`, `Live Demo`, `Source Code`
+- **GitHub Clone Section:** `GitHub Activity`, `Overview`, `Repositories`, `Projects`, `Packages`
 - **Creative Tab:** `Pilih Pengalaman untuk melihat detail`, `Afilabs Internship.`, `Eksplorasi mahakarya profesional dan kolaborasi kreatif selama menjalani masa magang di Afilabs Creative Agency.`, `Inauguration Committees`, `Berperan sebagai tim inti dalam Divisi Publikasi dan Dokumentasi (Pubdok)...`
-- **BTS Tab:** `Global Behind The Scenes`, `Explore the raw process behind the final outputs`
+- **BTS Tab:** `Global Behind The Scenes`, `Explore the raw process behind the final outputs. Scroll to zoom, click & drag to pan across the canvas to discover untold stories, software timelines, dan raw footages.`
 
 ---
 
@@ -37,7 +38,11 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 
 ## 👤 5. HALAMAN ABOUT
 - **Bio Utama:** `Salam ijinkan Saya Mempekenalkan Saya Punya Nama Saya Gali.`, `Aku Bukanlah Siapa Siapa dan Aku Juga tidak Jadi Siapa Siapa.`
-- **Core Values:** `Core Values & Tech Stack`, `Clean Code`, `Visual Impact`, `Problem Solving`, `Performance` (serta deskripsinya).
+- **Core Values & Philosophy:** 
+  - `Dynamic Visuals`
+  - `Robust Systems`
+  - `AI & Automation`
+  - `Problem Solving`
 - **Skills:** `Skills & Qualities`
 - **Masa Depan:** `What's Next.`, `Hal-hal yang sedang aku kejar.`
 
@@ -55,13 +60,23 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 ### A. DESKRIPSI PROJECT KODING
 - **Portfolio v1:** `Website portofolio interaktif yang memadukan desain premium, motion graphics, dan teknologi modern web untuk memamerkan perjalanan karir...`
 - **Inventaris Lab:** `Aplikasi berbasis web untuk mengelola peminjaman dan inventarisasi peralatan laboratorium di kampus...`
+- **Prabowo Bot:** `Bot Discord Berbasis AI...`
+- **SIDANUS React SPA:** `Sistem Administrasi Nusantara...`
+- **Web HMJ-SI (Laravel):** `Sistem Informasi Himpunan...`
 
 ### B. DESKRIPSI PENGALAMAN (PROFILE.JS)
 - **Ketua Divisi Kominfo:** `Koordinator Divisi Manajemen. Program Kerja: Podcast.`
 - **Anggota Divisi Kominfo:** `Design Graphics, Editing Video, Build Website, Dokumentasi Acara.`
 - **Panitia Inaugurasi:** `Dokumentasi kegiatan inaugurasi jurusan.`
 
-### C. TEKS BEHIND THE SCENES (ORGANIZATIONWORK.JS)
+### C. DESKRIPSI DETAIL PENGALAMAN ORGANISASI (ORGANIZATIONWORK.JS)
+- **Afilabs (Probation):** `Berperan sebagai Motion Graphics Designer selama masa probation. Merancang animasi visual dinamis untuk kampanye digital...`
+- **Ketua Divisi Kominfo:** `Memimpin Divisi Kominfo dalam produksi konten, sosmed, dan website. Menginisiasi program podcast dan menyusun sistem kerja tim...`
+- **Anggota Divisi Kominfo:** `Berkontribusi dalam konten media sosial dan dokumentasi himpunan...`
+- **Panitia Pubdok Saintek:** `Bertanggung jawab atas dokumentasi acara puncak Inagurasi Fakultas...`
+- **Panitia Pubdok Kreasi 021:** `Menyukseskan perayaan Inagurasi jurusan (Kreasi 021)...`
+
+### D. TEKS BEHIND THE SCENES
 - **VFX Screen Replacement:** `Proses ini berfokus pada penggantian layar handphone mentah (Green Screen) dengan antarmuka UI kustom menggunakan Adobe After Effects...`
 - **3D Hologram UI Tracking:** `Untuk menciptakan efek elemen UI yang melayang di udara, ruang fisik dianalisis menggunakan 3D Camera Tracker...`
 - **Master Compositing & Audio Mixing:** `Di Adobe Premiere Pro, seluruh adegan yang telah diberi efek visual digabungkan...`
@@ -70,7 +85,7 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 - **Full 3D Environment (Blender 4.1):** `Screenshot ini menampilkan ruang kerja 3D Viewport di Blender 4.1 untuk proyek 'Meja Jejak Desa.blend'...`
 - **Multi-Software Post-Production:** `Dokumentasi nyata dari balik layar ruang redaksi kami! Terlihat setup tiga laptop yang berjalan secara simultan...`
 
-### D. CAPTION INSTAGRAM HMJ-SI (ORGANIZATIONWORK.JS & COMMITTEEDATA.JS)
+### E. CAPTION INSTAGRAM HMJ-SI
 - `📢 | HMJ-SI 2024 PAMIT. Terima kasih untuk setiap momen, perjuangan...`
 - `Kalian kuliah IT? Ekspektasi awal pasti gede banget, kan? 😜 Bisa hacking...`
 - `Memberi Pelajaran Sekaligus Healing. Jejak Desa akan segera hadir...`

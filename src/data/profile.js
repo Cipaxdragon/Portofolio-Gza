@@ -8,7 +8,7 @@ export const profile = {
   bio       : 'Salam ijinkan Saya Mempekenalkan Saya Punya Nama Saya Gali.',
   bioExtended: ``,
 
-  avatar    : '/images/imagess.jpg',
+  avatar    : '/images/Gaza_1.png',
   location  : 'Makassar, Indonesia',
 
   education: {

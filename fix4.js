@@ -1,0 +1,1 @@
+const fs = require('fs'); const file = 'd:/Desktop/Portofolio/portfolio_gaz/src/components/sections/AboutFull.jsx'; let content = fs.readFileSync(file, 'utf8'); content = content.replace('<div className=\"absolute inset-0 bg-brand-accent/10 mix-blend-color pointer-events-none\" />', ''); fs.writeFileSync(file, content);

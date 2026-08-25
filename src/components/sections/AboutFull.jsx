@@ -179,16 +179,16 @@ export default function AboutFull() {
           {/* Right Column: Large Photo & Accent (Span 7) */}
           <div className="lg:col-span-7 relative">
             <CardMotion delay={0.2}>
-              <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] overflow-hidden rounded-sm group">
+              <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm group">
                 <Image
                   src={profile.avatar}
                   alt={profile.name}
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                  className="object-cover transition-transform duration-1000 scale-105 group-hover:scale-100"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
                 {/* Cyberpunk Scanline / Glitch Overlay */}
-                <div className="absolute inset-0 bg-brand-accent/10 mix-blend-color pointer-events-none" />
+                
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 pointer-events-none mix-blend-overlay" />
               </div>
             </CardMotion>

@@ -5,7 +5,7 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 ---
 
 ## 🧭 1. NAVBAR & FOOTER
-**Navbar:** `ABOUT`, `WORKS`, `SERVICES`, `Let's Talk`
+**Navbar:** `ABOUT`, `KARYA`, `LAYANAN`, `Let's Talk`
 **Footer:** `Let's Connect`, `© 2026 Ahmad Ghazali. All rights reserved.`
 
 ---
@@ -13,14 +13,14 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 ## 🏠 2. HALAMAN BERANDA
 - **Hero:** `All Things Visual.`, `AHMAD GHAZALI — MAKASSAR, ID — 2021`, `Motion × Design × Code`, `↓`
 - **Dual Portal Header:** `Masterpieces & Portfolios.`, `Jelajahi dua dunia keahlian utama saya. Pilih dimensi karya yang ingin Anda eksplorasi lebih dalam.`
-- **Portal Creative:** `CREATIVE & LEADERSHIP`, `Visual Arts & Leadership`, `Eksplorasi mahakarya desain UI/UX, motion graphics, produksi video komersial Afilabs, serta kiprah organisasi.`, `LIHAT SELENGKAPNYA`
+- **Portal Creative:** `CREATIVE `, `Visual Arts `, `Eksplorasi  desain Social Media, Motion graphics, Produksi Video Iklan  Afilabs, serta kiprah organisasi.`, `LIHAT SELENGKAPNYA`
 - **Portal Coding:** `PROGRAMMING & DEVELOPMENT`, `Software Engineering`, `Jelajahi repositori kode, live demo aplikasi web premium, arsitektur sistem, dan kloning GitHub interaktif.`, `LIHAT SELENGKAPNYA`
 - **Services Preview:** `✨ What I Offer`, `Let's Build Something.`, `Layanan utama yang saya sediakan untuk mewujudkan visi digital Anda.`, `Explore All Services`, `Lihat Detail Layanan`
 
 ---
 
 ## 🎨 3. HALAMAN WORKS (STRUKTUR)
-- **Header:** `✨ PORTFOLIO & PROJECTS`, `Crafting Digital Experiences.`, `Explore a curated collection of my work spanning across UI/UX design, videography, graphic design, and frontend development.`
+- **Header:** `✨ PORTFOLIO & PROJECTS`, `Crafting Digital Experiences.`, `Explore a curated collection of my work spanning across  Ny Design, Videography, Graphic Design, and Frontend development.`
 - **Tabs:** `Creative`, `Coding`, `Behind the Scenes`
 - **Koding Tab:** `Programming & Development.`, `Repositori kode, antarmuka aplikasi, dan proyek pengembangan perangkat lunak sebagai mahasiswa Sistem Informasi.`, `Live Demo`, `Source Code`
 - **GitHub Clone Section:** `GitHub Activity`, `Overview`, `Repositories`, `Projects`, `Packages`
@@ -31,8 +31,8 @@ File ini adalah "Kitab Suci" teks website Anda. **SEMUA teks, dari judul raksasa
 
 ## 💼 4. HALAMAN SERVICES
 - **Header:** `Explore My Services.`, `Lebih detail mengenai apa yang bisa saya bangun untuk Anda.`
-- **Jasa Coding Web:** `Wujudkan Ide Digitalmu Menjadi Website Nyata.`, `Membangun ekosistem website modern... Semua kode ditulis dengan struktur rapi (Clean Code) dan dioptimalkan secara mendalam...`
-- **Jasa Video Editing:** `Ubah Rekaman Mentah Menjadi Karya Visual yang Memukau.`, `Menghadirkan layanan paska-produksi video profesional dan animasi motion graphics...`
+- **Jasa Coding Web:** `Wujudkan Ide Digitalmu Menjadi Website Nyata.`, `Membangun ekosistem website modern.  Semua kode ditulis dengan struktur rapi (Clean Code) dan dioptimalkan secara mendalam . `
+- **Jasa Video Editing:** `Ubah Rekaman Mentah Menjadi Karya Visual yang Memukau.`, `Menghadirkan layanan paska-produksi video profesional dan animasi`
 
 ---
 

@@ -6,9 +6,9 @@ export const profile = {
   // Copy puitis — bukan deskripsi CV
   tagline   : 'All Things Visual.',
   bio       : 'Salam ijinkan Saya Mempekenalkan Saya Punya Nama Saya Gali.',
-  bioExtended: `Aku Bukanlah Siapa Siapa dan Aku Juga tidak Jadi Siapa Siapa.`,
+  bioExtended: ``,
 
-  avatar    : '/images/pp.png',
+  avatar    : '/images/imagess.jpg',
   location  : 'Makassar, Indonesia',
 
   education: {

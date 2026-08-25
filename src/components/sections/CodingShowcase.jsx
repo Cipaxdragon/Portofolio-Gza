@@ -177,7 +177,7 @@ export default function CodingShowcase() {
         if (profileRes.ok) setProfile(await profileRes.json())
         if (reposRes.ok) setRepos(await reposRes.json())
       } catch (error) {
-        console.error("Error fetching GitHub data:", error)
+        console.warn("GitHub fetch failed (Rate limit or network issue):", error.message)
       } finally {
         setIsLoading(false)
       }

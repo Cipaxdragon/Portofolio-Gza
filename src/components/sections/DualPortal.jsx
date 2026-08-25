@@ -118,21 +118,21 @@ export default function DualPortal() {
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
                       <div className="relative w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10 group-hover:border-brand-primary/50 transition-colors">
                         <div className="absolute inset-0 z-[9999] bg-transparent pointer-events-auto" onContextMenu={(e) => e.preventDefault()}></div>
-                        <video src="/images/showcase/Afilabs_Karya/Arvala/6_Train_2_Card_Push.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
+                        <img src="/images/showcase/code/sidanus/React_Apsi.png" alt="SIDANUS" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
-                        <p className="text-white text-sm font-bold">Ghazali Personal Portfolio</p>
-                        <p className="text-gray-400 text-xs font-mono">Next.js • React • Tailwind</p>
+                        <p className="text-white text-sm font-bold">SIDANUS React SPA</p>
+                        <p className="text-gray-400 text-xs font-mono">React 19 • Vite • Tailwind</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm group-hover:bg-brand-primary/10 transition-colors">
                       <div className="relative w-16 h-12 rounded-lg bg-black overflow-hidden shrink-0 border border-white/10 group-hover:border-brand-primary/50 transition-colors">
                         <div className="absolute inset-0 z-[9999] bg-transparent pointer-events-auto" onContextMenu={(e) => e.preventDefault()}></div>
-                         <video src="/images/showcase/Afilabs_Karya/Arvala/5_Cafe_3d_Card_Stacked.mp4" width="1" height="1" autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
+                         <img src="/images/showcase/code/prabowo_bot/thumb_prabowo.png" alt="Prabowo Bot" className="w-full h-full object-cover pointer-events-none" onContextMenu={(e) => e.preventDefault()} />
                       </div>
                       <div>
-                        <p className="text-white text-sm font-bold">Inventaris Lab Web App</p>
-                        <p className="text-gray-400 text-xs font-mono">Laravel • MySQL • Bootstrap</p>
+                        <p className="text-white text-sm font-bold">Prabowo Bot</p>
+                        <p className="text-gray-400 text-xs font-mono">Node.js • Discord.js • AI</p>
                       </div>
                     </div>
                   </div>

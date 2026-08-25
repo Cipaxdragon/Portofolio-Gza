@@ -1,0 +1,1 @@
+const fs = require('fs'); const file = 'd:/Desktop/Portofolio/portfolio_gaz/src/components/sections/About.jsx'; let content = fs.readFileSync(file, 'utf8'); content = content.replace(/{\/\* Cyan overlay on hover \*\/}[\s\S]*?<div className="absolute inset-0 bg-brand-accent\/5 mix-blend-overlay pointer-events-none" \/>/, ''); fs.writeFileSync(file, content);

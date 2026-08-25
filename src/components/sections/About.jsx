@@ -129,11 +129,10 @@ export default function About() {
                 src={profile.avatar}
                 alt={profile.name}
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="object-cover transition-transform duration-700 hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              {/* Cyan overlay on hover */}
-              <div className="absolute inset-0 bg-brand-accent/5 mix-blend-overlay pointer-events-none" />
+              
             </div>
           </CardMotion>
 
